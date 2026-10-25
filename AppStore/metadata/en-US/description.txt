@@ -18,7 +18,7 @@ PRINT AND PDF
 Open an A4 or Letter PDF preview from Document Actions or Command-P, then save or print Japanese text, tables, and Mermaid diagrams. Invalid diagrams or rendering failures show a warning and readable source instead. Output uses its own layout; it does not reproduce images or the screen layout exactly.
 
 FINDER QUICK LOOK
-Select a Markdown file in Finder and press Space to preview its contents and Mermaid diagrams. If another Markdown Quick Look extension is installed, check the enabled extensions in System Settings.
+Select a Markdown file in Finder and press Space to preview its contents and Mermaid diagrams in a continuous scrolling view. Page breaks apply to printing and PDF export. If another Markdown Quick Look extension is installed, check the enabled extensions in System Settings.
 
 READ AT YOUR OWN SIZE
 Adjust text size from 80% to 160% with a slider in Reading Settings. Your preference is remembered and applies immediately to all open documents, including Mermaid diagrams.

@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-/// A separate, local-only renderer produces vector PDF pages, not screen snapshots.
+/// A local-only renderer produces vector PDF pages and SVG attachments.
 @MainActor
 final class MermaidPDFRenderer: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
   private let webView: WKWebView
@@ -19,6 +19,23 @@ final class MermaidPDFRenderer: NSObject, WKNavigationDelegate, WKScriptMessageH
   }
 
   func render(_ source: String) async throws -> Data {
+    let size = try await prepare(source)
+    let configuration = WKPDFConfiguration()
+    configuration.rect = CGRect(origin: .zero, size: size)
+    let data = try await webView.pdf(configuration: configuration)
+    try Task.checkCancellation()
+    return data
+  }
+
+  func renderSVG(_ source: String) async throws -> Data {
+    _ = try await prepare(source)
+    let result = try await webView.evaluateJavaScript("document.querySelector('#diagram svg').outerHTML")
+    try Task.checkCancellation()
+    guard let svg = result as? String else { throw OutputError.renderingFailed }
+    return Data(svg.utf8)
+  }
+
+  private func prepare(_ source: String) async throws -> CGSize {
     try Task.checkCancellation()
     guard source.utf8.count <= 65_536 else { throw OutputError.documentTooLarge }
     if !loaded { try await load() }
@@ -43,11 +60,7 @@ final class MermaidPDFRenderer: NSObject, WKNavigationDelegate, WKScriptMessageH
       let width = size["width"] as? Double, let height = size["height"] as? Double,
       width.isFinite, height.isFinite, width > 0, height > 0, height <= 32_000
     else { throw OutputError.renderingFailed }
-    let configuration = WKPDFConfiguration()
-    configuration.rect = CGRect(x: 0, y: 0, width: width, height: height)
-    let data = try await webView.pdf(configuration: configuration)
-    try Task.checkCancellation()
-    return data
+    return CGSize(width: width, height: height)
   }
 
   func close() {

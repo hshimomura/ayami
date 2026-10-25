@@ -1,4 +1,27 @@
-# あやみ 1.4（19）実装・動作検証
+# あやみ 1.4（19・20）実装・動作検証
+
+## ビルド20: Quick Lookの連続表示
+
+ビルド20ではQuick Lookを印刷用PDFから連続HTMLへ変更した。
+Mermaidは同梱ランタイムでSVGを生成し、CID添付として渡す。用紙・改ページ・ページ番号は
+印刷／PDF保存のフローに残す。以下はビルド19の結果とは別に実施した確認。
+
+- Macの`swift test`は39件の実行結果が成功。任意のAI実生成1件はskip。
+  100段落のHTML保持、スクリプトのエスケープ、SVG添付、無効な図のソース表示を追加し、
+  既存の長文PDF改ページ・図のPDF出力も再確認した。
+- Macの隔離UIホストで印刷パネルの表示／取消、システムパネル経由のPDF保存が成功。
+- FinderでHTMLのWebViewとSVG中の`PrintedDiagram14`を確認し、画面でも本文・表・図を確認。
+  PDFのページ一覧・ページ番号は表示されない。
+- 最初のFinderテストは、SVGをImage要素として探した点と、空のApplicationフレームを
+  スクリーンショットに使った点で失敗した。実際のSVGはGroupと文字として公開されていた。
+  文字とQuick Lookウィンドウを検査する形へ直し、Finder単独の再実行は成功した。
+- iPhone 17 Pro / iOS 26.5 Simulatorで、PDF・SVG・ビルド番号の対象10件が成功。
+  この変更でAI実生成や実機・紙への印刷を追加検証したものではない。
+- Mac・iOSの1.4 (20)配布アーカイブ／書き出しで、署名・版・権限・配布資産の検証に成功。
+
+証跡はGit管理外の`.build/results/mac-1.4-20-continuous.xcresult`（印刷・保存成功と初回Finder失敗）、
+`mac-1.4-20-finder-confirmed.xcresult`（Finder成功）、`ios-1.4-20-output.xcresult`（対象10件成功）に保持する。
+以下はビルド19での検証履歴。
 
 ## 目的と状態
 

@@ -26,9 +26,9 @@ build_version="$(/usr/libexec/PlistBuddy \
     -c 'Print :ApplicationProperties:CFBundleVersion' \
     "$ARCHIVE_PATH/Info.plist")"
 
-if [[ "$marketing_version" != "1.4" || "$build_version" != "19" || \
+if [[ "$marketing_version" != "1.4" || "$build_version" != "20" || \
       ! -d "$ARCHIVE_PATH/Products/Applications/Ayami.app" ]]; then
-    print -u2 "Archive is stale or not Ayami 1.4 (19). Run ./Scripts/archive-app-store.sh before uploading."
+    print -u2 "Archive is stale or not Ayami 1.4 (20). Run ./Scripts/archive-app-store.sh before uploading."
     exit 1
 fi
 

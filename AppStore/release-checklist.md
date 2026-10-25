@@ -1,8 +1,10 @@
 # Public release checklist
 
-This checklist covers version 1.4 (19) source, metadata, and build verification.
-It intentionally excludes App Store Connect review workflow and account
-operations.
+This checklist covers the version 1.4 (20) App Store replacement build, metadata, and build verification.
+App Store Connect review operations follow the repository's
+[app-store-connect skill](../.agents/skills/app-store-connect/SKILL.md), which
+uses the API by default. Account-specific records remain in ignored
+`AppStore/private/` files.
 
 ## Source and licenses
 
@@ -66,7 +68,7 @@ The local Mac path is `./Scripts/build-validation-app.sh`; the SwiftPM-only
 
 ## GitHub source release
 
-- [ ] Keep old tags/releases unchanged; create `v1.4` only when GitHub publication is requested.
+- [ ] Preserve existing tags/releases unless the user explicitly requests replacement. Before replacement, save the prior tag and release assets locally; update only the requested tag with an expected-SHA lease.
 - [ ] Confirm product sources match the validated 1.4 code; distinguish later
       documentation changes from a rebuilt/resubmitted App Store binary.
 - [ ] Use `docs/releases/1.4.md` as the release-note source and verify its links after publishing the tag.

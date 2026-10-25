@@ -7,10 +7,13 @@ document-upload service.
 
 ## Version 1.4
 
-**1.4 (build 19)** adds A4/Letter printing and PDF export on all platforms,
+**1.4 (build 20)** adds A4/Letter printing and PDF export on all platforms,
 Mermaid diagrams in output, Finder Quick Look on Mac, and optional on-device
 Document Highlights (Prototype). The Mac app now requires Apple silicon;
 Intel Macs are no longer supported.
+
+Build 20 uses a continuous Quick Look preview. Paper pagination is used for
+printing and PDF export.
 
 - [1.4 release notes](docs/releases/1.4.md)
 - [Validation results and known limitations](docs/validation-1.4.md)

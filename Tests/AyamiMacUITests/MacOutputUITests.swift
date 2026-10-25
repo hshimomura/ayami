@@ -119,13 +119,15 @@ final class MacOutputUITests: XCTestCase {
     let rendered = finder.staticTexts.matching(NSPredicate(format: "value == %@ OR label == %@",
       "PrintedDiagram14", "PrintedDiagram14")).firstMatch
     let didRender = rendered.waitForExistence(timeout: 20)
-    keep(window.screenshot(), name: "Mac 1.4 Finder Quick Look public fixture")
+    let preview = finder.windows["Quick Look"].firstMatch
+    XCTAssertTrue(preview.webViews.firstMatch.exists, "Quick Look must use continuous HTML rather than paginated PDF")
+    keep(preview.screenshot(), name: "Mac 1.4 continuous Finder Quick Look public fixture")
     let tree = XCTAttachment(string: "Rendered diagram label: \(didRender)")
     tree.name = "Public fixture Quick Look rendering check"
     tree.lifetime = .keepAlways
     add(tree)
     XCTAssertEqual(try Data(contentsOf: sourceURL), original)
-    XCTAssertTrue(didRender, "Finder did not expose the rendered PDF diagram label")
+    XCTAssertTrue(didRender, "Finder did not expose the rendered SVG diagram label")
   }
 
   @MainActor

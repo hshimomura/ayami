@@ -33,7 +33,7 @@ Finder / File menu / Files
             |
             +-> 明示操作のみ: DocumentSummary -> 端末内Foundation Models
 
-Finder Quick Look -> PreviewProvider -> 同じ出力パイプライン -> QLPreviewReply
+Finder Quick Look -> PreviewProvider -> OutputDocument -> 連続HTML + Mermaid SVG添付 -> QLPreviewReply
 ```
 
 読書画面と出力は別のレンダラーとする。本文の読みやすさとOS標準の文書操作を維持しつつ、
@@ -41,7 +41,9 @@ Finder Quick Look -> PreviewProvider -> 同じ出力パイプライン -> QLPrev
 HTML/CSSの完全再現には依存しない。出力の対応記法・上限は実装仕様に集約する。
 
 Quick Lookは表示専用の小さな拡張とし、アプリの起動・設定・AIを必要としない。
-PDFの選択・スクロール・ズームはOSへ任せる。バンドル識別子は既存アプリと分ける。
+本文と表を連続HTMLで返し、Mermaidはローカル生成したSVGを添付する。
+改ページ・用紙サイズ・ページ番号は印刷とPDF保存の出力フローに限定する。
+選択とスクロールはOSへ任せる。バンドル識別子は既存アプリと分ける。
 
 ## プラットフォーム境界
 

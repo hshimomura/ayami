@@ -13,7 +13,7 @@ submission state.
 - Primary category: Productivity
 - Price: Free
 - Version: `1.4`
-- Build: `19`
+- Build: `20`
 - Copyright: `2026 Hideaki Shimomura`
 - Support URL: `https://hshimomura.github.io/ayami/support`
 - Marketing URL: `https://hshimomura.github.io/ayami/`

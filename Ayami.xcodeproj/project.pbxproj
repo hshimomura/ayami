@@ -19,6 +19,7 @@
 		0E2928E38DB2CB42DEC34736 /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = F1158C8789B7367519BFF6CF /* Textual */; };
 		109BE9ED598E2A6E45911112 /* ReadingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37F26F2242FEA65B0E76F5 /* ReadingUITests.swift */; };
 		11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		134F39C472F1E3FED3C0CDF7 /* QuickLookHTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */; };
 		146C187C61335B01D01E712F /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = C1F62F47ED6C0726D04F0085 /* Textual */; };
 		155C2B21685115C570227EDF /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
 		17C04AB92DC6E8F74F56EF31 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
@@ -36,9 +37,9 @@
 		2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
 		2EF2D1FB26EA1E57039EDE4F /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
 		31E11510C4DA94ED52537F58 /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
+		343199C0AA312E6B16C1E17D /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		35E1CFCA35A084DF3AFCFABE /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888699F0267A602B24253FF4 /* PreviewProvider.swift */; };
 		37A018E7075AD46950F0127B /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
-		3A8F848A7366A14AE33A0889 /* OutputTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E960B762C15DA3A33B82DF0 /* OutputTextStyle.swift */; };
 		3B545E2BA7CC1C7FF4E79D6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 244D5E5CB35321B3C3115885 /* InfoPlist.strings */; };
 		3CE0BEC5B40CCC24D0E9DD59 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		3E883A7098087DF1F351A8F6 /* DocumentOutputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440A0EF585C820D9E9E0130 /* DocumentOutputTests.swift */; };
@@ -48,7 +49,7 @@
 		4CA7754D1A39DEB64505D20D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88018AFF26AE3102F663FF84 /* Localizable.strings */; };
 		4E83ADC7B073CFA5BE0C81E3 /* MarkdownContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41971911083433B4EBA850FC /* MarkdownContent.swift */; };
 		5018BCAA7E32C3B928B1FDC5 /* AyamiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537D16BD28C94319484772 /* AyamiApp.swift */; };
-		50DA04443680394E353F8EED /* DocumentPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */; };
+		54685B568CD4ED9F66E3A95D /* QuickLookHTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */; };
 		54AD0D36CD467B3295F167C7 /* DocumentSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */; };
 		59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
 		5B458D404E486F508E3ADD55 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
@@ -102,6 +103,7 @@
 		B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */; };
 		B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
 		B614C9DAA4B206C3A559C3F5 /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		B7310A6794D1A3836A8AA0DB /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		B7E0BF79770C012B2375AFCF /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		BA9A14D3D4BBFE5E07F6D2D2 /* AyamiQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 165799041068FBA9652512FC /* AyamiQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BBD9FDDCEEB7978232443FAE /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
@@ -111,13 +113,16 @@
 		CDC4ACD046247AB6243BBEEA /* DocumentOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664A1681ECBA6F48D1D1ED1 /* DocumentOutputView.swift */; };
 		D0D89529F1FFE843C797725E /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
 		D1576F15FCA6BC490E93AC6F /* Legal in Resources */ = {isa = PBXBuildFile; fileRef = 71DDC489F9681F8D9F82CF6C /* Legal */; };
+		D44478713BAE57ECD866051B /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		D6044760367A6E4C2D71A2A1 /* OutputTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E960B762C15DA3A33B82DF0 /* OutputTextStyle.swift */; };
+		D7490DE9BDA99F03A6E8DB86 /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		D8C066ABC0AFBD5F64D131C5 /* DocumentPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */; };
 		DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */; };
 		DC31A0C9FFCAB7C05026109F /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
 		DF19C8CE855D2672292D4E34 /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
 		E1DAAAF494439E402999DD7E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */; };
 		E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		E2532634415300088A06C89F /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		E372CA21D913F46A53A89EAE /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
 		E39F32A0A98911EE066FB29F /* DocumentSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD434C189FF7FE094DC178 /* DocumentSummaryTests.swift */; };
 		E573F5ED2C88927CFC5AB8AB /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 35108F4DADC7D3E2D24F030E /* Mermaid */; };
@@ -246,11 +251,13 @@
 		ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDocumentModel.swift; sourceTree = "<group>"; };
 		AC70260A1BAE7E5867A604AF /* AyamiIOSUITestHost.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AyamiIOSUITestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37F26F2242FEA65B0E76F5 /* ReadingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingUITests.swift; sourceTree = "<group>"; };
+		B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookHTMLRenderer.swift; sourceTree = "<group>"; };
 		B431B081AD1D4296054836C7 /* MarkdownDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocument.swift; sourceTree = "<group>"; };
 		B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownToolkitTests.swift; sourceTree = "<group>"; };
 		BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPDFGenerator.swift; sourceTree = "<group>"; };
 		C7854A35057B2C037A4AAD2D /* AyamiMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AyamiMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80FD0F2E1D8BD9288097784 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookHTMLTests.swift; sourceTree = "<group>"; };
 		DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocumentTests.swift; sourceTree = "<group>"; };
 		DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSummaryView.swift; sourceTree = "<group>"; };
 		E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidDiagramView.swift; sourceTree = "<group>"; };
@@ -389,6 +396,7 @@
 				70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */,
 				ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */,
 				879658CC5DFC11B18B1A6325 /* PreviewView.swift */,
+				B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */,
 				545588CD788BCCBB81869777 /* ReadingPreferences.swift */,
 				53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */,
 				052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */,
@@ -446,6 +454,7 @@
 				DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */,
 				B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */,
 				61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */,
+				CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */,
 				3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */,
 				6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */,
 			);
@@ -819,6 +828,7 @@
 				A80BC03585A5707A8F584B9A /* PreviewCommands.swift in Sources */,
 				747FF54C415844E61B970124 /* PreviewDocumentModel.swift in Sources */,
 				C4CB2BCD3106FB404EFF21D0 /* PreviewView.swift in Sources */,
+				E2532634415300088A06C89F /* QuickLookHTMLRenderer.swift in Sources */,
 				7AD20910B6B3AF9C3B0008B7 /* ReadingPreferences.swift in Sources */,
 				ABBF6F3596A6E667A3346083 /* ReadingSettingsView.swift in Sources */,
 				1A4A9A6ED06B0E4B0EF05327 /* WindowSizeRestorer.swift in Sources */,
@@ -845,6 +855,7 @@
 				0BCDDD1A3966F91CB1169BEF /* PreviewCommands.swift in Sources */,
 				2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */,
 				0AAB5E53808B056CE2BB343E /* PreviewView.swift in Sources */,
+				343199C0AA312E6B16C1E17D /* QuickLookHTMLRenderer.swift in Sources */,
 				EA6E98A95FC80095F837D3B0 /* ReadingPreferences.swift in Sources */,
 				11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */,
 			);
@@ -859,6 +870,7 @@
 				9C7857DC76F845590395B3F9 /* MarkdownDocumentTests.swift in Sources */,
 				79CFE7277B77CBEFF78D02E5 /* MarkdownToolkitTests.swift in Sources */,
 				A46B5BCEABCEF5D79FD4661B /* MermaidRendererTests.swift in Sources */,
+				134F39C472F1E3FED3C0CDF7 /* QuickLookHTMLTests.swift in Sources */,
 				0C325B93D0851F3E4254B7B5 /* ReadingPreferencesTests.swift in Sources */,
 				B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */,
 			);
@@ -884,6 +896,7 @@
 				E71C2CC32748A14C98092577 /* PreviewCommands.swift in Sources */,
 				5D9D0AC0E5F7FA34B197218D /* PreviewDocumentModel.swift in Sources */,
 				8B05D9914CEF8FE269349DA9 /* PreviewView.swift in Sources */,
+				D44478713BAE57ECD866051B /* QuickLookHTMLRenderer.swift in Sources */,
 				59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */,
 				E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */,
 				DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */,
@@ -894,12 +907,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50DA04443680394E353F8EED /* DocumentPDFGenerator.swift in Sources */,
 				17C04AB92DC6E8F74F56EF31 /* MermaidPDFRenderer.swift in Sources */,
 				37A018E7075AD46950F0127B /* MermaidRendererResources.swift in Sources */,
 				155C2B21685115C570227EDF /* OutputDocument.swift in Sources */,
-				3A8F848A7366A14AE33A0889 /* OutputTextStyle.swift in Sources */,
 				35E1CFCA35A084DF3AFCFABE /* PreviewProvider.swift in Sources */,
+				D7490DE9BDA99F03A6E8DB86 /* QuickLookHTMLRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +934,7 @@
 				A8C1A6E45C592D95BD1B439C /* PreviewCommands.swift in Sources */,
 				B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */,
 				E717918F29670EDA74FB4182 /* PreviewView.swift in Sources */,
+				B7310A6794D1A3836A8AA0DB /* QuickLookHTMLRenderer.swift in Sources */,
 				017A494BC09B0D54CA8D5E69 /* ReadingPreferences.swift in Sources */,
 				6841451BA8DBC7FC24117853 /* ReadingSettingsView.swift in Sources */,
 				8723F0BA8BFBF1C2B9CAE091 /* UITestHostApp.swift in Sources */,
@@ -937,6 +950,7 @@
 				F19F799CC146DBA77A7837AC /* IOSDocumentTests.swift in Sources */,
 				48B3410CC2256775F902B27F /* MarkdownToolkitTests.swift in Sources */,
 				46DC0579DD0DE5DEB3C848B3 /* MermaidRendererTests.swift in Sources */,
+				54685B568CD4ED9F66E3A95D /* QuickLookHTMLTests.swift in Sources */,
 				63ABDBB0D7DE31BC71DAE5D9 /* ReadingPreferencesTests.swift in Sources */,
 				729F1A5C10098D24056C08CD /* ReleaseVersionTests.swift in Sources */,
 			);
@@ -1006,7 +1020,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_DEBUG_DYLIB = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1034,7 +1048,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1059,7 +1073,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1086,7 +1100,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1206,7 +1220,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1230,7 +1244,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1257,7 +1271,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1303,7 +1317,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1429,7 +1443,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1455,7 +1469,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1481,7 +1495,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1570,7 +1584,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1594,7 +1608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1663,7 +1677,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1773,7 +1787,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;

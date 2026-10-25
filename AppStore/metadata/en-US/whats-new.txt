@@ -6,5 +6,6 @@
 • Rebuilt with the latest macOS SDK and verified compatibility with macOS 27.
 • Added A4/Letter print previews and PDF export, with Mermaid rendered as diagrams instead of source code.
 • Added Finder Quick Look previews for Markdown content and Mermaid diagrams.
+• Quick Look now presents documents continuously; page breaks are reserved for printing.
 • Now requires Apple silicon. Intel Macs are no longer supported.
 • Added Document Highlights (Prototype) using Apple's on-device Apple Intelligence model. Requires a compatible environment; availability or generation may fail. Check AI output against the original document.

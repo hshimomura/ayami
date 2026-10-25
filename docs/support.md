@@ -12,7 +12,7 @@ permalink: /support
 - iOS/iPadOS 18 or later
 - UTF-8 Markdown files using `.md` or `.markdown`
 
-The current source release is 1.4 (build 19). Check the
+The current source release is 1.4 (build 20). Check the
 [App Store](https://apps.apple.com/app/id6794576868) for the distributed version.
 
 ## Mac actions
@@ -53,7 +53,8 @@ Text and tables remain selectable; Mermaid is exported as vector diagrams.
 Output has its own layout, independent of the reading-size slider. It does not
 reproduce images or exact HTML/CSS screen layout, and supports only a subset of
 Markdown. Invalid Mermaid or rendering failures show warnings and source instead.
-Output and Quick Look accept UTF-8 input up to 1 MiB and at most 500 PDF pages.
+Output and Quick Look accept UTF-8 input up to 1 MiB. PDF output is limited to
+500 pages. Quick Look uses continuous scrolling without paper page breaks.
 
 ## On-device Document Highlights (Prototype)
 

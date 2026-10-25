@@ -12,7 +12,7 @@ INFO_PATH="$APP_PATH/Info.plist"
 codesign --verify --deep --strict "$APP_PATH"
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$INFO_PATH")" == 'io.github.hshimomura.MDViewer' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$INFO_PATH")" == '1.4' ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$INFO_PATH")" == '19' ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$INFO_PATH")" == '20' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' "$INFO_PATH")" == '18.0' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleSupportedPlatforms:0' "$INFO_PATH")" == 'iPhoneOS' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :UIDeviceFamily:0' "$INFO_PATH")" == '1' ]]
@@ -36,5 +36,5 @@ for resource in PrivacyInfo.xcprivacy THIRD_PARTY_NOTICES.md Mermaid/renderer.ht
 done
 [[ "$(plutil -extract version raw -o - "$APP_PATH/Mermaid/version.json")" == '12.2.0' ]]
 [[ "$(shasum -a 256 "$APP_PATH/Mermaid/mermaid.min.js" | cut -d ' ' -f 1)" == 'a8a6a6f805b074a8261a2825c86f99c8054acb3b35f50bb7e24a4f9f2c3c3b9f' ]]
-print 'Verified Ayami iOS 1.4 (19): App Store profile, arm64, iPhone/iPad, iOS 18+, privacy manifest and offline runtime.'
+print 'Verified Ayami iOS 1.4 (20): App Store profile, arm64, iPhone/iPad, iOS 18+, privacy manifest and offline runtime.'
 shasum -a 256 "$IPA_PATH"

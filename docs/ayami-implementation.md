@@ -1,4 +1,4 @@
-# あやみ 1.4（19）実装仕様
+# あやみ 1.4（20）実装仕様
 
 Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコードで構成する。
 利用者向け機能は[README](../README.md)、データフローは[設計](../DESIGN.md)、
@@ -17,11 +17,11 @@ Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコード
 | PDF入力・スタイル | `OutputDocument`、`OutputTextStyle` |
 | PDF生成・図合成 | `DocumentPDFGenerator`、`MermaidPDFRenderer` |
 | 出力画面・OS操作 | `DocumentOutputView`、PDFKit、`PDFExportDocument`、OS別印刷ボタン |
-| Finder Quick Look | `AyamiQuickLook`、`Sources/AyamiQuickLook/PreviewProvider.swift` |
+| Finder Quick Look | `AyamiQuickLook`、`PreviewProvider`、`QuickLookHTMLRenderer`、SVG添付 |
 | 端末内AI | `DocumentSummary`、`DocumentSummaryView` |
 
 `project.yml`が構成の正本。Mac本体・拡張・Macテストは`ARCHS: arm64`。
-アプリと拡張のバージョンは1.4、ビルドは19。アプリのBundle IDは
+アプリと拡張のバージョンは1.4、ビルドは20。アプリのBundle IDは
 `io.github.hshimomura.MDViewer`、製品拡張は末尾`.QuickLook`で互換性を維持する。
 改名時の判断は[構成変更記録](repository-rename.md)に残す。
 
@@ -62,11 +62,14 @@ PDFKitでプレビューする。保存成功のコールバック後だけ完�
 ## Finder Quick Look
 
 Macアプリが`AyamiQuickLook.appex`を同梱する。`net.daringfireball.markdown`を対象に、
-データ方式の`QLPreviewProvider`が共通の読み込み・PDF生成を行い、`QLPreviewReply`で返す。
-OSが選択・スクロール・ズームを管理する。AI、アプリの設定、独自ビューアーは組み込まない。
+データ方式の`QLPreviewProvider`がUTF-8を読み、`QuickLookHTMLRenderer`で連続HTMLを生成する。
+Mermaidは同梱ランタイムでSVGを生成し、`QLPreviewReplyAttachment`としてCID参照で渡す。
+HTML内で文書由来のスクリプトは実行せず、本文のHTML記号をエスケープする。
+改ページ・用紙サイズ・ページ番号は印刷／PDF保存に限定する。
+OSが選択とスクロールを管理する。AIやアプリの設定は組み込まない。
 
 サンドボックス、ユーザー選択read-only、ローカルWebKit用`network.client`を付ける。
-本文やファイル名はログに含めず、初期化・準備要求・ページ数・図数・エラー型だけを記録する。
+本文やファイル名はログに含めず、初期化・準備要求・完了・エラー型だけを記録する。
 他社のMarkdown拡張が残る環境では選択・登録状態の確認が必要。診断経緯は検証記録へ分離する。
 
 ## 端末内AI「文書の要点」（試作）

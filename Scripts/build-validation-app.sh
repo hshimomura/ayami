@@ -17,7 +17,7 @@ xcodebuild -project Ayami.xcodeproj -scheme Ayami -configuration Debug \
 BUILT_APP="$DERIVED_PATH/Build/Products/Debug/Ayami.app"
 EXTENSION_PATH="$BUILT_APP/Contents/PlugIns/AyamiQuickLook.appex"
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$BUILT_APP/Contents/Info.plist")" == 1.4 ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$BUILT_APP/Contents/Info.plist")" == 19 ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$BUILT_APP/Contents/Info.plist")" == 20 ]]
 [[ "$(lipo -archs "$BUILT_APP/Contents/MacOS/Ayami")" == arm64 ]]
 [[ "$(lipo -archs "$EXTENSION_PATH/Contents/MacOS/AyamiQuickLook")" == arm64 ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionAttributes:QLIsDataBasedPreview' "$EXTENSION_PATH/Contents/Info.plist")" == true ]]
@@ -30,5 +30,5 @@ if [[ -e "$OUTPUT_APP_PATH" ]]; then
   print "Previous validation build preserved at $PREVIOUS_ROOT/Ayami.app"
 fi
 ditto "$BUILT_APP" "$OUTPUT_APP_PATH"
-print "Built Ayami 1.4 (19), arm64 only: $OUTPUT_APP_PATH"
+print "Built Ayami 1.4 (20), arm64 only: $OUTPUT_APP_PATH"
 print "Local validation only. Nothing was uploaded, submitted, or released."
