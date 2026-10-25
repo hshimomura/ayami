@@ -23,13 +23,15 @@ submission state.
 
 - English (U.S.) product-page text in `metadata/en-US`
 - Japanese product-page text in `metadata/ja`
-- iPhone/iPad-specific descriptions and first-release notes in `metadata/ios`
+- iPhone/iPad-specific descriptions and first-release note drafts in `metadata/ios`.
+  The initial iOS edition uses version 1.3; its App Store form has no What's New field.
 - Public screenshot sample documents in `Samples`
 - Screenshot requirements in `Screenshots/README.md`
 - Reproducible source and build checks in `release-checklist.md`
 
 The screenshot image files themselves are ignored by Git. Store media must use
-only the bundled public `Sample.md` and must not contain private documents.
+only public `Sample.md` or `Samples/` content and must not contain private documents.
+Metadata files are platform/localization copy sources, not duplicate developer guides.
 
 ## Privacy and export compliance
 
@@ -56,3 +58,8 @@ making changes:
 ```sh
 ./Scripts/verify-app-store-metadata.sh
 ```
+
+Build/export commands and source releases are documented once in the
+[release checklist](release-checklist.md). Feature changes belong in the
+[release notes](../docs/releases/1.3.md); test outcomes belong in the
+[validation record](../docs/iphone-duo-validation-1.3.md).

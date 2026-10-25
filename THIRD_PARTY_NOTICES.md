@@ -1,8 +1,13 @@
 # Third-party notices
 
 Ayami includes the following runtime dependencies. Their complete license
-texts are copied into the built application under
-`Contents/Resources/ThirdPartyLicenses`.
+texts are retained in the built application. The location depends on the build:
+
+| Build | License directory |
+| --- | --- |
+| Xcode macOS app / App Store export | `Contents/Resources/Legal/` |
+| Xcode iOS app / App Store export | `Legal/` inside `Ayami.app` |
+| Local Mac script build | `Contents/Resources/ThirdPartyLicenses/` |
 
 | Component | Version | License | Source |
 | --- | --- | --- | --- |
@@ -18,9 +23,10 @@ are retained inside the distributed
 `swiftui-math_SwiftUIMath.bundle/mathFonts.bundle`.
 
 Mermaid is included as a fixed local browser bundle so diagrams render
-offline. Its complete MIT license is copied to
-`ThirdPartyLicenses/Mermaid-LICENSE.txt`.
+offline. Its complete MIT license is `Mermaid-LICENSE.txt` in the directory
+listed above.
 
-Before each public release, regenerate `Package.resolved`, review the complete
-dependency graph with `swift package show-dependencies`, and confirm that this
-notice matches the distributed binary.
+Before each public release, review both committed `Package.resolved` files and
+the dependency graph with `swift package show-dependencies`. Update locks only
+when intentionally changing dependencies, then confirm this notice and the
+bundled license texts match the distributed versions.

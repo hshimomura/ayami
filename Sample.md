@@ -2,14 +2,15 @@
 
 This file verifies that **Markdown** opens as a rendered, read-only document.
 
-## Supported MVP content
+## Supported content
 
 - Headings and paragraphs
 - **Bold**, *emphasis*, and [links](https://example.com)
 - Ordered and unordered lists
 - Tables and code blocks
 - Text selection
-- Live reload after an external editor saves
+- Live reload after an external editor saves (Mac only)
+- Saved text-size adjustment from 80% to 160%
 - A chapter outline that follows the reading position
 - Offline Mermaid diagrams
 
@@ -32,7 +33,7 @@ Mermaid installation.
 
 ```mermaid
 flowchart LR
-  Markdown["Markdown file"] --> Watch["Live reload"]
+  Markdown["Markdown file"] --> Watch["Mac: Live reload"]
   Watch --> Preview["Read-only preview"]
   Preview --> Outline["Current section"]
 ```

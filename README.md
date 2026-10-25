@@ -1,56 +1,53 @@
 # Ayami — あやみ
 
-Ayami is a small, read-only Markdown viewer for macOS 26+ and iOS/iPadOS 18+. Its document UI
-is native SwiftUI: there is no editor, Electron runtime, database, account, or
-network service. A restricted local WebKit view is used only for Mermaid
-diagrams. The App Sandbox network-client entitlement allows the WebKit helper
-process to start on macOS 26; the bundled renderer uses a `default-src 'none'`
-content-security policy and rejects external navigation.
+Ayami is a quiet, read-only Markdown viewer for Mac, iPhone, and iPad.
+Open UTF-8 `.md` and `.markdown` files as structured documents, with a heading
+outline, adjustable text size, and offline Mermaid diagrams. There is no editor,
+account, analytics, advertising, or document-upload service.
 
-The detailed architecture and roadmap are in [DESIGN.md](DESIGN.md).
+## Version 1.3
 
-## MVP architecture
+Version **1.3 (build 18)** introduces the Ayami name, a bright reading-stand
+icon, iPhone/iPad support, saved 80–160% text sizing, and Mermaid 12.2.0.
+It also fixes duplicate document navigation bars when iPhone Duo changes displays.
 
-```text
-Finder / File > Open
-        |
-        v
-SwiftUI DocumentGroup(viewing:)
-        |
-        v
-PreviewDocumentModel (UTF-8 + live file monitoring)
-        |
-        v
-Heading / Markdown / Mermaid block parser
-        |
-        +-- Textual StructuredText (native Markdown)
-        |
-        +-- bundled Mermaid runtime (offline diagram)
-```
+- [Release notes](docs/releases/1.3.md)
+- [GitHub Releases](https://github.com/hshimomura/ayami/releases)
+- [Documentation index / 日本語の文書案内](docs/README.md)
 
-- `DocumentGroup(viewing:)` provides read-only document lifecycle. Documents
-  open in individual windows by default and can be grouped in native tabs.
-- `net.daringfireball.markdown` registers `.md` and `.markdown` with a
-  `Viewer` role and `Alternate` handler rank.
-- Textual 0.5.0 renders structured Markdown with native SwiftUI views.
-- Mermaid 12.2.0 is bundled locally; diagrams require no installation or CDN.
-- Swift Package Manager pins the dependency graph in `Package.resolved`.
-- See the [version 1.3 dependency audit and test results](docs/dependency-audit-1.3.md)
-  for the parser stack, pinned versions, and bundled Prism limitation.
-- The Mac app targets macOS 26 and the App Store release builds as a Universal 2
-  binary for Apple silicon and Intel Macs.
-- The `AyamiIOS` target supports iPhone and iPad through the Files document browser.
-- Reading Settings offers an 80–160% text-size slider, saved per device and
-  applied immediately to all open documents. System Dynamic Type remains supported.
+GitHub Releases publish source code, independently of App Store availability.
+Check the [App Store product page](https://apps.apple.com/app/id6794576868)
+for the currently available app version.
+
+## Features and platforms
+
+| Feature | Mac | iPhone / iPad |
+| --- | --- | --- |
+| Read-only Markdown, tables, code, links, selectable text | Yes | Yes |
+| Offline Mermaid, system light/dark appearance | Yes | Yes |
+| Text-size slider (80–160%, saved per device) | Yes | Yes |
+| Heading outline | Sidebar | Sheet in compact windows; sidebar at regular width, including Duo |
+| Open documents | Finder / File menu | Files document browser |
+| Multiple documents | Separate windows by default, optional native tabs and side-by-side arrangement | System-managed multiple windows on iPad; no Mac-style tabs |
+| Live Reload after external saves | Yes, including atomic replacements | Reopen externally changed documents when needed |
+| Printing and PDF output | Yes; Mermaid prints as source text | Not implemented |
+
+System Dynamic Type remains supported. Reading Settings never changes the
+Markdown file, and the reading scale does not change the separate Mac print layout.
+
+For shortcuts, document handling, and troubleshooting, see [Support](docs/support.md).
+Relative local images and a Find navigator are not implemented. Quick Look,
+editing, an in-app theme picker, and a standalone updater are outside the current scope.
 
 ## Requirements
 
-- macOS 26
-- Xcode 27.1
-- Swift 6.4 or newer
-- Network access for the first Swift Package Manager dependency resolution
+- App: macOS 26+ or iOS/iPadOS 18+.
+- Validated development environment: Xcode 27.1 with Swift 6.4.
+  The project uses Swift 6 language mode; `Package.swift` declares tools version 6.2.
+- XcodeGen and network access for initial Swift Package Manager resolution.
+- App Store Mac archives are Universal 2 (Apple silicon and Intel).
 
-## Xcode build
+## Build and test
 
 ```sh
 brew install xcodegen
@@ -58,121 +55,60 @@ brew install xcodegen
 open Ayami.xcodeproj
 ```
 
-The generated `Ayami.xcodeproj` contains macOS and iPhone/iPad apps and test targets.
-The App Store scheme uses bundle identifier `io.github.hshimomura.MDViewer`,
-App Sandbox, hardened runtime, privacy manifest, Productivity category, and
-version 1.3 (build 18). Select `Ayami` for Mac or `AyamiIOS` for iPhone/iPad.
-The Bundle ID is unchanged so existing installations remain the same app.
-See [repository naming and migration](docs/repository-rename.md) for the Ayami
-source layout, schemes, resource bundles, and compatibility identifiers.
+Choose scheme `Ayami` for Mac or `AyamiIOS` for iPhone/iPad. Both retain the
+existing Bundle ID `io.github.hshimomura.MDViewer` so the renamed app keeps its identity.
 
-For a command-line local build:
+For a local, ad-hoc-signed Mac build:
 
 ```sh
 ./Scripts/build-app.sh
 ./Scripts/verify-app.sh
-```
-
-The local app bundle is generated at `dist/Ayami.app`. Open the sample:
-
-```sh
 ./Scripts/launch-local-app.sh
-```
-
-Pass one or more Markdown paths to open specific documents:
-
-```sh
+# Or open your own documents:
 ./Scripts/launch-local-app.sh README.md Sample.md
 ```
 
-Use the script (or Finder / `open`) for GUI smoke tests. Do not execute
-`dist/Ayami.app/Contents/MacOS/Ayami` directly from an automation
-process; that bypasses normal LaunchServices application registration.
-
-The script build uses ad-hoc signing for local testing. Mac App Store archives
-must be created from the Xcode project with an Apple Distribution certificate.
-After exporting an App Store package, verify its distribution signatures,
-architectures, entitlements, privacy manifest, and bundled OSS licenses:
+The local app is `dist/Ayami.app`. Launch through the script, Finder, or `open`;
+do not run the executable inside the bundle directly, which bypasses LaunchServices.
 
 ```sh
-./Scripts/verify-app-store-export.sh
+swift test
+xcodebuild -project Ayami.xcodeproj -scheme Ayami \
+  -destination 'platform=macOS' test
+# Check available simulator names with xcrun simctl list devices available.
+xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
+xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
+  -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)' test
 ```
 
-After verification, upload the current archive with:
+The Swift package builds the Mac executable; use the Xcode iOS scheme for iPhone/iPad.
+The UI tests use a separate sample host, not a hidden bypass in the production app.
+See [1.3 validation results and limitations](docs/iphone-duo-validation-1.3.md).
 
-```sh
-./Scripts/upload-app-store.sh
-```
+Distribution archives require Apple signing credentials. Commands, verification,
+metadata, and source-release checks are maintained in the
+[public release checklist](AppStore/release-checklist.md).
 
-## MVP scope
+## Architecture and licenses
 
-Included:
+SwiftUI `DocumentGroup(viewing:)` owns the read-only document lifecycle.
+Textual renders Markdown natively; only Mermaid uses a restricted local WebKit view.
+The Mac file monitor, printing, and window controls are excluded from the iOS target.
 
-- Finder and Open-menu handling for `.md` and `.markdown`
-- Individual read-only document windows by default, optional native macOS tabs,
-  and side-by-side document arrangement
-- `Command-O` opens a file in a new window; `Command-Option-O` opens a file in
-  a new tab
-- GitHub-like native rendering
-- Tables, lists, code blocks, links, and selectable text
-- HTML-style `<br>`, `<br/>`, and `<br />` line breaks, including table cells
-- `Command-W` closes the active document tab or window
-- The last document-window size is restored across launches
-- A bright ivory icon with a Markdown document on a warm terracotta reading stand
-- Live reload after saves from external editors, including atomic replacements
-- Left-side chapter outline with the current reading section highlighted
-- Contents can be shown or hidden from the toolbar or View menu
-- Offline Mermaid fenced-code rendering with no user setup
-- Native Print panel from File > Print or `Command-P`, with a dedicated
-  print layout for headings, body text, lists, tables, quotes, and code.
-  Mermaid diagrams print as their source-code fallback. Saving as PDF inherits
-  the Markdown document's base file name.
-- Light and dark appearance through system colors
-- UTF-8 input and an empty-document state
+- [Architecture](DESIGN.md)
+- [Implementation](docs/ayami-implementation.md)
+- [Pinned dependencies and parser audit](docs/dependency-audit-1.3.md)
+- [Repository layout and compatibility identifiers](docs/repository-rename.md)
+- [MIT license](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md)
 
-Deferred:
-
-- Relative local image resolution
-- Find navigator and zoom
-- Quick Look integration (intentionally out of scope)
-- Theme selection (appearance follows the system)
-- A standalone updater (Mac App Store distribution supplies updates)
-
-## License and release checklist
-
-The application source is MIT licensed. Runtime dependencies are also
-permissively licensed, but their notices must travel with distributed binaries.
-
-Before publishing:
-
-1. Review `Package.resolved` and `swift package show-dependencies`.
-2. Keep `THIRD_PARTY_NOTICES.md` and bundled license texts in the app.
-3. Run tests and build the Xcode `Ayami` scheme.
-4. Complete the public release checks in `AppStore/release-checklist.md`.
-5. Archive source for the exact release tag.
-6. Publish the source and checksums with the GitHub Release.
-
-GitHub Actions can later build and test pull requests without publishing
-secrets. Release signing should use protected repository secrets or a separate
-trusted release machine.
+Dependency versions are pinned in both `Package.resolved` files. Release signing
+uses a trusted local environment; there is no repository CI test/signing workflow
+at this version.
 
 ## Privacy and support
 
-- Product page: https://hshimomura.github.io/ayami/
-- Privacy policy: https://hshimomura.github.io/ayami/privacy
-- Support: https://hshimomura.github.io/ayami/support
-
-## iPhone and iPad
-
-Open `AyamiIOS` in Xcode and choose an iPhone or iPad destination. The native
-document browser opens UTF-8 `.md` and `.markdown` files in place. Compact
-windows show Contents in a sheet; wider iPad windows use a sidebar. Reading
-Settings is available from the text-size toolbar button. Multiple iPad windows
-use the system window manager rather than Mac-style tabs.
-
-On iOS, SwiftUI manages document updates; the Mac-only file polling and print
-commands are not included. Use Files to open or reopen externally updated
-documents. iOS printing and PDF export are not implemented yet.
-
-Implementation details and verification status:
-[Japanese implementation plan](docs/ayami-implementation.md).
+[Product page](https://hshimomura.github.io/ayami/) ·
+[Privacy policy](https://hshimomura.github.io/ayami/privacy) ·
+[Support](https://hshimomura.github.io/ayami/support) ·
+[Issues](https://github.com/hshimomura/ayami/issues)

@@ -1,144 +1,73 @@
-# あやみ：iPhone・iPad対応と表示設定
+# あやみ 1.3（18）実装仕様
 
-## 採用仕様
+Mac、iPhone、iPad の読み取り専用ビューアーを共通 SwiftUI コードで構成する。
+名称・アイコンは実装済みで、旧名の Bundle ID は互換性のため維持する。
+利用者向け機能は [README](../README.md)、データフローは [設計](../DESIGN.md) を参照する。
 
-名称を「あやみ / Ayami」へ変更し、macOS版を残したままiPhone・iPad版を追加する。
-Markdown文書を読み取り専用で開く方針、オフラインMermaid、データを収集しない方針は維持する。
+## ターゲットと責務
 
-| 項目 | 実装 |
+| 対象 | 実装 |
 | --- | --- |
-| 日本語App Store名（ローカル原稿） | `あやみ — Markdownビューア` |
-| 英語App Store名（ローカル原稿） | `Ayami: Markdown Reader` |
-| インストール後の名称 | 日本語 `あやみ`、その他 `Ayami` |
-| macOS | 26以降、既存の `Ayami` スキーム |
-| iPhone・iPad | iOS/iPadOS 18以降、新しい `AyamiIOS` スキーム |
-| バージョン | 1.3、ビルド17（依存更新後の検証は [依存監査](dependency-audit-1.3.md) を参照） |
-| Bundle ID | `io.github.hshimomura.MDViewer` を維持 |
-| 文字サイズ | 80〜160%、5%刻み、初期値100%、端末内保存 |
-| アイコン | 明るい生成り・杏色背景、白いMarkdown文書、テラコッタ色の見台 |
+| Mac | `Ayami` スキーム、macOS 26+、`Sources/Ayami/AyamiMacApp.swift` |
+| iPhone・iPad | `AyamiIOS` スキーム、iOS/iPadOS 18+、`Sources/AyamiIOS/AyamiApp.swift` |
+| 共有ソース | `Sources/Ayami/`。Mac 固有ファイルは iOS ターゲットから除外 |
+| 文書管理 | `MarkdownDocument` と `DocumentGroup(viewing:)` |
+| 表示モデル | `PreviewDocumentModel`。Mac のみ外部ファイルを監視 |
+| 目次・本文 | `PreviewView`、`OutlineSidebar`、Textual |
+| 図表 | `MermaidDiagramView` と同梱リソース。macOS は NSViewRepresentable、iOS は UIViewRepresentable |
+| 表示設定 | `ReadingPreferences`、`ReadingSettingsView`、`@AppStorage` |
 
-App Store名は原稿の変更であり、今回App Store Connectへの名称保存や提出は行わない。
-海外の既存 `AYAMI` とは異なる用途だが、名称の保存可否や審査承認は未確認である。
+XcodeGen の `project.yml` がターゲット構成の正本。
+ソース名・リソース bundle・互換性識別子は [構成変更記録](repository-rename.md) に集約する。
 
-## 実装順と責務
+## 文字サイズ
 
-1. **ターゲット分離**: `project.yml` にiOSアプリと単体・UIテストターゲットを追加する。
-   AppKit依存のアプリ入口、印刷、ウィンドウ復元はiOSターゲットから除外する。
-2. **共通表示設定**: `ReadingPreferences` に範囲・初期値・正規化を定義する。
-   `ReadingSettingsView` と `@AppStorage` で全ウィンドウへ即時反映する。
-3. **本文と図の拡大**: Textualの `fontScale`、Mermaidの `themeVariables.fontSize` へ
-   同じ倍率を渡す。Dynamic Typeは無効にせず、UI全体の拡大変換は使わない。
-4. **適応レイアウト**: compact幅では本文を優先し目次をsheetへ、regular幅では
-   `NavigationSplitView` のサイドバーへ表示する。
-5. **WebKit移植**: 同じCoordinatorを使い、macOSは `NSViewRepresentable`、iOSは
-   `UIViewRepresentable` とする。ローカル描画・外部遷移拒否・タイムアウトを共通化する。
-6. **改名とアイコン**: Info.plist、InfoPlist.strings、生成物名、検証スクリプト、
-   App Store原稿、公開文書を更新する。
-7. **検証**: macOS単体テスト、iOSコンパイル、iPhone/iPadの単体・UIテストを実施する。
+- キー: `readerFontScale`。初期値 1.0、範囲 0.80〜1.60、5% 刻み。
+- 端末単位に保存し、開いている文書へ即時反映する。「標準に戻す」は 100%。
+- 範囲外は制限し、NaN・無限大は初期値へ戻す。
+- Textual の `fontScale` と Mermaid の `themeVariables.fontSize` に同じ倍率を渡す。
+- 見出し、本文、表、コード、図へ適用する。目次・ステータスはシステムの文字設定に従う。
+- 設定画面の日本語プレビューに対応し、iOS には印刷の説明を表示しない。
+- 文字倍率は Markdown ファイルや Mac の独立した印刷レイアウトを変更しない。
 
-既存ソースの大規模移動は避け、今回はXcodeGenのソース除外でAppKit依存を分離する。
-共有の `PreviewView` とMermaidラッパーのプラットフォーム差分だけを条件コンパイルにする。
-旧計画の `Shared/macOS/iOS` ディレクトリへの全面移動は後続の整理事項とする。
+## 文書と画面の適応
 
-## 設定の挙動
+Mac では個別ウィンドウを既定とし、必要に応じてネイティブタブへ追加する。
+左右配置は文書ウィンドウを対象とし、設定ウィンドウは含めない。
 
-- macOSはアプリメニューのSettingsと文書ツールバーから表示設定を開く。
-- iPhone・iPadはツールバーの文字サイズボタンから開く。
-- 本文、見出し、コード、表、Mermaidへ倍率を渡す。目次とステータスはシステム設定に従う。
-- 設定を変えてもMarkdownファイルへ書き込まない。
-- 「標準に戻す」で100%へ戻す。
-- 保存値が範囲外なら制限し、NaNや無限大なら100%へ戻す。
-- 印刷は従来どおり独立した読みやすいレイアウトを使い、閲覧倍率では変更しない。
-- Privacy Manifestへアプリ内UserDefaultsの利用理由 `CA92.1` と、macOSのユーザー選択
-  文書に対する更新検知の利用理由 `3B52.1` を記載する。データ収集・追跡は追加しない。
+iOS は Files の文書ブラウザーで開き、compact 幅では目次シート、regular 幅では
+230pt の目次と本文を HStack で並べる。目次の表示をツールバーで切り替えられる。
+DocumentGroup に NavigationSplitView を重ねないことで、Duo の開閉時のバー重複を防ぐ。
+端末名・`.phone`・固定画面サイズで iPhone/iPad を区別しない。
 
-## 文書管理
+iOS は独自のファイルポーリングをせず、SwiftUI が管理する文書変更をモデルへ反映する。
+Files/iCloud Drive などで外部変更した内容は必要に応じて開き直す。
+iPad の複数ウィンドウはシステムを使い、Mac の NSWindow 操作を移植しない。
 
-macOSのLive Reloadは従来の監視を継続する。iOSではファイルURLをポーリングせず、
-`DocumentGroup(viewing:)` が管理する読み取り専用文書の変更を共有モデルへ反映する。
-FilesやiCloud Driveなどの外部プロバイダーで更新した際は、必要に応じて文書を開き直す。
+## プライバシーと配布境界
 
-macOSのネイティブタブ・左右配置・印刷は維持する。設定ウィンドウは文書の左右配置対象に含めない。
-iPadはシステムのマルチウィンドウを使い、macOSの `NSWindow` 操作を移植しない。
-iOSの印刷・PDF出力、独自のブックマーク同期、独自のiCloudストレージは今回追加しない。
+ユーザー選択文書を読み取り専用で処理し、文書のアップロードや独自同期は行わない。
+Privacy Manifest は UserDefaults の理由 `CA92.1`、ファイル更新時刻の理由 `3B52.1` を記録する。
+データ収集・追跡は追加しない。
 
-## アイコン生成
+Mermaid は本番とテストで同じ `MermaidRendererResources` を使用する。
+ローカル描画、CSP、外部遷移拒否、タイムアウトとソース表示のフォールバックを共有する。
+依存バージョンと描画・セキュリティ検証は [依存監査](dependency-audit-1.3.md) が正本。
 
-組み込みのimagegenで新しいラスターのマスターを生成した。青背景を使わず、
-明るい生成りと淡い杏色、白い文書、暖色の見台に限定する。
-窓の赤黄緑ボタン、鉛筆、封筒、ダウンロード矢印は使わない。
+## 検証と制限
 
-- マスター: `Resources/Ayami-Icon-Master.png`
-- 1024px配布元: `Resources/AppIcon-1024.png`
-- macOS: `Resources/AppIcon.icns` とmac idiomのAppIcon画像
-- iOS: AppIcon asset catalogの1024px universal画像
-- 再生成: `./Scripts/build-icon.sh`
-- プロンプト: [ayami-icon-prompt.txt](ayami-icon-prompt.txt)
+1.3（18）の単体・UI テスト、Duo の内外画面と開閉の製品版確認は
+[検証記録](iphone-duo-validation-1.3.md) に集約する。
+UI テストは共有画面を使う専用ホストで実行し、製品アプリにはテスト用文書や
+ブラウザーバイパスを含めない。ストア画像は製品ターゲットから撮影する。
 
-これはフラットな完成画像で、Icon Composerのレイヤー付き `.icon` ではない。
-アイコンのLiquid Glassレイヤー化は、必要なら別工程で行う。
-`iconutil` が失敗した場合も、古いICNSを再利用せず、新しいPNGからICNSを組み立てる。
+実機の Files/iCloud Drive、iOS 18 の実行、VoiceOver、最大 Dynamic Type、
+大規模文書・図表の追加確認は残る。Mac/iOS の署名付き配布物は別々に検証する。
+具体的なコマンドは [README](../README.md)、[配布チェックリスト](../AppStore/release-checklist.md) を参照する。
 
-## 検証手順
+## 関連記録
 
-```sh
-./Scripts/generate-xcode-project.sh
-swift test
-./Scripts/verify-app-store-metadata.sh
-
-xcodebuild -project Ayami.xcodeproj -scheme Ayami \
-  -destination 'platform=macOS' test
-
-xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
-  -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
-
-# xcrun simctl list devices available で端末名を確認して実行する
-xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
-  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
-xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
-  -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)' test
-```
-
-UIテストは配布アプリとは別のテスト専用ホストで、共有の文書画面にサンプルを表示する。
-スライダーの変更、再起動後の保持、100%へのリセット、目次の選択を確認する。
-配布アプリにはテスト用の起動引数や文書ブラウザーのバイパスを含めない。
-
-## 配布前に残る確認
-
-- 実機のFiles / iCloud Driveからのオープン、外部プロバイダー更新、回転、複数ウィンドウ
-- VoiceOver、最大Dynamic Type、長い表・コード・大きいMermaid図
-- 日本語表示名と小サイズ・ダーク表示でのアイコンの視認性
-- App Store Connectで日英名称の保存可否を確認
-- 新名称・設定画面を含めたスクリーンショットを作成
-- 同じApp Store ConnectレコードへiOSプラットフォームを追加し、署名とプロビジョニングを確認
-- macOS/iOSの配布署名アーカイブとApp Store用検証、アップロード、審査提出
-
-## 実施済み検証（依存更新前の1.2 / build 16）
-
-2026年10月25日、Xcode 27.1で検証した。以下は依存更新前の結果であり、
-リリース予定の1.3については [依存監査と検証結果](dependency-audit-1.3.md) を参照する。
-
-| 検証 | 結果 |
-| --- | --- |
-| macOS単体テスト（SwiftPMとXcode） | 20テスト成功 |
-| iPhone 17 Pro / iOS 26.5 Simulator | 単体6テスト、UI2テスト成功 |
-| iPad Pro 13-inch (M5) / iOS 26.5 Simulator | 単体6テスト成功、横並び修正後のUI2テスト成功 |
-| 実機向けReleaseコンパイル | iOS 27.1 SDK、arm64、署名なしで成功 |
-| ローカルmacOSアプリ | 改名・日本語表示名・署名・Mermaidリソースの検証に成功 |
-| 日英App Store原稿 | 文字数制限の検証に成功 |
-| 新アイコン | 1024px、不透明のiOS画像、ICNS生成・再展開を確認 |
-
-iPadの初回UIテストではアクセシビリティ接続が失われた。別テストとして再実行すると成功した。
-目視確認で目次のオーバーレイ表示も見つけ、iOSでは `.balanced` スタイルへ調整した。
-テスト用ホストでのiPhone/iPadスクリーンショットも目視確認した。FilesやiCloud Driveの実機試験、
-iOS 18の実行試験、App Store向け配布署名の検証までは完了していない。
-
-以前のアーカイブを誤送信しないよう、アップロードスクリプトは `Ayami 1.3 (17)` 以外の
-アーカイブを拒否する。今回の変更は未コミットで、ストアへのアップロードは行っていない。
-
-## 参考
-
-- [Apple: DocumentGroup](https://developer.apple.com/documentation/swiftui/documentgroup)
-- [Apple: Settings](https://developer.apple.com/documentation/swiftui/settings)
-- [Apple: AppStorage](https://developer.apple.com/documentation/swiftui/appstorage)
-- [Apple: Add platforms](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-platforms/)
+- [名称とアイコンの決定](app-name-plan.md)
+- [初期計画からの差分](ios-ipados-font-size-implementation-plan.md)
+- [スクリーンショット仕様](../AppStore/Screenshots/README.md)
+- [1.3 リリースノート](releases/1.3.md)

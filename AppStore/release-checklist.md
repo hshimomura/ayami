@@ -32,6 +32,19 @@ operations.
 
 ## Build
 
+App Store archives (Apple signing credentials required):
+
+```sh
+./Scripts/archive-app-store.sh
+./Scripts/verify-app-store-export.sh
+./Scripts/archive-ios-app-store.sh
+./Scripts/verify-ios-app-store-export.sh
+```
+
+Only after verifying the intended archives, upload with
+`./Scripts/upload-app-store.sh` and `./Scripts/upload-ios-app-store.sh`.
+These upload builds; they do not submit the app for review.
+
 - [ ] Run `./Scripts/generate-xcode-project.sh`.
 - [ ] Archive the `Ayami` scheme for Any Mac.
 - [ ] Export the Mac App Store package.
@@ -41,6 +54,26 @@ operations.
 - [ ] Confirm both archives use the same marketing version and build number;
       keep `manageAppVersionAndBuildNumber` disabled in export/upload options.
 - [ ] Record source and release checksums with the GitHub Release.
+
+## GitHub source release
+
+- [ ] Keep old tags/releases unchanged; create `v1.3` at the intended reviewed commit.
+- [ ] Keep the tested product-code commit explicit when the tag also contains later documentation updates.
+- [ ] Use `docs/releases/1.3.md` as the release-note source and verify its links after publishing the tag.
+- [ ] Attach only the source archive and its checksum; never attach profiles, signing identities, or private records.
+- [ ] Download the published assets and verify `SHA256SUMS` and the tag commit.
+- [ ] Check that GitHub Pages publishes the updated documentation.
+
+For an already-created local tag:
+
+```sh
+git archive --format=tar --prefix=ayami-1.3/ v1.3 | gzip -n > dist/ayami-1.3-source.tar.gz
+shasum -a 256 dist/ayami-1.3-source.tar.gz
+```
+
+The distributed `SHA256SUMS` must use the archive basename (no local directory),
+so it works alongside the downloaded archive. GitHub source publication does
+not assert that the App Store version is already available.
 
 App Store Connect remains the source of truth for upload, review, availability,
 pricing, and release state.

@@ -6,9 +6,11 @@ permalink: /privacy
 
 Effective date: July 25, 2026
 
-Ayami (formerly MD Viewer: Reading Window) does not collect, store, sell, or share personal
-data. It does not include analytics, advertising, tracking, accounts, or an
-external cloud service.
+Last updated: October 25, 2026 (Ayami name, iPhone/iPad, local reading preferences).
+
+Ayami (formerly MD Viewer: Reading Window) does not collect, sell, or share
+personal data. It does not include analytics, advertising, tracking, accounts,
+or an external cloud service. Local reading preferences are described below.
 
 Markdown files are opened only after you select them in the system document
 browser, Files, or Finder. Their content is processed locally on your device.
