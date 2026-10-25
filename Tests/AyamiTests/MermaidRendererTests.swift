@@ -2,7 +2,7 @@ import Foundation
 import CryptoKit
 import Testing
 import WebKit
-@testable import MDPreview
+@testable import Ayami
 
 @MainActor
 struct MermaidRendererTests {

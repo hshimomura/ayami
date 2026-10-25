@@ -2,5 +2,5 @@ title: "Ayami — あやみ"
 description: "A quiet, read-only Markdown viewer for Mac, iPhone and iPad."
 theme: minima
 url: "https://hshimomura.github.io"
-baseurl: "/MDPreview"
+baseurl: "/ayami"
 github_username: hshimomura

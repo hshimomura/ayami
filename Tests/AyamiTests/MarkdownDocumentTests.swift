@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 
-@testable import MDPreview
+@testable import Ayami
 
 struct MarkdownDocumentTests {
   @Test
@@ -217,7 +217,7 @@ struct PreviewDocumentModelTests {
   @Test
   func reloadsAfterAnAtomicFileReplacement() async throws {
     let directory = FileManager.default.temporaryDirectory
-      .appending(path: "MDPreviewTests-\(UUID().uuidString)", directoryHint: .isDirectory)
+      .appending(path: "AyamiTests-\(UUID().uuidString)", directoryHint: .isDirectory)
     try FileManager.default.createDirectory(
       at: directory,
       withIntermediateDirectories: true

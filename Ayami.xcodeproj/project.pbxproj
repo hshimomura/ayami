@@ -1,0 +1,1159 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		017A494BC09B0D54CA8D5E69 /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
+		091BF298BCDBC58B4A120621 /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 35108F4DADC7D3E2D24F030E /* Mermaid */; };
+		0AAB5E53808B056CE2BB343E /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
+		0BCDDD1A3966F91CB1169BEF /* PreviewCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */; };
+		0C325B93D0851F3E4254B7B5 /* ReadingPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */; };
+		109BE9ED598E2A6E45911112 /* ReadingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37F26F2242FEA65B0E76F5 /* ReadingUITests.swift */; };
+		11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		146C187C61335B01D01E712F /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = C1F62F47ED6C0726D04F0085 /* Textual */; };
+		18582A2F1F0D74C8F594477F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88018AFF26AE3102F663FF84 /* Localizable.strings */; };
+		19B558F32B52C301E109BA14 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */; };
+		1A6679EEDEEC96814257FBE8 /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
+		22945BACA595A1132ECB7FAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 244D5E5CB35321B3C3115885 /* InfoPlist.strings */; };
+		22AFA6F9B8B7140A8909D84A /* MarkdownDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431B081AD1D4296054836C7 /* MarkdownDocument.swift */; };
+		2BCE0DF57C9AE82BB2CE1CDD /* MarkdownContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41971911083433B4EBA850FC /* MarkdownContent.swift */; };
+		2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
+		31E11510C4DA94ED52537F58 /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
+		46DC0579DD0DE5DEB3C848B3 /* MermaidRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */; };
+		48B3410CC2256775F902B27F /* MarkdownToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */; };
+		4E83ADC7B073CFA5BE0C81E3 /* MarkdownContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41971911083433B4EBA850FC /* MarkdownContent.swift */; };
+		5018BCAA7E32C3B928B1FDC5 /* AyamiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537D16BD28C94319484772 /* AyamiApp.swift */; };
+		59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
+		5BACD9A832BE7466CCC58739 /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = 95B8D15A459024E307E11441 /* Textual */; };
+		5D9D0AC0E5F7FA34B197218D /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
+		5E361D65F170FA076033FEB0 /* MarkdownDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431B081AD1D4296054836C7 /* MarkdownDocument.swift */; };
+		5EB8BB64E35DC93807007DBE /* Legal in Resources */ = {isa = PBXBuildFile; fileRef = 71DDC489F9681F8D9F82CF6C /* Legal */; };
+		6097DF405617C367D34C5932 /* DocumentPrintCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032966EC67464C1951AE99B /* DocumentPrintCoordinator.swift */; };
+		63ABDBB0D7DE31BC71DAE5D9 /* ReadingPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */; };
+		6841451BA8DBC7FC24117853 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		6FFBFB8EC13B1ABB684DE03C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88018AFF26AE3102F663FF84 /* Localizable.strings */; };
+		729F1A5C10098D24056C08CD /* ReleaseVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */; };
+		79CFE7277B77CBEFF78D02E5 /* MarkdownToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */; };
+		7B01163986646D7918B9B496 /* MermaidDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */; };
+		7DA22E1BAC1F0B8BE61E2E6D /* MarkdownContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41971911083433B4EBA850FC /* MarkdownContent.swift */; };
+		8120B1BEA7FA383336730176 /* MarkdownDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431B081AD1D4296054836C7 /* MarkdownDocument.swift */; };
+		82899589406E7A1E349035DB /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 35108F4DADC7D3E2D24F030E /* Mermaid */; };
+		84AA895521696D38811BDF56 /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		8723F0BA8BFBF1C2B9CAE091 /* UITestHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCF96C2A2E37B946C62540 /* UITestHostApp.swift */; };
+		8A9101A3D153394BA2A7FCE5 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
+		8B05D9914CEF8FE269349DA9 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
+		8C984A79EEC0C6841701E883 /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
+		9475FF0E6A0CEF231121D47C /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = D17EDA2F86C2089D7B6BEE7A /* Textual */; };
+		9C7857DC76F845590395B3F9 /* MarkdownDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */; };
+		A46B5BCEABCEF5D79FD4661B /* MermaidRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */; };
+		A8C1A6E45C592D95BD1B439C /* PreviewCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */; };
+		A9F2C33357032C8CB42B5974 /* MermaidDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */; };
+		B222621558BDC2BBB67A8DF4 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
+		B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */; };
+		B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
+		B614C9DAA4B206C3A559C3F5 /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		BECF1C04F2371B488E4B9C23 /* AyamiMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */; };
+		C80CCD6418E5D09CEE0A9882 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
+		D0D89529F1FFE843C797725E /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
+		D1576F15FCA6BC490E93AC6F /* Legal in Resources */ = {isa = PBXBuildFile; fileRef = 71DDC489F9681F8D9F82CF6C /* Legal */; };
+		DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */; };
+		DC31A0C9FFCAB7C05026109F /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		E1DAAAF494439E402999DD7E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */; };
+		E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		E372CA21D913F46A53A89EAE /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
+		E717918F29670EDA74FB4182 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
+		E71C2CC32748A14C98092577 /* PreviewCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */; };
+		EA6E98A95FC80095F837D3B0 /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
+		EF45DD0707A4C5A557FAC5D0 /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 35108F4DADC7D3E2D24F030E /* Mermaid */; };
+		F02051229751467C2C1FF49A /* MermaidDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */; };
+		F19F799CC146DBA77A7837AC /* IOSDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0360A2C7CAD3D911D19CCD /* IOSDocumentTests.swift */; };
+		F9F605A5767AF5EDD0E85D4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 244D5E5CB35321B3C3115885 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66290EE18DED0A8F6634A9BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68EEC69C6A8D1FF93E040628 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42660DAA2B79A001FE5AAA7F;
+			remoteInfo = AyamiIOSUITestHost;
+		};
+		8A28D07DF0E52D44EE857918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68EEC69C6A8D1FF93E040628 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 24AD3045810ADC8E8F8003E3;
+			remoteInfo = Ayami;
+		};
+		ED7CB3DF0AB48BDBA81C3693 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68EEC69C6A8D1FF93E040628 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B24020B126AF8759FF167DA;
+			remoteInfo = AyamiIOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSizeRestorer.swift; sourceTree = "<group>"; };
+		09537D16BD28C94319484772 /* AyamiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyamiApp.swift; sourceTree = "<group>"; };
+		162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyamiMacApp.swift; sourceTree = "<group>"; };
+		1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = THIRD_PARTY_NOTICES.md; sourceTree = "<group>"; };
+		1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLBreakMarkdownParser.swift; sourceTree = "<group>"; };
+		3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPreferencesTests.swift; sourceTree = "<group>"; };
+		35108F4DADC7D3E2D24F030E /* Mermaid */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mermaid; path = Sources/Ayami/Resources/Mermaid; sourceTree = SOURCE_ROOT; };
+		41971911083433B4EBA850FC /* MarkdownContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownContent.swift; sourceTree = "<group>"; };
+		41A3045E84E2E868B9E25868 /* AyamiIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AyamiIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSettingsView.swift; sourceTree = "<group>"; };
+		545588CD788BCCBB81869777 /* ReadingPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPreferences.swift; sourceTree = "<group>"; };
+		59417ACF7BED98D617294673 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		5C9D0251E9C2EB6DBE4A448F /* AyamiIOSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AyamiIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6032966EC67464C1951AE99B /* DocumentPrintCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPrintCoordinator.swift; sourceTree = "<group>"; };
+		61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRendererTests.swift; sourceTree = "<group>"; };
+		65DCF96C2A2E37B946C62540 /* UITestHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHostApp.swift; sourceTree = "<group>"; };
+		6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseVersionTests.swift; sourceTree = "<group>"; };
+		70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCommands.swift; sourceTree = "<group>"; };
+		71DDC489F9681F8D9F82CF6C /* Legal */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Legal; sourceTree = SOURCE_ROOT; };
+		86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRendererResources.swift; sourceTree = "<group>"; };
+		879658CC5DFC11B18B1A6325 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		88018AFF26AE3102F663FF84 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		920C2E65270CF7150868D2EA /* AyamiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AyamiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0360A2C7CAD3D911D19CCD /* IOSDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDocumentTests.swift; sourceTree = "<group>"; };
+		9E47B43D3143801EA9B60378 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDocumentModel.swift; sourceTree = "<group>"; };
+		AC70260A1BAE7E5867A604AF /* AyamiIOSUITestHost.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AyamiIOSUITestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD37F26F2242FEA65B0E76F5 /* ReadingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingUITests.swift; sourceTree = "<group>"; };
+		B431B081AD1D4296054836C7 /* MarkdownDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocument.swift; sourceTree = "<group>"; };
+		B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownToolkitTests.swift; sourceTree = "<group>"; };
+		C80FD0F2E1D8BD9288097784 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocumentTests.swift; sourceTree = "<group>"; };
+		E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidDiagramView.swift; sourceTree = "<group>"; };
+		EA2969688EC3446A6FC4C3BC /* AyamiIOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AyamiIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDD8724F21EEC83F0987640D /* Ayami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ayami.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30DB29CEC78392037FE0C772 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BACD9A832BE7466CCC58739 /* Textual in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0EDF95F427AB856EB9E7C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				146C187C61335B01D01E712F /* Textual in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBC2DC8055C1940DCEBD6333 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9475FF0E6A0CEF231121D47C /* Textual in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07EE0E6E04DBF22D6EA6AB28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35108F4DADC7D3E2D24F030E /* Mermaid */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		46241A9C5F5E2D95B9F4D004 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F14DCFA1BED127EF80A3AA27 /* AyamiIOSTests */,
+				DCC79635C6F2F11A92F430FF /* AyamiIOSUITestHost */,
+				577EFB38163C1E3394CF8D13 /* AyamiIOSUITests */,
+				E41F07BA14C92A7DDC6CAD50 /* AyamiTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		5755027CA97099DF80C8DE34 /* Packaging */ = {
+			isa = PBXGroup;
+			children = (
+				1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */,
+				B51F1F9912297BFEBE71A91B /* Localizations */,
+			);
+			path = Packaging;
+			sourceTree = "<group>";
+		};
+		577EFB38163C1E3394CF8D13 /* AyamiIOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD37F26F2242FEA65B0E76F5 /* ReadingUITests.swift */,
+			);
+			path = AyamiIOSUITests;
+			sourceTree = "<group>";
+		};
+		846DFAE6AA814407CD2EFC2D = {
+			isa = PBXGroup;
+			children = (
+				71DDC489F9681F8D9F82CF6C /* Legal */,
+				1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */,
+				5755027CA97099DF80C8DE34 /* Packaging */,
+				B0D20EFEB2C75F392B205F84 /* Resources */,
+				9ED7CE5AB2C3D074C5E7CB62 /* Sources */,
+				46241A9C5F5E2D95B9F4D004 /* Tests */,
+				E254AEE87655519EAB1A0B74 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9ED7CE5AB2C3D074C5E7CB62 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B4C2BD8E386DC59378CF6F63 /* Ayami */,
+				B5CDE3D81FFCC3E0E5EF823E /* AyamiIOS */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B0D20EFEB2C75F392B205F84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				59417ACF7BED98D617294673 /* AppIcon.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B4C2BD8E386DC59378CF6F63 /* Ayami */ = {
+			isa = PBXGroup;
+			children = (
+				162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */,
+				6032966EC67464C1951AE99B /* DocumentPrintCoordinator.swift */,
+				226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */,
+				41971911083433B4EBA850FC /* MarkdownContent.swift */,
+				B431B081AD1D4296054836C7 /* MarkdownDocument.swift */,
+				E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */,
+				86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */,
+				70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */,
+				ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */,
+				879658CC5DFC11B18B1A6325 /* PreviewView.swift */,
+				545588CD788BCCBB81869777 /* ReadingPreferences.swift */,
+				53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */,
+				052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */,
+				07EE0E6E04DBF22D6EA6AB28 /* Resources */,
+			);
+			path = Ayami;
+			sourceTree = "<group>";
+		};
+		B51F1F9912297BFEBE71A91B /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				88018AFF26AE3102F663FF84 /* Localizable.strings */,
+				244D5E5CB35321B3C3115885 /* InfoPlist.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		B5CDE3D81FFCC3E0E5EF823E /* AyamiIOS */ = {
+			isa = PBXGroup;
+			children = (
+				09537D16BD28C94319484772 /* AyamiApp.swift */,
+			);
+			path = AyamiIOS;
+			sourceTree = "<group>";
+		};
+		DCC79635C6F2F11A92F430FF /* AyamiIOSUITestHost */ = {
+			isa = PBXGroup;
+			children = (
+				65DCF96C2A2E37B946C62540 /* UITestHostApp.swift */,
+			);
+			path = AyamiIOSUITestHost;
+			sourceTree = "<group>";
+		};
+		E254AEE87655519EAB1A0B74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDD8724F21EEC83F0987640D /* Ayami.app */,
+				41A3045E84E2E868B9E25868 /* AyamiIOS.app */,
+				5C9D0251E9C2EB6DBE4A448F /* AyamiIOSTests.xctest */,
+				AC70260A1BAE7E5867A604AF /* AyamiIOSUITestHost.app */,
+				EA2969688EC3446A6FC4C3BC /* AyamiIOSUITests.xctest */,
+				920C2E65270CF7150868D2EA /* AyamiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E41F07BA14C92A7DDC6CAD50 /* AyamiTests */ = {
+			isa = PBXGroup;
+			children = (
+				DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */,
+				B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */,
+				61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */,
+				3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */,
+				6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */,
+			);
+			path = AyamiTests;
+			sourceTree = "<group>";
+		};
+		F14DCFA1BED127EF80A3AA27 /* AyamiIOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B0360A2C7CAD3D911D19CCD /* IOSDocumentTests.swift */,
+			);
+			path = AyamiIOSTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B24020B126AF8759FF167DA /* AyamiIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A5C4FFD54CF8C9A9B1B4455 /* Build configuration list for PBXNativeTarget "AyamiIOS" */;
+			buildPhases = (
+				3D9BF34AA9EDA15D9827C602 /* Sources */,
+				138797AE1D42BADF8167AD04 /* Resources */,
+				FBC2DC8055C1940DCEBD6333 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AyamiIOS;
+			packageProductDependencies = (
+				D17EDA2F86C2089D7B6BEE7A /* Textual */,
+			);
+			productName = AyamiIOS;
+			productReference = 41A3045E84E2E868B9E25868 /* AyamiIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		24AD3045810ADC8E8F8003E3 /* Ayami */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03854FF1368B270F26AE6B13 /* Build configuration list for PBXNativeTarget "Ayami" */;
+			buildPhases = (
+				5A132D18CBC7262E71011193 /* Sources */,
+				35F1693DFCC303DBDFA73A56 /* Resources */,
+				30DB29CEC78392037FE0C772 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ayami;
+			packageProductDependencies = (
+				95B8D15A459024E307E11441 /* Textual */,
+			);
+			productName = Ayami;
+			productReference = FDD8724F21EEC83F0987640D /* Ayami.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42660DAA2B79A001FE5AAA7F /* AyamiIOSUITestHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 114F89850CCF50C078C94BD3 /* Build configuration list for PBXNativeTarget "AyamiIOSUITestHost" */;
+			buildPhases = (
+				8ED8E8F7DA35486559C0739E /* Sources */,
+				5B9F361011ADFE2E6897018E /* Resources */,
+				9B0EDF95F427AB856EB9E7C5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AyamiIOSUITestHost;
+			packageProductDependencies = (
+				C1F62F47ED6C0726D04F0085 /* Textual */,
+			);
+			productName = AyamiIOSUITestHost;
+			productReference = AC70260A1BAE7E5867A604AF /* AyamiIOSUITestHost.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6EDFBE40FF5F5EA2F198AC5D /* AyamiIOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F5FBEBA2F254D8DBCEF5AA3 /* Build configuration list for PBXNativeTarget "AyamiIOSTests" */;
+			buildPhases = (
+				A186DD640007925E7BA9F453 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27951E0FDC7B4191C451F759 /* PBXTargetDependency */,
+			);
+			name = AyamiIOSTests;
+			packageProductDependencies = (
+			);
+			productName = AyamiIOSTests;
+			productReference = 5C9D0251E9C2EB6DBE4A448F /* AyamiIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9115A7D7BCA29997241C222B /* AyamiIOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65EEA9670D82722F5E2BD610 /* Build configuration list for PBXNativeTarget "AyamiIOSUITests" */;
+			buildPhases = (
+				AC5DB3DC65CB09B5E0A056DE /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4EE412AD26C8D4377EB004D /* PBXTargetDependency */,
+			);
+			name = AyamiIOSUITests;
+			packageProductDependencies = (
+			);
+			productName = AyamiIOSUITests;
+			productReference = EA2969688EC3446A6FC4C3BC /* AyamiIOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DD0B086F14326B724C8AE4E4 /* AyamiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB138111B365326D2B1ACF82 /* Build configuration list for PBXNativeTarget "AyamiTests" */;
+			buildPhases = (
+				5020D247F80F5A0BE831B0F0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				208A8F9D6AB9406CC7F94D12 /* PBXTargetDependency */,
+			);
+			name = AyamiTests;
+			packageProductDependencies = (
+			);
+			productName = AyamiTests;
+			productReference = 920C2E65270CF7150868D2EA /* AyamiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68EEC69C6A8D1FF93E040628 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					1B24020B126AF8759FF167DA = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+					};
+					24AD3045810ADC8E8F8003E3 = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+					};
+					42660DAA2B79A001FE5AAA7F = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+					};
+					6EDFBE40FF5F5EA2F198AC5D = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+					};
+					9115A7D7BCA29997241C222B = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 42660DAA2B79A001FE5AAA7F;
+					};
+					DD0B086F14326B724C8AE4E4 = {
+						DevelopmentTeam = ZLX73742D3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 29CD8F0C39DAFD5189A23F77 /* Build configuration list for PBXProject "Ayami" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				ja,
+			);
+			mainGroup = 846DFAE6AA814407CD2EFC2D;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EBF0DCE361BD5DC87603EE1E /* XCRemoteSwiftPackageReference "swift-concurrency-extras" */,
+				7F468A94204C160C9F2AE647 /* XCRemoteSwiftPackageReference "swiftui-math" */,
+				47E94FB917D4BE570F73A17B /* XCRemoteSwiftPackageReference "textual" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E254AEE87655519EAB1A0B74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24AD3045810ADC8E8F8003E3 /* Ayami */,
+				DD0B086F14326B724C8AE4E4 /* AyamiTests */,
+				1B24020B126AF8759FF167DA /* AyamiIOS */,
+				6EDFBE40FF5F5EA2F198AC5D /* AyamiIOSTests */,
+				42660DAA2B79A001FE5AAA7F /* AyamiIOSUITestHost */,
+				9115A7D7BCA29997241C222B /* AyamiIOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		138797AE1D42BADF8167AD04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B222621558BDC2BBB67A8DF4 /* AppIcon.xcassets in Resources */,
+				22945BACA595A1132ECB7FAA /* InfoPlist.strings in Resources */,
+				5EB8BB64E35DC93807007DBE /* Legal in Resources */,
+				18582A2F1F0D74C8F594477F /* Localizable.strings in Resources */,
+				091BF298BCDBC58B4A120621 /* Mermaid in Resources */,
+				E1DAAAF494439E402999DD7E /* PrivacyInfo.xcprivacy in Resources */,
+				31E11510C4DA94ED52537F58 /* THIRD_PARTY_NOTICES.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35F1693DFCC303DBDFA73A56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C80CCD6418E5D09CEE0A9882 /* AppIcon.xcassets in Resources */,
+				F9F605A5767AF5EDD0E85D4C /* InfoPlist.strings in Resources */,
+				D1576F15FCA6BC490E93AC6F /* Legal in Resources */,
+				6FFBFB8EC13B1ABB684DE03C /* Localizable.strings in Resources */,
+				82899589406E7A1E349035DB /* Mermaid in Resources */,
+				19B558F32B52C301E109BA14 /* PrivacyInfo.xcprivacy in Resources */,
+				D0D89529F1FFE843C797725E /* THIRD_PARTY_NOTICES.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B9F361011ADFE2E6897018E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A9101A3D153394BA2A7FCE5 /* AppIcon.xcassets in Resources */,
+				EF45DD0707A4C5A557FAC5D0 /* Mermaid in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D9BF34AA9EDA15D9827C602 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5018BCAA7E32C3B928B1FDC5 /* AyamiApp.swift in Sources */,
+				DC31A0C9FFCAB7C05026109F /* HTMLBreakMarkdownParser.swift in Sources */,
+				2BCE0DF57C9AE82BB2CE1CDD /* MarkdownContent.swift in Sources */,
+				22AFA6F9B8B7140A8909D84A /* MarkdownDocument.swift in Sources */,
+				F02051229751467C2C1FF49A /* MermaidDiagramView.swift in Sources */,
+				E372CA21D913F46A53A89EAE /* MermaidRendererResources.swift in Sources */,
+				0BCDDD1A3966F91CB1169BEF /* PreviewCommands.swift in Sources */,
+				2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */,
+				0AAB5E53808B056CE2BB343E /* PreviewView.swift in Sources */,
+				EA6E98A95FC80095F837D3B0 /* ReadingPreferences.swift in Sources */,
+				11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5020D247F80F5A0BE831B0F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C7857DC76F845590395B3F9 /* MarkdownDocumentTests.swift in Sources */,
+				79CFE7277B77CBEFF78D02E5 /* MarkdownToolkitTests.swift in Sources */,
+				A46B5BCEABCEF5D79FD4661B /* MermaidRendererTests.swift in Sources */,
+				0C325B93D0851F3E4254B7B5 /* ReadingPreferencesTests.swift in Sources */,
+				B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A132D18CBC7262E71011193 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BECF1C04F2371B488E4B9C23 /* AyamiMacApp.swift in Sources */,
+				6097DF405617C367D34C5932 /* DocumentPrintCoordinator.swift in Sources */,
+				B614C9DAA4B206C3A559C3F5 /* HTMLBreakMarkdownParser.swift in Sources */,
+				4E83ADC7B073CFA5BE0C81E3 /* MarkdownContent.swift in Sources */,
+				8120B1BEA7FA383336730176 /* MarkdownDocument.swift in Sources */,
+				7B01163986646D7918B9B496 /* MermaidDiagramView.swift in Sources */,
+				1A6679EEDEEC96814257FBE8 /* MermaidRendererResources.swift in Sources */,
+				E71C2CC32748A14C98092577 /* PreviewCommands.swift in Sources */,
+				5D9D0AC0E5F7FA34B197218D /* PreviewDocumentModel.swift in Sources */,
+				8B05D9914CEF8FE269349DA9 /* PreviewView.swift in Sources */,
+				59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */,
+				E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */,
+				DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ED8E8F7DA35486559C0739E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84AA895521696D38811BDF56 /* HTMLBreakMarkdownParser.swift in Sources */,
+				7DA22E1BAC1F0B8BE61E2E6D /* MarkdownContent.swift in Sources */,
+				5E361D65F170FA076033FEB0 /* MarkdownDocument.swift in Sources */,
+				A9F2C33357032C8CB42B5974 /* MermaidDiagramView.swift in Sources */,
+				8C984A79EEC0C6841701E883 /* MermaidRendererResources.swift in Sources */,
+				A8C1A6E45C592D95BD1B439C /* PreviewCommands.swift in Sources */,
+				B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */,
+				E717918F29670EDA74FB4182 /* PreviewView.swift in Sources */,
+				017A494BC09B0D54CA8D5E69 /* ReadingPreferences.swift in Sources */,
+				6841451BA8DBC7FC24117853 /* ReadingSettingsView.swift in Sources */,
+				8723F0BA8BFBF1C2B9CAE091 /* UITestHostApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A186DD640007925E7BA9F453 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F19F799CC146DBA77A7837AC /* IOSDocumentTests.swift in Sources */,
+				48B3410CC2256775F902B27F /* MarkdownToolkitTests.swift in Sources */,
+				46DC0579DD0DE5DEB3C848B3 /* MermaidRendererTests.swift in Sources */,
+				63ABDBB0D7DE31BC71DAE5D9 /* ReadingPreferencesTests.swift in Sources */,
+				729F1A5C10098D24056C08CD /* ReleaseVersionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC5DB3DC65CB09B5E0A056DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				109BE9ED598E2A6E45911112 /* ReadingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		208A8F9D6AB9406CC7F94D12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 24AD3045810ADC8E8F8003E3 /* Ayami */;
+			targetProxy = 8A28D07DF0E52D44EE857918 /* PBXContainerItemProxy */;
+		};
+		27951E0FDC7B4191C451F759 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B24020B126AF8759FF167DA /* AyamiIOS */;
+			targetProxy = ED7CB3DF0AB48BDBA81C3693 /* PBXContainerItemProxy */;
+		};
+		B4EE412AD26C8D4377EB004D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42660DAA2B79A001FE5AAA7F /* AyamiIOSUITestHost */;
+			targetProxy = 66290EE18DED0A8F6634A9BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		244D5E5CB35321B3C3115885 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E47B43D3143801EA9B60378 /* en */,
+				C80FD0F2E1D8BD9288097784 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07A512D8A469B266D1A8C4C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
+				PRODUCT_MODULE_NAME = Ayami;
+				PRODUCT_NAME = Ayami;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2B57A566BC86C04DD32F1B84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.UITestHost;
+				PRODUCT_MODULE_NAME = AyamiUITestHost;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D6E25D65ED3AC93EC2766AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ayami.app/Contents/MacOS/Ayami";
+			};
+			name = Release;
+		};
+		32966F9F5AEACF7ADF672A23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerIOSUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AyamiIOSUITestHost;
+			};
+			name = Debug;
+		};
+		447A6B2622BA3AA03C2823AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		44ECBB9F83ACDA3398F63349 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.UITestHost;
+				PRODUCT_MODULE_NAME = AyamiUITestHost;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		47771EBAC1F252980C39E3DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
+				PRODUCT_MODULE_NAME = Ayami;
+				PRODUCT_NAME = Ayami;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7211ACB90DEE4C00F8C5F416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerIOSTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ayami.app/Ayami";
+			};
+			name = Debug;
+		};
+		736E1C46E81B2AB541AE0BAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerIOSTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ayami.app/Ayami";
+			};
+			name = Release;
+		};
+		7C0B91D556FA66BB90225AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Packaging/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
+				PRODUCT_MODULE_NAME = Ayami;
+				PRODUCT_NAME = Ayami;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Release;
+		};
+		8B80330DB115A0C72754E7B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Packaging/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
+				PRODUCT_MODULE_NAME = Ayami;
+				PRODUCT_NAME = Ayami;
+				SDKROOT = macosx;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Debug;
+		};
+		C87797409DDB0009CBF6AA37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ayami.app/Contents/MacOS/Ayami";
+			};
+			name = Debug;
+		};
+		E451C3CECBD3322038ACEA25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		F3867AED16BD88002E1EFE6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZLX73742D3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewerIOSUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AyamiIOSUITestHost;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03854FF1368B270F26AE6B13 /* Build configuration list for PBXNativeTarget "Ayami" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B80330DB115A0C72754E7B5 /* Debug */,
+				7C0B91D556FA66BB90225AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		114F89850CCF50C078C94BD3 /* Build configuration list for PBXNativeTarget "AyamiIOSUITestHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B57A566BC86C04DD32F1B84 /* Debug */,
+				44ECBB9F83ACDA3398F63349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		29CD8F0C39DAFD5189A23F77 /* Build configuration list for PBXProject "Ayami" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E451C3CECBD3322038ACEA25 /* Debug */,
+				447A6B2622BA3AA03C2823AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5F5FBEBA2F254D8DBCEF5AA3 /* Build configuration list for PBXNativeTarget "AyamiIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7211ACB90DEE4C00F8C5F416 /* Debug */,
+				736E1C46E81B2AB541AE0BAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		65EEA9670D82722F5E2BD610 /* Build configuration list for PBXNativeTarget "AyamiIOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32966F9F5AEACF7ADF672A23 /* Debug */,
+				F3867AED16BD88002E1EFE6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7A5C4FFD54CF8C9A9B1B4455 /* Build configuration list for PBXNativeTarget "AyamiIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07A512D8A469B266D1A8C4C5 /* Debug */,
+				47771EBAC1F252980C39E3DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB138111B365326D2B1ACF82 /* Build configuration list for PBXNativeTarget "AyamiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C87797409DDB0009CBF6AA37 /* Debug */,
+				2D6E25D65ED3AC93EC2766AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47E94FB917D4BE570F73A17B /* XCRemoteSwiftPackageReference "textual" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/textual";
+			requirement = {
+				kind = exactVersion;
+				version = 0.5.0;
+			};
+		};
+		7F468A94204C160C9F2AE647 /* XCRemoteSwiftPackageReference "swiftui-math" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swiftui-math";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
+		EBF0DCE361BD5DC87603EE1E /* XCRemoteSwiftPackageReference "swift-concurrency-extras" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-concurrency-extras";
+			requirement = {
+				kind = exactVersion;
+				version = 1.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		95B8D15A459024E307E11441 /* Textual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47E94FB917D4BE570F73A17B /* XCRemoteSwiftPackageReference "textual" */;
+			productName = Textual;
+		};
+		C1F62F47ED6C0726D04F0085 /* Textual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47E94FB917D4BE570F73A17B /* XCRemoteSwiftPackageReference "textual" */;
+			productName = Textual;
+		};
+		D17EDA2F86C2089D7B6BEE7A /* Textual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47E94FB917D4BE570F73A17B /* XCRemoteSwiftPackageReference "textual" */;
+			productName = Textual;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 68EEC69C6A8D1FF93E040628 /* Project object */;
+}

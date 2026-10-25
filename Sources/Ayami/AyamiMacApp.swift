@@ -2,7 +2,7 @@ import AppKit
 import SwiftUI
 
 @main
-struct MDPreviewApp: App {
+struct AyamiMacApp: App {
   init() {
     NSWindow.allowsAutomaticWindowTabbing = false
   }

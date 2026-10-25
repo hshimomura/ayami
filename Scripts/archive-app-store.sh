@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-ARCHIVE_PATH="$PROJECT_ROOT/dist/MDViewer-AppStore.xcarchive"
+ARCHIVE_PATH="$PROJECT_ROOT/dist/Ayami-AppStore.xcarchive"
 EXPORT_PATH="$PROJECT_ROOT/dist/AppStoreExport"
 EXPORT_OPTIONS="$PROJECT_ROOT/Packaging/ExportOptions.plist"
 
@@ -12,8 +12,8 @@ cd "$PROJECT_ROOT"
 "$PROJECT_ROOT/Scripts/generate-xcode-project.sh"
 
 xcodebuild \
-    -project "$PROJECT_ROOT/MDViewer.xcodeproj" \
-    -scheme MDPreview \
+    -project "$PROJECT_ROOT/Ayami.xcodeproj" \
+    -scheme Ayami \
     -configuration Release \
     -destination "generic/platform=macOS" \
     -archivePath "$ARCHIVE_PATH" \

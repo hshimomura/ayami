@@ -3,13 +3,13 @@
 import PackageDescription
 
 let package = Package(
-  name: "MDPreview",
+  name: "Ayami",
   platforms: [
     .macOS(.v26),
     .iOS(.v18)
   ],
   products: [
-    .executable(name: "MDPreview", targets: ["MDPreview"])
+    .executable(name: "Ayami", targets: ["Ayami"])
   ],
   dependencies: [
     .package(
@@ -19,7 +19,7 @@ let package = Package(
   ],
   targets: [
     .executableTarget(
-      name: "MDPreview",
+      name: "Ayami",
       dependencies: [
         .product(name: "Textual", package: "textual")
       ],
@@ -28,8 +28,8 @@ let package = Package(
       ]
     ),
     .testTarget(
-      name: "MDPreviewTests",
-      dependencies: ["MDPreview"]
+      name: "AyamiTests",
+      dependencies: ["Ayami"]
     ),
   ]
 )

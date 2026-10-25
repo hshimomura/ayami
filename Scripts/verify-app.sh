@@ -46,8 +46,8 @@ app_category="$(/usr/libexec/PlistBuddy \
 [[ "$app_category" == "public.app-category.productivity" ]]
 [[ -f "$APP_PATH/Contents/Resources/AppIcon.icns" ]]
 [[ -f "$APP_PATH/Contents/Resources/PrivacyInfo.xcprivacy" ]]
-[[ -f "$APP_PATH/Contents/Resources/MDPreview_MDPreview.bundle/Resources/Mermaid/mermaid.min.js" || \
-   -f "$APP_PATH/Contents/Resources/MDPreview_MDPreview.bundle/Contents/Resources/Resources/Mermaid/mermaid.min.js" ]]
+[[ -f "$APP_PATH/Contents/Resources/Ayami_Ayami.bundle/Resources/Mermaid/mermaid.min.js" || \
+   -f "$APP_PATH/Contents/Resources/Ayami_Ayami.bundle/Contents/Resources/Resources/Mermaid/mermaid.min.js" ]]
 [[ -f \
     "$APP_PATH/Contents/Resources/ThirdPartyLicenses/Mermaid-LICENSE.txt" ]]
 

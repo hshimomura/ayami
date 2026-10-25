@@ -9,4 +9,4 @@ cd "$PROJECT_ROOT"
 "$PROJECT_ROOT/Scripts/build-icon.sh"
 xcodegen generate --spec "$PROJECT_ROOT/project.yml"
 
-print "Generated $PROJECT_ROOT/MDViewer.xcodeproj"
+print "Generated $PROJECT_ROOT/Ayami.xcodeproj"

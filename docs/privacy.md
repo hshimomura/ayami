@@ -25,4 +25,4 @@ developer. The open-source project is hosted on GitHub; visiting GitHub or this
 website is subject to the privacy terms of those services.
 
 Questions about this policy can be submitted through the
-[MDPreview issue tracker](https://github.com/hshimomura/MDPreview/issues).
+[Ayami issue tracker](https://github.com/hshimomura/ayami/issues).

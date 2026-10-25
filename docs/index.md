@@ -24,6 +24,6 @@ is being prepared. It is a viewer, not an editor: your files remain under your c
 
 Ayami is free software released under the MIT License. The source code and
 third-party license notices are available in the
-[GitHub repository](https://github.com/hshimomura/MDPreview).
+[GitHub repository](https://github.com/hshimomura/ayami).
 
 [Privacy Policy](privacy) · [Support](support)

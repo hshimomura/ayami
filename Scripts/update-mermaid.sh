@@ -15,6 +15,6 @@ tar -xzf "$AUDIT_DIR/mermaid.tgz" -C "$AUDIT_DIR" package/dist/mermaid.min.js pa
 EXPECTED_RUNTIME=a8a6a6f805b074a8261a2825c86f99c8054acb3b35f50bb7e24a4f9f2c3c3b9f
 ACTUAL_RUNTIME="$(shasum -a 256 "$AUDIT_DIR/package/dist/mermaid.min.js" | cut -d ' ' -f 1)"
 [[ "$ACTUAL_RUNTIME" == "$EXPECTED_RUNTIME" ]] || { print -u2 'Mermaid runtime checksum mismatch'; exit 1; }
-ditto "$AUDIT_DIR/package/dist/mermaid.min.js" "$PROJECT_ROOT/Sources/MDPreview/Resources/Mermaid/mermaid.min.js"
+ditto "$AUDIT_DIR/package/dist/mermaid.min.js" "$PROJECT_ROOT/Sources/Ayami/Resources/Mermaid/mermaid.min.js"
 ditto "$AUDIT_DIR/package/LICENSE" "$PROJECT_ROOT/Legal/Mermaid-LICENSE.txt"
 print 'Installed verified Mermaid 12.2.0 (offline browser bundle).'

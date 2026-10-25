@@ -1,4 +1,4 @@
-# MDPreview
+# Ayami
 
 This file verifies that **Markdown** opens as a rendered, read-only document.
 
@@ -39,4 +39,4 @@ flowchart LR
 
 ## Read-only by design
 
-MDPreview intentionally does not include an editor or Quick Look extension.
+Ayami intentionally does not include an editor or Quick Look extension.

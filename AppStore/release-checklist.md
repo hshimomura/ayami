@@ -29,7 +29,7 @@ operations.
 ## Build
 
 - [ ] Run `./Scripts/generate-xcode-project.sh`.
-- [ ] Archive the `MDPreview` scheme for Any Mac.
+- [ ] Archive the `Ayami` scheme for Any Mac.
 - [ ] Export the Mac App Store package.
 - [ ] Run `./Scripts/verify-app-store-export.sh`.
 - [ ] Record source and release checksums with the GitHub Release.

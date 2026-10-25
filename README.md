@@ -55,14 +55,16 @@ Heading / Markdown / Mermaid block parser
 ```sh
 brew install xcodegen
 ./Scripts/generate-xcode-project.sh
-open MDViewer.xcodeproj
+open Ayami.xcodeproj
 ```
 
-The generated `MDViewer.xcodeproj` contains macOS and iPhone/iPad apps and test targets.
+The generated `Ayami.xcodeproj` contains macOS and iPhone/iPad apps and test targets.
 The App Store scheme uses bundle identifier `io.github.hshimomura.MDViewer`,
 App Sandbox, hardened runtime, privacy manifest, Productivity category, and
-version 1.3 (build 17). Select `MDPreview` for Mac or `AyamiIOS` for iPhone/iPad.
+version 1.3 (build 17). Select `Ayami` for Mac or `AyamiIOS` for iPhone/iPad.
 The Bundle ID is unchanged so existing installations remain the same app.
+See [repository naming and migration](docs/repository-rename.md) for the Ayami
+source layout, schemes, resource bundles, and compatibility identifiers.
 
 For a command-line local build:
 
@@ -145,7 +147,7 @@ Before publishing:
 
 1. Review `Package.resolved` and `swift package show-dependencies`.
 2. Keep `THIRD_PARTY_NOTICES.md` and bundled license texts in the app.
-3. Run tests and build the Xcode `MDPreview` scheme.
+3. Run tests and build the Xcode `Ayami` scheme.
 4. Complete the public release checks in `AppStore/release-checklist.md`.
 5. Archive source for the exact release tag.
 6. Publish the source and checksums with the GitHub Release.
@@ -156,9 +158,9 @@ trusted release machine.
 
 ## Privacy and support
 
-- Product page: https://hshimomura.github.io/MDPreview/
-- Privacy policy: https://hshimomura.github.io/MDPreview/privacy
-- Support: https://hshimomura.github.io/MDPreview/support
+- Product page: https://hshimomura.github.io/Ayami/
+- Privacy policy: https://hshimomura.github.io/Ayami/privacy
+- Support: https://hshimomura.github.io/Ayami/support
 
 ## iPhone and iPad
 

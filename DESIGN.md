@@ -1,4 +1,4 @@
-# MDPreview MVP 設計
+# Ayami MVP 設計
 
 ## 結論
 

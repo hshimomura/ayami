@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
 PACKAGE_PATH="$PROJECT_ROOT/dist/AppStoreExport/Ayami.pkg"
-TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/mdviewer-app-store.XXXXXX)"
+TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/ayami-app-store.XXXXXX)"
 EXPANDED_PATH="$TEMP_PARENT/expanded"
 
 cleanup() {

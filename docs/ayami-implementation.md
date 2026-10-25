@@ -10,7 +10,7 @@ Markdown文書を読み取り専用で開く方針、オフラインMermaid、�
 | 日本語App Store名（ローカル原稿） | `あやみ — Markdownビューア` |
 | 英語App Store名（ローカル原稿） | `Ayami: Markdown Reader` |
 | インストール後の名称 | 日本語 `あやみ`、その他 `Ayami` |
-| macOS | 26以降、既存の `MDPreview` スキーム |
+| macOS | 26以降、既存の `Ayami` スキーム |
 | iPhone・iPad | iOS/iPadOS 18以降、新しい `AyamiIOS` スキーム |
 | バージョン | 1.3、ビルド17（依存更新後の検証は [依存監査](dependency-audit-1.3.md) を参照） |
 | Bundle ID | `io.github.hshimomura.MDViewer` を維持 |
@@ -86,16 +86,16 @@ iOSの印刷・PDF出力、独自のブックマーク同期、独自のiCloud�
 swift test
 ./Scripts/verify-app-store-metadata.sh
 
-xcodebuild -project MDViewer.xcodeproj -scheme MDPreview \
+xcodebuild -project Ayami.xcodeproj -scheme Ayami \
   -destination 'platform=macOS' test
 
-xcodebuild -project MDViewer.xcodeproj -scheme AyamiIOS \
+xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
   -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
 
 # xcrun simctl list devices available で端末名を確認して実行する
-xcodebuild -project MDViewer.xcodeproj -scheme AyamiIOS \
+xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
   -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
-xcodebuild -project MDViewer.xcodeproj -scheme AyamiIOS \
+xcodebuild -project Ayami.xcodeproj -scheme AyamiIOS \
   -destination 'platform=iOS Simulator,name=iPad Pro 13-inch (M5)' test
 ```
 

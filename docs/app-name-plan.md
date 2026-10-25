@@ -106,8 +106,10 @@ App Store上の名前だけを変えると、インストール後に `MD Viewer
 
 - Bundle ID `io.github.hshimomura.MDViewer`
 - App Store ConnectのApple IDとSKU
-- Gitリポジトリ名 `MDPreview`
-- Swiftの内部モジュール名
+
+当初案ではGitリポジトリ名と内部モジュール名も維持する予定だったが、後に
+リポジトリ `ayami`、内部モジュール `Ayami` への統一を採用した。
+[構成変更の記録](repository-rename.md)を参照する。
 
 Bundle IDは最初のビルドをアップロードした後に変更できない。ユーザーには通常見えないため、
 既存値を維持する。

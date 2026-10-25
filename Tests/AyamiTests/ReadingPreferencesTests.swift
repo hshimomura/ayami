@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 
-@testable import MDPreview
+@testable import Ayami
 
 struct ReadingPreferencesTests {
   @Test func clampsAndRejectsInvalidValues() {

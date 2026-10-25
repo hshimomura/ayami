@@ -2,7 +2,7 @@
 
 > この文書は初期案である。採用仕様・実装順・現行ターゲット構成・検証手順は
 > [あやみ実装計画](ayami-implementation.md) を正本とする。
-> 名称は「あやみ / Ayami」に決定し、macOSターゲットは `MDPreview` のまま維持する。
+> 名称は「あやみ / Ayami」に決定。現在のmacOSターゲットは構成変更後の `Ayami`。
 
 ## 目的
 
@@ -17,7 +17,7 @@ SwiftUIの文書ブラウザー、iPadのマルチウィンドウを利用する
 
 - `DocumentGroup(viewing:)` と `MarkdownDocument` により読み取り専用文書を開く。
 - Markdown解析と表示ロジックの大半はSwiftUIとFoundationで実装されている。
-- `MDPreviewApp.swift`、`DocumentPrintCoordinator.swift`、
+- `AyamiMacApp.swift`、`DocumentPrintCoordinator.swift`、
   `WindowSizeRestorer.swift` はAppKitに依存する。
 - `MermaidDiagramView.swift` のWebViewラッパーは `NSViewRepresentable` である。
 - Textual 0.5.0はmacOS 15以降とiOS 18以降をサポートし、
@@ -32,8 +32,8 @@ SwiftUIの文書ブラウザー、iPadのマルチウィンドウを利用する
 
 | ターゲット | 対象 | 役割 |
 | --- | --- | --- |
-| `MDPreviewMac` | macOS 26以降 | 現行のタブ、左右配置、印刷、Live Reloadを維持する |
-| `MDPreviewiOS` | iOS/iPadOS 18以降 | iPhoneとiPadのFiles連携、共有、マルチウィンドウに対応する |
+| `AyamiMac` | macOS 26以降 | 現行のタブ、左右配置、印刷、Live Reloadを維持する |
+| `AyamiIOS` | iOS/iPadOS 18以降 | iPhoneとiPadのFiles連携、共有、マルチウィンドウに対応する |
 
 両ターゲットは同じApp Store ConnectレコードとBundle ID
 `io.github.hshimomura.MDViewer` を使用する。AppleのUniversal Purchaseでは、同じ
@@ -61,13 +61,13 @@ Sources/
       MermaidWebViewCore.swift
       Resources/
   macOS/
-    MDPreviewMacApp.swift
+    AyamiMacApp.swift
     MacDocumentCommands.swift
     MacMermaidWebView.swift
     DocumentPrintCoordinator.swift
     WindowSizeRestorer.swift
   iOS/
-    MDPreviewiOSApp.swift
+    AyamiIOSApp.swift
     IOSDocumentCommands.swift
     IOSMermaidWebView.swift
 ```
@@ -177,7 +177,7 @@ SwiftUIのDocumentGroupはiOSでFilesベースの文書ブラウザーとマル�
 
 ### フェーズ3: iOS/iPadOSターゲット
 
-1. `MDPreviewiOS` ターゲットとiOS用Info.plist、entitlements、アイコンを追加する。
+1. `AyamiIOS` ターゲットとiOS用Info.plist、entitlements、アイコンを追加する。
 2. iPhone/iPadの両device familyを有効にする。
 3. iOS用AppエントリとMermaid WebViewラッパーを実装する。
 4. compact/regular size classで目次表示を切り替える。

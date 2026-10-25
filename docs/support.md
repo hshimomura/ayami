@@ -36,6 +36,6 @@ Ayami intentionally does not edit Markdown and does not include a Quick
 Look extension.
 
 For bug reports and feature requests, use the
-[GitHub issue tracker](https://github.com/hshimomura/MDPreview/issues). Include
+[GitHub issue tracker](https://github.com/hshimomura/ayami/issues). Include
 your macOS version, the app version, reproduction steps, and a sample Markdown
 file with confidential information removed.

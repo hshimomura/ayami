@@ -1,6 +1,6 @@
 # Third-party notices
 
-MDPreview includes the following runtime dependencies. Their complete license
+Ayami includes the following runtime dependencies. Their complete license
 texts are copied into the built application under
 `Contents/Resources/ThirdPartyLicenses`.
 

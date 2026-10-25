@@ -1,6 +1,6 @@
 import Foundation
 import Testing
-@testable import MDPreview
+@testable import Ayami
 
 // Shared coverage runs against the actual Textual/Foundation parser on all platforms.
 @MainActor

@@ -15,9 +15,9 @@ submission state.
 - Version: `1.3`
 - Build: `17`
 - Copyright: `2026 Hideaki Shimomura`
-- Support URL: `https://hshimomura.github.io/MDPreview/support`
-- Marketing URL: `https://hshimomura.github.io/MDPreview/`
-- Privacy Policy URL: `https://hshimomura.github.io/MDPreview/privacy`
+- Support URL: `https://hshimomura.github.io/Ayami/support`
+- Marketing URL: `https://hshimomura.github.io/Ayami/`
+- Privacy Policy URL: `https://hshimomura.github.io/Ayami/privacy`
 
 ## Tracked public material
 

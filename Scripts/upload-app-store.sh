@@ -3,9 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-ARCHIVE_PATH="$PROJECT_ROOT/dist/MDViewer-AppStore.xcarchive"
+ARCHIVE_PATH="$PROJECT_ROOT/dist/Ayami-AppStore.xcarchive"
 BASE_OPTIONS="$PROJECT_ROOT/Packaging/ExportOptions.plist"
-TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/mdviewer-upload.XXXXXX)"
+TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/ayami-upload.XXXXXX)"
 UPLOAD_OPTIONS="$TEMP_PARENT/UploadOptions.plist"
 EXPORT_PATH="$TEMP_PARENT/export"
 
