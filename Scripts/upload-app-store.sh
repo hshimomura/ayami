@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-ARCHIVE_PATH="$PROJECT_ROOT/dist/Ayami-AppStore.xcarchive"
+ARCHIVE_PATH="$PROJECT_ROOT/dist/1.4/Ayami-AppStore.xcarchive"
 BASE_OPTIONS="$PROJECT_ROOT/Packaging/ExportOptions.plist"
 TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/ayami-upload.XXXXXX)"
 UPLOAD_OPTIONS="$TEMP_PARENT/UploadOptions.plist"
@@ -26,9 +26,9 @@ build_version="$(/usr/libexec/PlistBuddy \
     -c 'Print :ApplicationProperties:CFBundleVersion' \
     "$ARCHIVE_PATH/Info.plist")"
 
-if [[ "$marketing_version" != "1.3" || "$build_version" != "18" || \
+if [[ "$marketing_version" != "1.4" || "$build_version" != "19" || \
       ! -d "$ARCHIVE_PATH/Products/Applications/Ayami.app" ]]; then
-    print -u2 "Archive is stale or not Ayami 1.3 (18). Run ./Scripts/archive-app-store.sh before uploading."
+    print -u2 "Archive is stale or not Ayami 1.4 (19). Run ./Scripts/archive-app-store.sh before uploading."
     exit 1
 fi
 

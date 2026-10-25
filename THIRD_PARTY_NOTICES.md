@@ -7,7 +7,7 @@ texts are retained in the built application. The location depends on the build:
 | --- | --- |
 | Xcode macOS app / App Store export | `Contents/Resources/Legal/` |
 | Xcode iOS app / App Store export | `Legal/` inside `Ayami.app` |
-| Local Mac script build | `Contents/Resources/ThirdPartyLicenses/` |
+| Historical 1.3 SwiftPM script build | `Contents/Resources/ThirdPartyLicenses/` |
 
 | Component | Version | License | Source |
 | --- | --- | --- | --- |
@@ -24,7 +24,9 @@ are retained inside the distributed
 
 Mermaid is included as a fixed local browser bundle so diagrams render
 offline. Its complete MIT license is `Mermaid-LICENSE.txt` in the directory
-listed above.
+listed above. In 1.4, the same bundled runtime is also used for vector PDF
+output and the embedded Mac Quick Look extension. The local 1.4 Xcode build
+uses `Contents/Resources/Legal/`, like the App Store app.
 
 Before each public release, review both committed `Package.resolved` files and
 the dependency graph with `swift package show-dependencies`. Update locks only

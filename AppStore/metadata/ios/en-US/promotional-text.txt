@@ -1,1 +1,1 @@
-Read Markdown quietly on iPhone and iPad. Open documents from Files, follow the outline, adjust text size, and view Mermaid diagrams offline.
+Read Markdown quietly on iPhone and iPad. Open Files, follow the outline and adjust text size. Now save PDFs and print with offline Mermaid diagrams included.

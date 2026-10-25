@@ -7,6 +7,13 @@ OUTPUT_APP_PATH="$PROJECT_ROOT/dist/Ayami.app"
 
 cd "$PROJECT_ROOT"
 
+# This historical SwiftPM packager does not embed the 1.4 Quick Look extension.
+# Fail before creating a new binary labelled with the old release version.
+if ! rg -q 'MARKETING_VERSION: "1.3"' project.yml; then
+    print -u2 "For the 1.4 validation branch, use ./Scripts/build-validation-app.sh."
+    exit 1
+fi
+
 export CLANG_MODULE_CACHE_PATH="$PROJECT_ROOT/.build/module-cache"
 export SWIFT_MODULECACHE_PATH="$PROJECT_ROOT/.build/module-cache"
 

@@ -1,10 +1,11 @@
 # iPhone・iPad 初期計画との差分
 
 iPhone/iPad 対応と文字サイズ設定は 1.3（18）で実装済み。
-この文書は初期案からの判断変更だけを残す。現行仕様は
-[実装仕様](ayami-implementation.md)、テスト結果は [検証記録](iphone-duo-validation-1.3.md) を参照する。
+この文書は1.3での初期案からの判断変更だけを残す。現行1.4では印刷・PDFも共有機能へ追加した。
+現行仕様は[実装仕様](ayami-implementation.md)、1.3の結果は[当時の検証記録](iphone-duo-validation-1.3.md)、
+現在の結果は[1.4検証記録](validation-1.4.md)を参照する。
 
-| 初期案 | 採用した構成・理由 |
+| 初期案 | 1.3で採用した構成・理由 |
 | --- | --- |
 | Mac ターゲット `AyamiMac` | 既存 Mac ターゲットを `Ayami`、iOS を `AyamiIOS` に統一 |
 | `Sources/Shared`・`macOS`・`iOS` へ全面移動 | `Sources/Ayami` を共有し、AppKit 依存を XcodeGen の除外指定で分離。iOS の入口だけ `Sources/AyamiIOS` |
@@ -14,11 +15,11 @@ iPhone/iPad 対応と文字サイズ設定は 1.3（18）で実装済み。
 | iOS の共有・印刷を初版に含める案 | 読み取り専用オープンを優先。独自の共有・印刷・PDF 出力は追加しない |
 | 無警告ビルドを一律の完了条件にする | ビルド・テストの成功と、失敗を伴わないシステム診断を区別して記録 |
 
-## 維持した方針
+## 1.3での方針と1.4への変更
 
 - Mac Catalyst に置き換えず、ネイティブ Mac アプリを維持する。
 - iOS は Files と DocumentGroup、iPad はシステム管理の複数ウィンドウを使う。
-- Mac のタブ・左右配置・Live Reload・印刷は iOS へ移植しない。
+- Macのタブ・左右配置・Live ReloadはiOSへ移植しない。印刷・PDFは1.4で共有実装を追加した。
 - 端末内に保存する文字倍率を Textual と Mermaid に適用し、元の Markdown は変更しない。
 - 同じ Bundle ID を使うプラットフォーム別ターゲットとし、新しい別アプリにはしない。
 

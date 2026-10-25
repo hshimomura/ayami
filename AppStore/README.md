@@ -12,8 +12,8 @@ submission state.
 - Platforms in source: macOS, iOS (iPhone and iPad)
 - Primary category: Productivity
 - Price: Free
-- Version: `1.3`
-- Build: `18`
+- Version: `1.4`
+- Build: `19`
 - Copyright: `2026 Hideaki Shimomura`
 - Support URL: `https://hshimomura.github.io/ayami/support`
 - Marketing URL: `https://hshimomura.github.io/ayami/`
@@ -23,8 +23,8 @@ submission state.
 
 - English (U.S.) product-page text in `metadata/en-US`
 - Japanese product-page text in `metadata/ja`
-- iPhone/iPad-specific descriptions and first-release note drafts in `metadata/ios`.
-  The initial iOS edition uses version 1.3; its App Store form has no What's New field.
+- iPhone/iPad-specific descriptions and release-note drafts in `metadata/ios`.
+  The initial iOS App Store form has no What's New field; retain the draft locally when that field is unavailable.
 - Public screenshot sample documents in `Samples`
 - Screenshot requirements in `Screenshots/README.md`
 - Reproducible source and build checks in `release-checklist.md`
@@ -61,5 +61,5 @@ making changes:
 
 Build/export commands and source releases are documented once in the
 [release checklist](release-checklist.md). Feature changes belong in the
-[release notes](../docs/releases/1.3.md); test outcomes belong in the
-[validation record](../docs/iphone-duo-validation-1.3.md).
+[release notes](../docs/releases/1.4.md); test outcomes belong in the
+[validation record](../docs/validation-1.4.md).

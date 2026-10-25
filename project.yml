@@ -11,6 +11,7 @@ options:
 configs:
   Debug: debug
   Release: release
+  UIValidation: debug
 
 packages:
   Textual:
@@ -52,17 +53,20 @@ targets:
         type: folder
     dependencies:
       - package: Textual
+      - target: AyamiQuickLook
+        embed: true
     settings:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_ENTITLEMENTS: Packaging/Ayami.entitlements
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "18"
+        ARCHS: arm64
+        CURRENT_PROJECT_VERSION: "19"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info.plist
-        MARKETING_VERSION: "1.3"
+        MARKETING_VERSION: "1.4"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: Ayami
         PRODUCT_NAME: Ayami
@@ -77,6 +81,7 @@ targets:
       - target: Ayami
     settings:
       base:
+        ARCHS: arm64
         BUNDLE_LOADER: "$(TEST_HOST)"
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: ZLX73742D3
@@ -93,7 +98,6 @@ targets:
         excludes:
           - Resources
           - AyamiMacApp.swift
-          - DocumentPrintCoordinator.swift
           - WindowSizeRestorer.swift
       - path: Sources/AyamiIOS
       - path: Sources/Ayami/Resources/Mermaid
@@ -116,11 +120,11 @@ targets:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "18"
+        CURRENT_PROJECT_VERSION: "19"
         DEVELOPMENT_TEAM: ZLX73742D3
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info-iOS.plist
-        MARKETING_VERSION: "1.3"
+        MARKETING_VERSION: "1.4"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: Ayami
         PRODUCT_NAME: Ayami
@@ -158,7 +162,6 @@ targets:
         excludes:
           - Resources
           - AyamiMacApp.swift
-          - DocumentPrintCoordinator.swift
           - WindowSizeRestorer.swift
       - path: Tests/AyamiIOSUITestHost
         excludes:
@@ -180,9 +183,108 @@ targets:
         DEVELOPMENT_TEAM: ZLX73742D3
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer.UITestHost
         PRODUCT_MODULE_NAME: AyamiUITestHost
-        CURRENT_PROJECT_VERSION: "18"
-        MARKETING_VERSION: "1.3"
+        CURRENT_PROJECT_VERSION: "19"
+        MARKETING_VERSION: "1.4"
         TARGETED_DEVICE_FAMILY: "1,2"
+
+  AyamiQuickLook:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Sources/AyamiQuickLook
+      - path: Sources/Ayami/OutputDocument.swift
+      - path: Sources/Ayami/OutputTextStyle.swift
+      - path: Sources/Ayami/DocumentPDFGenerator.swift
+      - path: Sources/Ayami/MermaidPDFRenderer.swift
+      - path: Sources/Ayami/MermaidRendererResources.swift
+      - path: Sources/Ayami/Resources/Mermaid
+        buildPhase: resources
+        type: folder
+      - path: Packaging/PrivacyInfo.xcprivacy
+        buildPhase: resources
+    settings:
+      base:
+        ARCHS: arm64
+        APPLICATION_EXTENSION_API_ONLY: YES
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: Packaging/AyamiQuickLook.entitlements
+        CURRENT_PROJECT_VERSION: "19"
+        DEVELOPMENT_TEAM: ZLX73742D3
+        ENABLE_HARDENED_RUNTIME: YES
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Packaging/Info-QuickLook.plist
+        MARKETING_VERSION: "1.4"
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer.QuickLook
+        PRODUCT_MODULE_NAME: AyamiQuickLook
+        PRODUCT_NAME: AyamiQuickLook
+        SKIP_INSTALL: YES
+      configs:
+        UIValidation:
+          ENABLE_DEBUG_DYLIB: NO
+          PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.AyamiMacUITestHost.QuickLook
+          INFOPLIST_FILE: Tests/AyamiMacUITests/QuickLook-Info.plist
+
+  AyamiMacUITestHost:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/Ayami
+        excludes:
+          - Resources
+      - path: Sources/Ayami/Resources/Mermaid
+        buildPhase: resources
+        type: folder
+      - path: Resources/AppIcon.xcassets
+        buildPhase: resources
+      - path: Packaging/Localizations
+        buildPhase: resources
+      - path: Packaging/PrivacyInfo.xcprivacy
+        buildPhase: resources
+      - path: THIRD_PARTY_NOTICES.md
+        buildPhase: resources
+      - path: Legal
+        buildPhase: resources
+        type: folder
+    dependencies:
+      - package: Textual
+      - target: AyamiQuickLook
+        embed: true
+    settings:
+      base:
+        ARCHS: arm64
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_ENTITLEMENTS: Packaging/Ayami.entitlements
+        CODE_SIGN_STYLE: Automatic
+        CURRENT_PROJECT_VERSION: "19"
+        DEVELOPMENT_TEAM: ZLX73742D3
+        ENABLE_HARDENED_RUNTIME: YES
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Tests/AyamiMacUITests/Host-Info.plist
+        MARKETING_VERSION: "1.4"
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.AyamiMacUITestHost
+        PRODUCT_MODULE_NAME: AyamiMacUITestHost
+        PRODUCT_NAME: AyamiMacUITestHost
+        SWIFT_STRICT_CONCURRENCY: complete
+
+  AyamiMacUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: Tests/AyamiMacUITests
+        excludes:
+          - Host-Info.plist
+          - QuickLook-Info.plist
+          - Fixtures
+    dependencies:
+      - target: AyamiMacUITestHost
+    settings:
+      base:
+        ARCHS: arm64
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ZLX73742D3
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.AyamiMacUITests
+        TEST_TARGET_NAME: AyamiMacUITestHost
 
   AyamiIOSUITests:
     type: bundle.ui-testing
@@ -201,6 +303,18 @@ targets:
         TEST_TARGET_NAME: AyamiIOSUITestHost
 
 schemes:
+  AyamiMacUIValidation:
+    build:
+      targets:
+        AyamiMacUITestHost: all
+    run:
+      config: UIValidation
+    test:
+      config: UIValidation
+      environmentVariables:
+        AYAMI_KEEP_PREVIEW_OPEN: "$(AYAMI_KEEP_PREVIEW_OPEN)"
+      targets:
+        - AyamiMacUITests
   AyamiIOS:
     build:
       targets:

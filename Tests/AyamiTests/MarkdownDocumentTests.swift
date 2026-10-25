@@ -160,59 +160,6 @@ struct MarkdownContentParserTests {
 }
 
 @MainActor
-struct PrintDocumentFormatterTests {
-  @Test
-  func derivesPDFJobTitleFromMarkdownFileName() {
-    let fileURL = URL(
-      filePath: "/Documents/Example_Report.md"
-    )
-
-    #expect(
-      DocumentPrintCoordinator.jobTitle(for: fileURL)
-        == "Example_Report"
-    )
-    #expect(DocumentPrintCoordinator.jobTitle(for: nil) == "Markdown")
-  }
-
-  @Test
-  func producesVisibleFormattedPrintContent() {
-    let rendered = PrintDocumentFormatter.attributedString(
-      markdown: """
-      # Heading
-
-      Paragraph with **bold** text.
-
-      - First item
-
-      | Name | Value |
-      | --- | --- |
-      | Alpha | One |
-      """
-    )
-
-    #expect(rendered.length > 0)
-    #expect(rendered.string.contains("Heading"))
-    #expect(rendered.string.contains("•\tFirst item"))
-    #expect(rendered.string.contains("Name  │  Value"))
-  }
-
-  @Test
-  func includesMermaidSourceAsPrintFallback() {
-    let rendered = PrintDocumentFormatter.attributedString(
-      markdown: """
-      ```mermaid
-      flowchart LR
-        A --> B
-      ```
-      """
-    )
-
-    #expect(rendered.string.contains("MERMAID DIAGRAM"))
-    #expect(rendered.string.contains("A --> B"))
-  }
-}
-
-@MainActor
 struct PreviewDocumentModelTests {
   @Test
   func reloadsAfterAnAtomicFileReplacement() async throws {

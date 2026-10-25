@@ -1,6 +1,8 @@
 # スクリーンショット仕様
 
-1.3 の画像は `1.3/<platform>/<locale>/` に保存します。
+画像は `<version>/<platform>/<locale>/` に保存します。既存の1.3閲覧・設定画像は
+同じ機能を表す範囲で1.4へ継承できます。新しい印刷・AI画面の画像と混同せず、
+1.4を撮り直す場合は `1.4/<platform>/<locale>/` を使います。
 `locale` は `ja` と `en-US`、公開用サンプルは `AppStore/Samples/` です。
 画像は Git 管理外です。個人の文書、連絡先、審査画面をストア画像へ含めません。
 
@@ -24,6 +26,6 @@ Mac の設定シート単体は指定の縦横比にならないため、登録�
 - Media Manager では iPhone の大画面枠と iPad 13 インチ枠を指定します。ほかのサイズへの継承と、各言語の独自画像を確認します。
 - 過去版の画像は Asset Library から再選択できます。差し替え時はバージョン側の参照だけを外し、ライブラリーから恒久削除しません。
 
-Apple の受け入れ寸法は変更されるため、登録時に
+上表は1.3で使用した寸法の記録です。Appleの受け入れ寸法は変更されるため、登録時に
 [スクリーンショット仕様](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/)
 と App Store Connect の表示を再確認してください。

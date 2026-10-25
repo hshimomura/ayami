@@ -17,6 +17,12 @@ Render Mermaid diagrams with the engine included in the app. No additional insta
 USE YOUR EXISTING DOCUMENTS
 Choose Markdown documents from Files, including on-device storage, iCloud Drive, and compatible file providers. iPad also supports system-managed multiple windows. Reopen a document if needed after another app or file provider changes it.
 
-Requires iOS or iPadOS 18 or later. A Mac edition is also available. Native Mac tabs, side-by-side window arrangement, Live Reload, printing, and PDF export are Mac-only features.
+PRINT AND PDF
+Open Print and PDF from Document Actions to preview A4 or Letter pages. Save text, tables, and Mermaid diagrams as a PDF in Files, or open the system print options. Printing on paper requires a compatible printer. Invalid diagrams or rendering failures show a warning and source. Output uses its own layout; it does not reproduce images or the screen layout exactly.
+
+ON-DEVICE DOCUMENT HIGHLIGHTS (PROTOTYPE)
+On iOS or iPadOS 26 or later, the highlights feature uses Apple's on-device model when Apple Intelligence is available. Generate Japanese or English highlights of the open document without uploading it or writing back to the source. Requires a supported device, Apple Intelligence enabled, its model ready, and a supported language. Availability and generation can fail depending on the environment. AI output may be incorrect; check the original document. Reading, printing, and PDF export remain available without AI.
+
+Requires iOS or iPadOS 18 or later. A Mac edition is also available. Native Mac tabs, side-by-side window arrangement, Live Reload, and Finder Quick Look are Mac-only features.
 
 Free and open source under the MIT License. No ads, in-app purchases, or tracking.

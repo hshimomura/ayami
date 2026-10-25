@@ -3,3 +3,5 @@ Introducing Ayami for iPhone and iPad.
 • Read with a heading outline, tables, code, and offline Mermaid diagrams.
 • Save your preferred text size from 80% to 160%.
 • Enjoy layouts adapted to iPhone and iPad.
+• Preview A4/Letter pages, save PDFs, and print Mermaid diagrams.
+• Try on-device Document Highlights with Apple Intelligence. Requires a compatible environment on iOS/iPadOS 26 or later; availability or generation may fail.

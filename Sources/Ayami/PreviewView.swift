@@ -19,9 +19,8 @@ struct PreviewView: View {
   @State private var splitViewVisibility: NavigationSplitViewVisibility = .all
   @State private var showsReadingSettings = false
   @State private var showsOutline = false
-  #if os(macOS)
-    @State private var printCoordinator = DocumentPrintCoordinator()
-  #endif
+  @State private var showsOutput = false
+  @State private var showsSummary = false
 
   init(document: MarkdownDocument, fileURL: URL?) {
     documentText = document.text
@@ -97,16 +96,22 @@ struct PreviewView: View {
         PreviewCommandActions(
           isContentsVisible: isContentsVisible,
           toggleContents: toggleContents,
-          printDocument: {
-            printCoordinator.printDocument(
-              markdown: model.text,
-              fileURL: model.fileURL
-            )
-          }
+          printDocument: { showsOutput = true }
         )
       )
     #endif
     .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Menu {
+          Button("Print and PDF", systemImage: "printer") { showsOutput = true }
+            .accessibilityIdentifier("documentOutput")
+          Button("Document Highlights (Prototype)", systemImage: "sparkles") { showsSummary = true }
+            .accessibilityIdentifier("documentSummary")
+        } label: {
+          Label("Document Actions", systemImage: "ellipsis.circle")
+        }
+        .accessibilityIdentifier("documentActions")
+      }
       #if os(iOS)
         if !model.content.headings.isEmpty {
           ToolbarItem(placement: .primaryAction) {
@@ -133,6 +138,14 @@ struct PreviewView: View {
     }
     .sheet(isPresented: $showsReadingSettings) {
       ReadingSettingsSheet()
+    }
+    .sheet(isPresented: $showsOutput) {
+      DocumentOutputView(markdown: model.text, fileURL: model.fileURL)
+        .presentationDetents([.large])
+    }
+    .sheet(isPresented: $showsSummary) {
+      DocumentSummaryView(markdown: model.text)
+        .presentationDetents([.large])
     }
     .sheet(isPresented: $showsOutline) {
       NavigationStack {

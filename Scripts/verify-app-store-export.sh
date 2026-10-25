@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-PACKAGE_PATH="$PROJECT_ROOT/dist/AppStoreExport/Ayami.pkg"
+PACKAGE_PATH="$PROJECT_ROOT/dist/1.4/AppStoreExport/Ayami.pkg"
 TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/ayami-app-store.XXXXXX)"
 EXPANDED_PATH="$TEMP_PARENT/expanded"
 
@@ -47,8 +47,7 @@ print -r -- "$signature_details" |
     /usr/bin/grep -q "flags=0x10000(runtime)"
 
 architectures="$(/usr/bin/lipo -archs "$EXECUTABLE")"
-[[ " $architectures " == *" arm64 "* ]]
-[[ " $architectures " == *" x86_64 "* ]]
+[[ "$architectures" == "arm64" ]]
 
 bundle_identifier="$(/usr/libexec/PlistBuddy \
     -c "Print :CFBundleIdentifier" "$INFO_PLIST")"
@@ -69,8 +68,8 @@ app_category="$(/usr/libexec/PlistBuddy \
 
 [[ "$bundle_identifier" == "io.github.hshimomura.MDViewer" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$INFO_PLIST")" == "Ayami" ]]
-[[ "$marketing_version" == "1.3" ]]
-[[ "$build_version" == "18" ]]
+[[ "$marketing_version" == "1.4" ]]
+[[ "$build_version" == "19" ]]
 [[ "$minimum_system" == "26.0" ]]
 [[ "$document_role" == "Viewer" ]]
 [[ "$markdown_type" == "net.daringfireball.markdown" ]]
@@ -116,9 +115,24 @@ for resource in "$required_resources[@]"; do
     fi
 done
 
+QUICKLOOK_APP="$APP_PATH/Contents/PlugIns/AyamiQuickLook.appex"
+QUICKLOOK_INFO="$QUICKLOOK_APP/Contents/Info.plist"
+[[ -d "$QUICKLOOK_APP" ]]
+/usr/bin/codesign --verify --strict "$QUICKLOOK_APP"
+[[ "$(/usr/bin/lipo -archs "$QUICKLOOK_APP/Contents/MacOS/AyamiQuickLook")" == "arm64" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$QUICKLOOK_INFO")" == "io.github.hshimomura.MDViewer.QuickLook" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$QUICKLOOK_INFO")" == "1.4" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$QUICKLOOK_INFO")" == "19" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionAttributes:QLSupportedContentTypes:0' "$QUICKLOOK_INFO")" == "net.daringfireball.markdown" ]]
+/usr/bin/codesign -d --entitlements :- "$QUICKLOOK_APP" > "$TEMP_PARENT/quicklook-entitlements.plist" 2>/dev/null
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :com.apple.security.app-sandbox' "$TEMP_PARENT/quicklook-entitlements.plist")" == "true" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :com.apple.security.files.user-selected.read-only' "$TEMP_PARENT/quicklook-entitlements.plist")" == "true" ]]
+[[ -f "$QUICKLOOK_APP/Contents/Resources/PrivacyInfo.xcprivacy" ]]
+[[ -f "$QUICKLOOK_APP/Contents/Resources/Mermaid/mermaid.min.js" ]]
+
 package_checksum="$(/usr/bin/shasum -a 256 "$PACKAGE_PATH" |
     /usr/bin/awk '{print $1}')"
 
-print "Verified Ayami 1.3 (18) App Store export."
+print "Verified Ayami 1.4 (19) App Store export, including the production Quick Look extension."
 print "Architectures: $architectures"
 print "Package SHA-256: $package_checksum"

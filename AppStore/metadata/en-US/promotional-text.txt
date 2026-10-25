@@ -1,1 +1,1 @@
-Read Markdown quietly with Ayami. Adjustable text size, native tabs, live reload, a chapter outline, and offline Mermaid diagrams.
+Read Markdown. Now with Finder Quick Look, A4/Letter PDF export and printing with Mermaid diagrams, plus an outline, adjustable text size, native tabs and live reload.
