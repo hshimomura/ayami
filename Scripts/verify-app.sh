@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-APP_PATH="$PROJECT_ROOT/dist/MDPreview.app"
+APP_PATH="$PROJECT_ROOT/dist/Ayami.app"
 
 if [[ ! -d "$APP_PATH" ]]; then
     print -u2 "Missing app bundle: $APP_PATH"
@@ -39,14 +39,16 @@ app_category="$(/usr/libexec/PlistBuddy \
 [[ "$markdown_type" == "net.daringfireball.markdown" ]]
 [[ "$icon_file" == "AppIcon.icns" ]]
 [[ "$bundle_identifier" == "io.github.hshimomura.MDViewer" ]]
-[[ "$marketing_version" == "1.2" ]]
-[[ "$build_version" == "15" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP_PATH/Contents/Info.plist")" == "Ayami" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP_PATH/Contents/Resources/ja.lproj/InfoPlist.strings")" == "あやみ" ]]
+[[ "$marketing_version" == "1.3" ]]
+[[ "$build_version" == "17" ]]
 [[ "$app_category" == "public.app-category.productivity" ]]
 [[ -f "$APP_PATH/Contents/Resources/AppIcon.icns" ]]
 [[ -f "$APP_PATH/Contents/Resources/PrivacyInfo.xcprivacy" ]]
-[[ -f \
-    "$APP_PATH/Contents/Resources/MDPreview_MDPreview.bundle/Resources/Mermaid/mermaid.min.js" ]]
+[[ -f "$APP_PATH/Contents/Resources/MDPreview_MDPreview.bundle/Resources/Mermaid/mermaid.min.js" || \
+   -f "$APP_PATH/Contents/Resources/MDPreview_MDPreview.bundle/Contents/Resources/Resources/Mermaid/mermaid.min.js" ]]
 [[ -f \
     "$APP_PATH/Contents/Resources/ThirdPartyLicenses/Mermaid-LICENSE.txt" ]]
 
-print "Verified MD Viewer 1.2 (15), read-only registration, Productivity category, privacy manifest, app icon, and offline Mermaid runtime."
+print "Verified Ayami 1.3 (17), read-only registration, Productivity category, privacy manifest, app icon, and offline Mermaid runtime."

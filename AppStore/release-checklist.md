@@ -8,6 +8,9 @@ operations.
 
 - [ ] Confirm the release tag points to the intended source commit.
 - [ ] Run `swift test`.
+- [ ] Run `AyamiIOS` unit and UI tests on iPhone and iPad destinations.
+- [ ] Test the Files document browser and file-provider updates on real devices.
+- [ ] Verify text-size persistence, reset, Dynamic Type, and diagram reflow.
 - [ ] Review `Package.resolved` and `swift package show-dependencies`.
 - [ ] Verify `THIRD_PARTY_NOTICES.md` and bundled license texts.
 - [ ] Confirm the app remains read-only and does not transmit documents.
@@ -16,6 +19,8 @@ operations.
 
 - [ ] Run `./Scripts/verify-app-store-metadata.sh`.
 - [ ] Review English and Japanese product-page text.
+- [ ] Verify Ayami / あやみ display names and the new bright reading-stand icon.
+- [ ] Replace screenshots from the former MD Viewer release.
 - [ ] Verify the Marketing, Support, and Privacy Policy URLs.
 - [ ] Use only public `Sample.md` content in screenshots.
 - [ ] Confirm no review status, contact details, submission identifiers, or

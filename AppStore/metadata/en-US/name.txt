@@ -1,1 +1,1 @@
-MD Viewer: Reading Window
+Ayami: Markdown Reader

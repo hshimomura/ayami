@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-APP_PATH="$PROJECT_ROOT/dist/MDPreview.app"
+APP_PATH="$PROJECT_ROOT/dist/Ayami.app"
 
 if [[ ! -d "$APP_PATH" ]]; then
     print -u2 "Missing app bundle: $APP_PATH"
@@ -29,7 +29,7 @@ for document_path in "${document_paths[@]}"; do
     open_arguments+=("$document_path")
 done
 
-# Launch the .app through LaunchServices. Executing Contents/MacOS/MDPreview
+# Launch the .app through LaunchServices. Executing Contents/MacOS/Ayami
 # directly bypasses normal macOS application registration and can abort inside
 # HIServices before SwiftUI creates the first scene.
 /usr/bin/open "${open_arguments[@]}"

@@ -4,11 +4,12 @@ title: Support
 permalink: /support
 ---
 
-# MD Viewer support
+# Ayami support
 
 ## Requirements
 
 - macOS 26 or later
+- iOS/iPadOS 18 or later for the iPhone/iPad target (distribution in preparation)
 - UTF-8 Markdown files using `.md` or `.markdown`
 
 ## Common actions
@@ -23,7 +24,15 @@ permalink: /support
 - Print with `Command-P`; choose **PDF > Save as PDF…** for PDF output.
 - Save the file in an external editor to trigger Live Reload.
 
-MD Viewer intentionally does not edit Markdown and does not include a Quick
+Use **Ayami > Settings** on Mac or the **Reading Settings** toolbar button on
+iPhone/iPad to adjust text size from 80% to 160%. Changes apply immediately and
+are saved on the device. Use **Reset to Default** to return to 100%.
+
+On iPhone/iPad, select a document through Files. Contents appears as a sheet
+in compact windows and a sidebar in wide windows. Mac-style tabs, file polling,
+and printing are macOS-only. Reopen a file to pick up external provider changes.
+
+Ayami intentionally does not edit Markdown and does not include a Quick
 Look extension.
 
 For bug reports and feature requests, use the

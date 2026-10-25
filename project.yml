@@ -5,6 +5,7 @@ options:
   createIntermediateGroups: true
   deploymentTarget:
     macOS: "26.0"
+    iOS: "18.0"
   xcodeVersion: "27.1"
 
 configs:
@@ -20,7 +21,7 @@ packages:
     exactVersion: 0.1.0
   ConcurrencyExtras:
     url: https://github.com/pointfreeco/swift-concurrency-extras
-    exactVersion: 1.4.0
+    exactVersion: 1.4.3
 
 settings:
   base:
@@ -40,6 +41,8 @@ targets:
         type: folder
       - path: Resources/AppIcon.xcassets
         buildPhase: resources
+      - path: Packaging/Localizations
+        buildPhase: resources
       - path: Packaging/PrivacyInfo.xcprivacy
         buildPhase: resources
       - path: THIRD_PARTY_NOTICES.md
@@ -54,15 +57,15 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_ENTITLEMENTS: Packaging/MDViewer.entitlements
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "15"
+        CURRENT_PROJECT_VERSION: "17"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info.plist
-        MARKETING_VERSION: "1.2"
+        MARKETING_VERSION: "1.3"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: MDPreview
-        PRODUCT_NAME: MD Viewer
+        PRODUCT_NAME: Ayami
         SWIFT_STRICT_CONCURRENCY: complete
 
   MDPreviewTests:
@@ -79,9 +82,135 @@ targets:
         DEVELOPMENT_TEAM: ZLX73742D3
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewerTests
-        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/MD Viewer.app/Contents/MacOS/MD Viewer"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Ayami.app/Contents/MacOS/Ayami"
+
+  AyamiIOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Sources/MDPreview
+        excludes:
+          - Resources
+          - MDPreviewApp.swift
+          - DocumentPrintCoordinator.swift
+          - WindowSizeRestorer.swift
+      - path: Sources/MDPreviewiOS
+      - path: Sources/MDPreview/Resources/Mermaid
+        buildPhase: resources
+        type: folder
+      - path: Resources/AppIcon.xcassets
+        buildPhase: resources
+      - path: Packaging/Localizations
+        buildPhase: resources
+      - path: Packaging/PrivacyInfo.xcprivacy
+        buildPhase: resources
+      - path: THIRD_PARTY_NOTICES.md
+        buildPhase: resources
+      - path: Legal
+        buildPhase: resources
+        type: folder
+    dependencies:
+      - package: Textual
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+        CURRENT_PROJECT_VERSION: "17"
+        DEVELOPMENT_TEAM: ZLX73742D3
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Packaging/Info-iOS.plist
+        MARKETING_VERSION: "1.3"
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
+        PRODUCT_MODULE_NAME: MDPreview
+        PRODUCT_NAME: Ayami
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_STRICT_CONCURRENCY: complete
+
+  AyamiIOSTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Tests/MDPreviewTests
+        excludes:
+          - MarkdownDocumentTests.swift
+      - path: Tests/AyamiIOSTests
+    dependencies:
+      - target: AyamiIOS
+    settings:
+      base:
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ZLX73742D3
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewerIOSTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Ayami.app/Ayami"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+
+  AyamiIOSUITestHost:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Sources/MDPreview
+        excludes:
+          - Resources
+          - MDPreviewApp.swift
+          - DocumentPrintCoordinator.swift
+          - WindowSizeRestorer.swift
+      - path: Tests/AyamiIOSUITestHost
+      - path: Sources/MDPreview/Resources/Mermaid
+        buildPhase: resources
+        type: folder
+      - path: Resources/AppIcon.xcassets
+        buildPhase: resources
+    dependencies:
+      - package: Textual
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ZLX73742D3
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer.UITestHost
+        PRODUCT_MODULE_NAME: AyamiUITestHost
+        CURRENT_PROJECT_VERSION: "17"
+        MARKETING_VERSION: "1.3"
+        TARGETED_DEVICE_FAMILY: "1,2"
+
+  AyamiIOSUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Tests/AyamiIOSUITests
+    dependencies:
+      - target: AyamiIOSUITestHost
+    settings:
+      base:
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ZLX73742D3
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewerIOSUITests
+        TEST_TARGET_NAME: AyamiIOSUITestHost
 
 schemes:
+  AyamiIOS:
+    build:
+      targets:
+        AyamiIOS: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - AyamiIOSTests
+        - AyamiIOSUITests
+    archive:
+      config: Release
   MDPreview:
     build:
       targets:

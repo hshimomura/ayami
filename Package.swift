@@ -5,7 +5,8 @@ import PackageDescription
 let package = Package(
   name: "MDPreview",
   platforms: [
-    .macOS(.v26)
+    .macOS(.v26),
+    .iOS(.v18)
   ],
   products: [
     .executable(name: "MDPreview", targets: ["MDPreview"])

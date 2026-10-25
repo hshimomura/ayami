@@ -1,8 +1,10 @@
 import SwiftUI
+import Textual
 import WebKit
 
 struct MermaidDiagramView: View {
   let source: String
+  var fontScale: CGFloat = 1
 
   @Environment(\.colorScheme) private var colorScheme
   @State private var height: CGFloat = 180
@@ -12,12 +14,13 @@ struct MermaidDiagramView: View {
   var body: some View {
     Group {
       if renderState == .failed {
-        MermaidFallbackView(source: source)
+        MermaidFallbackView(source: source, fontScale: fontScale)
       } else if canLoadRenderer {
         ZStack {
           MermaidWebView(
             source: source,
             theme: theme,
+            fontScale: fontScale,
             height: $height,
             renderState: $renderState
           )
@@ -86,6 +89,7 @@ private struct MermaidRenderRequest: Equatable {
 
 private struct MermaidFallbackView: View {
   let source: String
+  let fontScale: CGFloat
 
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
@@ -99,6 +103,7 @@ private struct MermaidFallbackView: View {
       ScrollView(.horizontal) {
         Text(source)
           .font(.system(.caption, design: .monospaced))
+          .textual.fontScale(fontScale)
           .textSelection(.enabled)
           .frame(maxWidth: .infinity, alignment: .leading)
       }
@@ -109,9 +114,16 @@ private struct MermaidFallbackView: View {
   }
 }
 
-private struct MermaidWebView: NSViewRepresentable {
+#if os(macOS)
+  private typealias PlatformWebViewRepresentable = NSViewRepresentable
+#else
+  private typealias PlatformWebViewRepresentable = UIViewRepresentable
+#endif
+
+private struct MermaidWebView: PlatformWebViewRepresentable {
   let source: String
   let theme: String
+  let fontScale: CGFloat
   @Binding var height: CGFloat
   @Binding var renderState: MermaidRenderState
 
@@ -119,7 +131,7 @@ private struct MermaidWebView: NSViewRepresentable {
     Coordinator(height: $height, renderState: $renderState)
   }
 
-  func makeNSView(context: Context) -> WKWebView {
+  private func makeWebView(context: Context) -> WKWebView {
     let configuration = WKWebViewConfiguration()
     configuration.defaultWebpagePreferences.allowsContentJavaScript = true
     configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
@@ -134,8 +146,14 @@ private struct MermaidWebView: NSViewRepresentable {
     )
     webView.navigationDelegate = context.coordinator
     webView.underPageBackgroundColor = .clear
-    webView.enclosingScrollView?.hasVerticalScroller = false
-    webView.enclosingScrollView?.hasHorizontalScroller = false
+    #if os(macOS)
+      webView.enclosingScrollView?.hasVerticalScroller = false
+      webView.enclosingScrollView?.hasHorizontalScroller = false
+    #else
+      webView.isOpaque = false
+      webView.backgroundColor = .clear
+      webView.scrollView.isScrollEnabled = false
+    #endif
     context.coordinator.webView = webView
     DispatchQueue.main.async { [weak coordinator = context.coordinator] in
       coordinator?.loadRenderer()
@@ -143,22 +161,49 @@ private struct MermaidWebView: NSViewRepresentable {
     return webView
   }
 
-  func sizeThatFits(
-    _ proposal: ProposedViewSize,
-    nsView: WKWebView,
-    context: Context
-  ) -> CGSize? {
-    CGSize(
-      width: max(proposal.width ?? 600, 1),
-      height: max(height, 80)
-    )
-  }
+  #if os(macOS)
+    func makeNSView(context: Context) -> WKWebView {
+      makeWebView(context: context)
+    }
 
-  func updateNSView(_ webView: WKWebView, context: Context) {
-    context.coordinator.render(source: source, theme: theme)
-  }
+    func sizeThatFits(
+      _ proposal: ProposedViewSize,
+      nsView: WKWebView,
+      context: Context
+    ) -> CGSize? {
+      CGSize(
+        width: max(proposal.width ?? 600, 1),
+        height: max(height, 80)
+      )
+    }
 
-  static func dismantleNSView(_ webView: WKWebView, coordinator: Coordinator) {
+    func updateNSView(_ webView: WKWebView, context: Context) {
+      context.coordinator.render(source: source, theme: theme, fontScale: fontScale)
+    }
+
+    static func dismantleNSView(_ webView: WKWebView, coordinator: Coordinator) {
+      dismantle(webView, coordinator: coordinator)
+    }
+  #else
+    func makeUIView(context: Context) -> WKWebView {
+      makeWebView(context: context)
+    }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: WKWebView, context: Context) -> CGSize?
+    {
+      CGSize(width: max(proposal.width ?? 320, 1), height: max(height, 80))
+    }
+
+    func updateUIView(_ webView: WKWebView, context: Context) {
+      context.coordinator.render(source: source, theme: theme, fontScale: fontScale)
+    }
+
+    static func dismantleUIView(_ webView: WKWebView, coordinator: Coordinator) {
+      dismantle(webView, coordinator: coordinator)
+    }
+  #endif
+
+  private static func dismantle(_ webView: WKWebView, coordinator: Coordinator) {
     webView.configuration.userContentController.removeScriptMessageHandler(
       forName: Coordinator.messageName
     )
@@ -175,6 +220,8 @@ private struct MermaidWebView: NSViewRepresentable {
     private var pendingTheme: String?
     private var renderedSource: String?
     private var renderedTheme: String?
+    private var pendingFontScale: CGFloat = 1
+    private var renderedFontScale: CGFloat?
     private var rendererReady = false
     private var height: Binding<CGFloat>
     private var renderState: Binding<MermaidRenderState>
@@ -189,45 +236,10 @@ private struct MermaidWebView: NSViewRepresentable {
     }
 
     func loadRenderer() {
-      guard let resourcesURL = Bundle.main.resourceURL, let webView else {
+      guard let webView, let completeHTML = try? MermaidRendererResources.html() else {
         failRender()
         return
       }
-      let candidates = [
-        resourcesURL
-          .appending(path: "Mermaid", directoryHint: .isDirectory)
-          .appending(path: "renderer.html", directoryHint: .notDirectory),
-        resourcesURL
-          .appending(
-            path: "MDPreview_MDPreview.bundle",
-            directoryHint: .isDirectory
-          )
-          .appending(
-            path: "Resources/Mermaid",
-            directoryHint: .isDirectory
-          )
-          .appending(path: "renderer.html", directoryHint: .notDirectory),
-      ]
-      guard
-        let rendererURL = candidates.first(
-          where: { FileManager.default.fileExists(atPath: $0.path) }
-        ),
-        let rendererHTML = try? String(contentsOf: rendererURL, encoding: .utf8),
-        let mermaidJavaScript = try? String(
-          contentsOf: rendererURL
-            .deletingLastPathComponent()
-            .appending(path: "mermaid.min.js", directoryHint: .notDirectory),
-          encoding: .utf8
-        )
-      else {
-        failRender()
-        return
-      }
-
-      let completeHTML = rendererHTML.replacingOccurrences(
-        of: #"<script src="mermaid.min.js"></script>"#,
-        with: "<script>\(mermaidJavaScript)</script>"
-      )
       webView.loadHTMLString(
         completeHTML,
         baseURL: nil
@@ -235,18 +247,20 @@ private struct MermaidWebView: NSViewRepresentable {
       startRenderTimeout()
     }
 
-    func render(source: String, theme: String) {
+    func render(source: String, theme: String, fontScale: CGFloat) {
       pendingSource = source
       pendingTheme = theme
+      pendingFontScale = fontScale
       guard rendererReady else { return }
-      guard source != renderedSource || theme != renderedTheme else { return }
-      performRender(source: source, theme: theme)
+      guard source != renderedSource || theme != renderedTheme || fontScale != renderedFontScale
+      else { return }
+      performRender(source: source, theme: theme, fontScale: fontScale)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
       rendererReady = true
       if let pendingSource, let pendingTheme {
-        performRender(source: pendingSource, theme: pendingTheme)
+        performRender(source: pendingSource, theme: pendingTheme, fontScale: pendingFontScale)
       }
     }
 
@@ -282,7 +296,7 @@ private struct MermaidWebView: NSViewRepresentable {
       }
 
       if navigationAction.navigationType == .other,
-         url.isFileURL || url.absoluteString == "about:blank"
+        url.isFileURL || url.absoluteString == "about:blank"
       {
         decisionHandler(.allow)
       } else {
@@ -311,15 +325,16 @@ private struct MermaidWebView: NSViewRepresentable {
       renderTimeoutTask = nil
     }
 
-    private func performRender(source: String, theme: String) {
+    private func performRender(source: String, theme: String, fontScale: CGFloat) {
       guard let webView else { return }
       renderedSource = source
       renderedTheme = theme
+      renderedFontScale = fontScale
 
       let sourceJSON = Self.jsonString(source)
       let themeJSON = Self.jsonString(theme)
       webView.evaluateJavaScript(
-        "window.renderDiagram(\(sourceJSON), \(themeJSON));"
+        "window.renderDiagram(\(sourceJSON), \(themeJSON), \(fontScale));"
       )
     }
 
@@ -352,10 +367,16 @@ private struct MermaidWebView: NSViewRepresentable {
 }
 
 private final class IntrinsicSizeNeutralWebView: WKWebView {
-  override var intrinsicContentSize: NSSize {
-    NSSize(
-      width: NSView.noIntrinsicMetric,
-      height: NSView.noIntrinsicMetric
-    )
-  }
+  #if os(macOS)
+    override var intrinsicContentSize: NSSize {
+      NSSize(
+        width: NSView.noIntrinsicMetric,
+        height: NSView.noIntrinsicMetric
+      )
+    }
+  #else
+    override var intrinsicContentSize: CGSize {
+      CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
+    }
+  #endif
 }

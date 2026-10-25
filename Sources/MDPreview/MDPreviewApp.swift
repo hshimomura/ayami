@@ -38,6 +38,11 @@ struct MDPreviewApp: App {
         }
       }
     }
+
+    Settings {
+      ReadingSettingsView()
+        .frame(width: 460, height: 440)
+    }
   }
 }
 
@@ -281,6 +286,7 @@ enum MarkdownWindowManager {
     window.canBecomeMain
       && !(window is NSPanel)
       && window.styleMask.contains(.titled)
+      && window.tabbingIdentifier == "io.github.hshimomura.MDViewer.document"
   }
 }
 

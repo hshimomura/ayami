@@ -1,6 +1,6 @@
-# MD Viewer: Reading Window
+# Ayami — あやみ
 
-MD Viewer is a small, read-only Markdown viewer for macOS 26. Its document UI
+Ayami is a small, read-only Markdown viewer for macOS 26+ and iOS/iPadOS 18+. Its document UI
 is native SwiftUI: there is no editor, Electron runtime, database, account, or
 network service. A restricted local WebKit view is used only for Mermaid
 diagrams. The App Sandbox network-client entitlement allows the WebKit helper
@@ -33,10 +33,15 @@ Heading / Markdown / Mermaid block parser
 - `net.daringfireball.markdown` registers `.md` and `.markdown` with a
   `Viewer` role and `Alternate` handler rank.
 - Textual 0.5.0 renders structured Markdown with native SwiftUI views.
-- Mermaid 11.15.0 is bundled locally; diagrams require no installation or CDN.
+- Mermaid 12.2.0 is bundled locally; diagrams require no installation or CDN.
 - Swift Package Manager pins the dependency graph in `Package.resolved`.
-- The app targets macOS 26 and the App Store release builds as a Universal 2
+- See the [version 1.3 dependency audit and test results](docs/dependency-audit-1.3.md)
+  for the parser stack, pinned versions, and bundled Prism limitation.
+- The Mac app targets macOS 26 and the App Store release builds as a Universal 2
   binary for Apple silicon and Intel Macs.
+- The `AyamiIOS` target supports iPhone and iPad through the Files document browser.
+- Reading Settings offers an 80–160% text-size slider, saved per device and
+  applied immediately to all open documents. System Dynamic Type remains supported.
 
 ## Requirements
 
@@ -53,10 +58,11 @@ brew install xcodegen
 open MDViewer.xcodeproj
 ```
 
-The generated `MDViewer.xcodeproj` contains the macOS app and unit-test targets.
+The generated `MDViewer.xcodeproj` contains macOS and iPhone/iPad apps and test targets.
 The App Store scheme uses bundle identifier `io.github.hshimomura.MDViewer`,
 App Sandbox, hardened runtime, privacy manifest, Productivity category, and
-version 1.2 (build 15).
+version 1.3 (build 17). Select `MDPreview` for Mac or `AyamiIOS` for iPhone/iPad.
+The Bundle ID is unchanged so existing installations remain the same app.
 
 For a command-line local build:
 
@@ -65,7 +71,7 @@ For a command-line local build:
 ./Scripts/verify-app.sh
 ```
 
-The local app bundle is generated at `dist/MDPreview.app`. Open the sample:
+The local app bundle is generated at `dist/Ayami.app`. Open the sample:
 
 ```sh
 ./Scripts/launch-local-app.sh
@@ -78,7 +84,7 @@ Pass one or more Markdown paths to open specific documents:
 ```
 
 Use the script (or Finder / `open`) for GUI smoke tests. Do not execute
-`dist/MDPreview.app/Contents/MacOS/MDPreview` directly from an automation
+`dist/Ayami.app/Contents/MacOS/Ayami` directly from an automation
 process; that bypasses normal LaunchServices application registration.
 
 The script build uses ad-hoc signing for local testing. Mac App Store archives
@@ -110,7 +116,7 @@ Included:
 - HTML-style `<br>`, `<br/>`, and `<br />` line breaks, including table cells
 - `Command-W` closes the active document tab or window
 - The last document-window size is restored across launches
-- Native macOS icon with a Markdown document and glass reading lens
+- A bright ivory icon with a Markdown document on a warm terracotta reading stand
 - Live reload after saves from external editors, including atomic replacements
 - Left-side chapter outline with the current reading section highlighted
 - Contents can be shown or hidden from the toolbar or View menu
@@ -127,7 +133,7 @@ Deferred:
 - Relative local image resolution
 - Find navigator and zoom
 - Quick Look integration (intentionally out of scope)
-- Preferences and theme selection
+- Theme selection (appearance follows the system)
 - A standalone updater (Mac App Store distribution supplies updates)
 
 ## License and release checklist
@@ -153,3 +159,18 @@ trusted release machine.
 - Product page: https://hshimomura.github.io/MDPreview/
 - Privacy policy: https://hshimomura.github.io/MDPreview/privacy
 - Support: https://hshimomura.github.io/MDPreview/support
+
+## iPhone and iPad
+
+Open `AyamiIOS` in Xcode and choose an iPhone or iPad destination. The native
+document browser opens UTF-8 `.md` and `.markdown` files in place. Compact
+windows show Contents in a sheet; wider iPad windows use a sidebar. Reading
+Settings is available from the text-size toolbar button. Multiple iPad windows
+use the system window manager rather than Mac-style tabs.
+
+On iOS, SwiftUI manages document updates; the Mac-only file polling and print
+commands are not included. Use Files to open or reopen externally updated
+documents. iOS printing and PDF export are not implemented yet.
+
+Implementation details and verification status:
+[Japanese implementation plan](docs/ayami-implementation.md).

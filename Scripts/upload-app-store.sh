@@ -19,6 +19,19 @@ if [[ ! -d "$ARCHIVE_PATH" ]]; then
     exit 1
 fi
 
+marketing_version="$(/usr/libexec/PlistBuddy \
+    -c 'Print :ApplicationProperties:CFBundleShortVersionString' \
+    "$ARCHIVE_PATH/Info.plist")"
+build_version="$(/usr/libexec/PlistBuddy \
+    -c 'Print :ApplicationProperties:CFBundleVersion' \
+    "$ARCHIVE_PATH/Info.plist")"
+
+if [[ "$marketing_version" != "1.3" || "$build_version" != "17" || \
+      ! -d "$ARCHIVE_PATH/Products/Applications/Ayami.app" ]]; then
+    print -u2 "Archive is stale or not Ayami 1.3 (17). Run ./Scripts/archive-app-store.sh before uploading."
+    exit 1
+fi
+
 /usr/bin/ditto "$BASE_OPTIONS" "$UPLOAD_OPTIONS"
 /usr/bin/plutil -replace destination -string upload "$UPLOAD_OPTIONS"
 
@@ -28,12 +41,5 @@ xcodebuild \
     -exportPath "$EXPORT_PATH" \
     -exportOptionsPlist "$UPLOAD_OPTIONS" \
     -allowProvisioningUpdates
-
-marketing_version="$(/usr/libexec/PlistBuddy \
-    -c 'Print :ApplicationProperties:CFBundleShortVersionString' \
-    "$ARCHIVE_PATH/Info.plist")"
-build_version="$(/usr/libexec/PlistBuddy \
-    -c 'Print :ApplicationProperties:CFBundleVersion' \
-    "$ARCHIVE_PATH/Info.plist")"
 
 print "Uploaded $marketing_version ($build_version) to App Store Connect."

@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-APP_PATH="$PROJECT_ROOT/dist/MDPreview.app"
+APP_PATH="$PROJECT_ROOT/dist/Ayami.app"
 
 cd "$PROJECT_ROOT"
 
@@ -19,16 +19,16 @@ mkdir -p \
     "$APP_PATH/Contents/MacOS" \
     "$APP_PATH/Contents/Resources/ThirdPartyLicenses"
 
-/usr/bin/ditto "$BIN_DIR/MDPreview" "$APP_PATH/Contents/MacOS/MDPreview"
+/usr/bin/ditto "$BIN_DIR/MDPreview" "$APP_PATH/Contents/MacOS/Ayami"
 /usr/bin/ditto "$PROJECT_ROOT/Packaging/Info.plist" "$APP_PATH/Contents/Info.plist"
-/usr/bin/plutil -replace CFBundleExecutable -string MDPreview \
+/usr/bin/plutil -replace CFBundleExecutable -string Ayami \
     "$APP_PATH/Contents/Info.plist"
 /usr/bin/plutil -replace CFBundleIdentifier \
     -string io.github.hshimomura.MDViewer \
     "$APP_PATH/Contents/Info.plist"
-/usr/bin/plutil -replace CFBundleShortVersionString -string 1.1 \
+/usr/bin/plutil -replace CFBundleShortVersionString -string 1.3 \
     "$APP_PATH/Contents/Info.plist"
-/usr/bin/plutil -replace CFBundleVersion -string 14 \
+/usr/bin/plutil -replace CFBundleVersion -string 17 \
     "$APP_PATH/Contents/Info.plist"
 /usr/bin/plutil -replace LSMinimumSystemVersion -string 26.0 \
     "$APP_PATH/Contents/Info.plist"
@@ -38,6 +38,8 @@ mkdir -p \
     "$APP_PATH/Contents/Resources/THIRD_PARTY_NOTICES.md"
 /usr/bin/ditto "$PROJECT_ROOT/Packaging/PrivacyInfo.xcprivacy" \
     "$APP_PATH/Contents/Resources/PrivacyInfo.xcprivacy"
+/usr/bin/ditto "$PROJECT_ROOT/Packaging/Localizations" \
+    "$APP_PATH/Contents/Resources"
 /usr/bin/ditto "$PROJECT_ROOT/Legal/Prism-LICENSE.txt" \
     "$APP_PATH/Contents/Resources/ThirdPartyLicenses/Prism-LICENSE.txt"
 

@@ -1,0 +1,2 @@
+# Keep the upstream vendor bundle byte-for-byte, including whitespace in strings.
+Sources/MDPreview/Resources/Mermaid/mermaid.min.js -whitespace

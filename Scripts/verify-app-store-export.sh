@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-PACKAGE_PATH="$PROJECT_ROOT/dist/AppStoreExport/MD Viewer.pkg"
+PACKAGE_PATH="$PROJECT_ROOT/dist/AppStoreExport/Ayami.pkg"
 TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/mdviewer-app-store.XXXXXX)"
 EXPANDED_PATH="$TEMP_PARENT/expanded"
 
@@ -25,16 +25,16 @@ print -r -- "$package_signature" |
 
 typeset -a app_paths
 app_paths=("${(@f)$(/usr/bin/find "$EXPANDED_PATH" \
-    -type d -name "MD Viewer.app" -print)}")
+    -type d -name "Ayami.app" -print)}")
 
 if (( ${#app_paths} != 1 )); then
-    print -u2 "Expected one MD Viewer.app in package, found ${#app_paths}."
+    print -u2 "Expected one Ayami.app in package, found ${#app_paths}."
     exit 1
 fi
 
 APP_PATH="$app_paths[1]"
 INFO_PLIST="$APP_PATH/Contents/Info.plist"
-EXECUTABLE="$APP_PATH/Contents/MacOS/MD Viewer"
+EXECUTABLE="$APP_PATH/Contents/MacOS/Ayami"
 RESOURCES="$APP_PATH/Contents/Resources"
 ENTITLEMENTS_PATH="$TEMP_PARENT/entitlements.plist"
 
@@ -68,8 +68,9 @@ app_category="$(/usr/libexec/PlistBuddy \
     -c "Print :LSApplicationCategoryType" "$INFO_PLIST")"
 
 [[ "$bundle_identifier" == "io.github.hshimomura.MDViewer" ]]
-[[ "$marketing_version" == "1.2" ]]
-[[ "$build_version" == "15" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$INFO_PLIST")" == "Ayami" ]]
+[[ "$marketing_version" == "1.3" ]]
+[[ "$build_version" == "17" ]]
 [[ "$minimum_system" == "26.0" ]]
 [[ "$document_role" == "Viewer" ]]
 [[ "$markdown_type" == "net.daringfireball.markdown" ]]
@@ -118,6 +119,6 @@ done
 package_checksum="$(/usr/bin/shasum -a 256 "$PACKAGE_PATH" |
     /usr/bin/awk '{print $1}')"
 
-print "Verified MD Viewer 1.2 (15) App Store export."
+print "Verified Ayami 1.3 (17) App Store export."
 print "Architectures: $architectures"
 print "Package SHA-256: $package_checksum"

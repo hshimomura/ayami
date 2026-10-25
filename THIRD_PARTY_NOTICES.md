@@ -8,9 +8,9 @@ texts are copied into the built application under
 | --- | --- | --- | --- |
 | Textual | 0.5.0 | MIT | https://github.com/gonzalezreal/textual |
 | SwiftUIMath | 0.1.0 | MIT | https://github.com/gonzalezreal/swiftui-math |
-| ConcurrencyExtras | 1.4.0 | MIT | https://github.com/pointfreeco/swift-concurrency-extras |
+| ConcurrencyExtras | 1.4.3 | MIT | https://github.com/pointfreeco/swift-concurrency-extras |
 | Prism.js | 1.29.0 (bundled by Textual) | MIT | https://github.com/PrismJS/prism |
-| Mermaid | 11.15.0 | MIT | https://github.com/mermaid-js/mermaid |
+| Mermaid | 12.2.0 | MIT | https://github.com/mermaid-js/mermaid |
 
 SwiftUIMath includes math fonts under the SIL Open Font License 1.1 and the
 GUST Font License. The complete `OFL.txt` and `GUST-FONT-LICENSE.txt` files

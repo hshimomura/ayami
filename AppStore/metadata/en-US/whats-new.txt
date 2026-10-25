@@ -1,3 +1,5 @@
-• Verified compatibility with macOS 27.
-• Rebuilt with the latest macOS SDK.
-• Includes stability improvements.
+• Renamed MD Viewer to Ayami.
+• Added a text-size slider in Reading Settings, with a saved 80–160% reading scale.
+• Introduced a brighter icon inspired by a Japanese reading stand.
+• Updated the Mermaid diagram engine while preserving offline rendering.
+• Rebuilt with the latest macOS SDK and verified compatibility with macOS 27.

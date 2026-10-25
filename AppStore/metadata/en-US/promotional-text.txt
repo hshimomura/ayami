@@ -1,1 +1,1 @@
-A quiet native reading window for Markdown, now with native macOS tabs, separate-window defaults, live reload, an active outline, and offline Mermaid diagrams.
+Read Markdown quietly with Ayami. Adjustable text size, native tabs, live reload, a chapter outline, and offline Mermaid diagrams.

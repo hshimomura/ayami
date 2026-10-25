@@ -1,9 +1,9 @@
-MD Viewer: Reading Window is a focused, read-only Markdown viewer built for macOS 26 and later.
+Ayami is a focused, read-only Markdown viewer built for macOS 26 and later.
 
 Open .md files and read them as clean, structured documents without switching into an editor. Each document opens in its own window by default, with an option to add files as native macOS tabs. A single command arranges open documents side by side for comparison.
 
 LIVE RELOAD
-Keep using your preferred editor. MD Viewer detects ordinary saves and atomic file replacements, then refreshes the reading window automatically.
+Keep using your preferred editor. Ayami detects ordinary saves and atomic file replacements, then refreshes the reading window automatically.
 
 ACTIVE CHAPTER OUTLINE
 The optional Contents sidebar lists headings and highlights the section currently being read. Select a heading to move directly to it.
@@ -14,6 +14,9 @@ Mermaid fenced code blocks render locally with the runtime included in the app. 
 NATIVE MAC EXPERIENCE
 Use Command-O to open a file in a new window, Command-Option-O to open one in a new tab, Command-W to close the active tab or window, and Command-P for the standard macOS Print panel. PDF output inherits the Markdown file name. Window size is restored across launches, and appearance follows the system.
 
-MD Viewer intentionally has no editing feature and no Quick Look extension. It is a calm reading window for local Markdown documents.
+READ AT YOUR OWN SIZE
+Adjust text size from 80% to 160% with a slider in Reading Settings. Your preference is remembered and applies immediately to all open documents, including Mermaid diagrams.
+
+Ayami intentionally has no editing feature and no Quick Look extension. It is a calm reading window for local Markdown documents.
 
 Free and open source under the MIT License.

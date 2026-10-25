@@ -3,15 +3,29 @@ import Textual
 
 struct PreviewView: View {
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
+  #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+  #endif
+  @AppStorage(ReadingPreferences.fontScaleKey)
+  private var storedFontScale = ReadingPreferences.defaultFontScale
+
+  private let documentText: String
+  private let documentURL: URL?
 
   @State private var model: PreviewDocumentModel
   @State private var sectionTops: [String: CGFloat] = [:]
   @State private var currentSectionID: String?
   @State private var scrollRequest: OutlineScrollRequest?
   @State private var splitViewVisibility: NavigationSplitViewVisibility = .all
-  @State private var printCoordinator = DocumentPrintCoordinator()
+  @State private var showsReadingSettings = false
+  @State private var showsOutline = false
+  #if os(macOS)
+    @State private var printCoordinator = DocumentPrintCoordinator()
+  #endif
 
   init(document: MarkdownDocument, fileURL: URL?) {
+    documentText = document.text
+    documentURL = fileURL
     _model = State(
       initialValue: PreviewDocumentModel(
         text: document.text,
@@ -28,6 +42,8 @@ struct PreviewView: View {
           systemImage: "doc.text.magnifyingglass",
           description: Text("This document contains no text.")
         )
+      } else if usesCompactLayout {
+        documentPreview
       } else {
         NavigationSplitView(columnVisibility: $splitViewVisibility) {
           OutlineSidebar(
@@ -44,32 +60,83 @@ struct PreviewView: View {
         } detail: {
           documentPreview
         }
-        .navigationSplitViewStyle(.prominentDetail)
+        #if os(macOS)
+          .navigationSplitViewStyle(.prominentDetail)
+        #else
+          .navigationSplitViewStyle(.balanced)
+        #endif
       }
     }
-    .frame(minWidth: 700, minHeight: 420)
-    .background {
-      WindowSizeRestorer()
-      FileMenuOrganizer()
-    }
+    #if os(macOS)
+      .frame(minWidth: 560, minHeight: 420)
+      .background {
+        WindowSizeRestorer()
+        FileMenuOrganizer()
+      }
+    #endif
     .safeAreaInset(edge: .bottom, spacing: 0) {
       statusBar
     }
-    .focusedSceneValue(
-      \.previewCommandActions,
-      PreviewCommandActions(
-        isContentsVisible: isContentsVisible,
-        toggleContents: toggleContents,
-        printDocument: {
-          printCoordinator.printDocument(
-            markdown: model.text,
-            fileURL: model.fileURL
-          )
-        }
+    #if os(macOS)
+      .focusedSceneValue(
+        \.previewCommandActions,
+        PreviewCommandActions(
+          isContentsVisible: isContentsVisible,
+          toggleContents: toggleContents,
+          printDocument: {
+            printCoordinator.printDocument(
+              markdown: model.text,
+              fileURL: model.fileURL
+            )
+          }
+        )
       )
-    )
-    .task(id: model.fileURL) {
-      await model.monitorFile()
+    #endif
+    .toolbar {
+      #if os(iOS)
+        if usesCompactLayout && !model.content.headings.isEmpty {
+          ToolbarItem(placement: .primaryAction) {
+            Button("Contents", systemImage: "list.bullet.indent") {
+              showsOutline = true
+            }
+          }
+        }
+      #endif
+      ToolbarItem(placement: .primaryAction) {
+        Button("Reading Settings", systemImage: "textformat.size") {
+          showsReadingSettings = true
+        }
+        .accessibilityIdentifier("readingSettings")
+      }
+    }
+    .sheet(isPresented: $showsReadingSettings) {
+      ReadingSettingsSheet()
+    }
+    .sheet(isPresented: $showsOutline) {
+      NavigationStack {
+        OutlineSidebar(headings: model.content.headings, currentSectionID: currentSectionID) {
+          sectionID in
+          scrollRequest = OutlineScrollRequest(sectionID: sectionID)
+          showsOutline = false
+        }
+        .navigationTitle("Contents")
+        .toolbar {
+          ToolbarItem(placement: .confirmationAction) {
+            Button("Done") { showsOutline = false }
+          }
+        }
+      }
+    }
+    .task(id: documentURL) {
+      if model.fileURL != documentURL {
+        model = PreviewDocumentModel(text: documentText, fileURL: documentURL)
+      }
+      #if os(macOS)
+        await model.monitorFile()
+      #endif
+    }
+    .onChange(of: documentText) { _, newText in
+      model.updateDocumentText(newText)
     }
     .onChange(of: model.content) {
       sectionTops.removeAll(keepingCapacity: true)
@@ -77,12 +144,24 @@ struct PreviewView: View {
     }
   }
 
+  private var fontScale: CGFloat {
+    CGFloat(ReadingPreferences.normalizedFontScale(storedFontScale))
+  }
+
+  private var usesCompactLayout: Bool {
+    #if os(iOS)
+      horizontalSizeClass == .compact
+    #else
+      false
+    #endif
+  }
+
   private var documentPreview: some View {
     ScrollViewReader { scrollProxy in
       ScrollView {
         VStack(alignment: .leading, spacing: 0) {
           ForEach(model.content.sections) { section in
-            MarkdownSectionView(section: section)
+            MarkdownSectionView(section: section, fontScale: fontScale)
               .id(section.id)
               .background {
                 GeometryReader { geometry in
@@ -99,7 +178,7 @@ struct PreviewView: View {
         }
         .frame(maxWidth: 880, alignment: .leading)
         .frame(maxWidth: .infinity, alignment: .center)
-        .padding(.horizontal, 36)
+        .padding(.horizontal, usesCompactLayout ? 18 : 36)
         .padding(.vertical, 30)
       }
       .coordinateSpace(name: "document-scroll")
@@ -124,7 +203,7 @@ struct PreviewView: View {
       )
       .lineLimit(1)
 
-      if let currentHeading {
+      if !usesCompactLayout, let currentHeading {
         Divider()
           .frame(height: 12)
         Text(currentHeading.title)
@@ -133,7 +212,7 @@ struct PreviewView: View {
 
       Spacer()
 
-      reloadStatus
+      if !usesCompactLayout { reloadStatus }
 
       Text("Read Only")
     }
@@ -156,6 +235,8 @@ struct PreviewView: View {
       Label("Reloaded", systemImage: "checkmark.circle")
     case .unavailable:
       Label("Not Watching", systemImage: "exclamationmark.triangle")
+    case .documentManaged:
+      Label("Files", systemImage: "folder")
     }
   }
 
@@ -177,7 +258,8 @@ struct PreviewView: View {
       }
       return (section.id, top)
     }
-    let candidate = passed.max { $0.1 < $1.1 }?.0
+    let candidate =
+      passed.max { $0.1 < $1.1 }?.0
       ?? orderedSections.first {
         guard let top = sectionTops[$0.id] else { return false }
         return top > readingLine
@@ -201,18 +283,20 @@ private struct OutlineScrollRequest: Equatable {
 
 private struct MarkdownSectionView: View {
   let section: MarkdownSection
+  let fontScale: CGFloat
 
   var body: some View {
     VStack(alignment: .leading, spacing: 18) {
       ForEach(Array(section.blocks.enumerated()), id: \.offset) { _, block in
         switch block {
-        case let .markdown(source):
+        case .markdown(let source):
           StructuredText(source, parser: HTMLBreakMarkdownParser())
             .textual.structuredTextStyle(.gitHub)
+            .textual.fontScale(fontScale)
             .textual.textSelection(.enabled)
             .frame(maxWidth: .infinity, alignment: .leading)
-        case let .mermaid(source):
-          MermaidDiagramView(source: source)
+        case .mermaid(let source):
+          MermaidDiagramView(source: source, fontScale: fontScale)
         }
       }
     }

@@ -6,14 +6,14 @@ submission state.
 
 ## Public app record
 
-- Name: `MD Viewer: Reading Window`
-- Installed name: `MD Viewer`
+- Planned name: `あやみ — Markdownビューア` / `Ayami: Markdown Reader`
+- Installed name: `あやみ` (Japanese) / `Ayami` (other languages)
 - Bundle ID: `io.github.hshimomura.MDViewer`
-- Platform: macOS
+- Platforms in source: macOS, iOS (iPhone and iPad)
 - Primary category: Productivity
 - Price: Free
-- Version: `1.1`
-- Build: `14`
+- Version: `1.3`
+- Build: `17`
 - Copyright: `2026 Hideaki Shimomura`
 - Support URL: `https://hshimomura.github.io/MDPreview/support`
 - Marketing URL: `https://hshimomura.github.io/MDPreview/`

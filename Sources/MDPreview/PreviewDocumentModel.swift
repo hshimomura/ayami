@@ -9,6 +9,7 @@ final class PreviewDocumentModel {
     case watching
     case reloaded(Date)
     case unavailable
+    case documentManaged
   }
 
   private(set) var text: String
@@ -21,66 +22,80 @@ final class PreviewDocumentModel {
     self.text = text
     self.fileURL = fileURL
     content = MarkdownContentParser.parse(text)
-    reloadState = fileURL == nil ? .unavailable : .watching
+    #if os(macOS)
+      reloadState = fileURL == nil ? .unavailable : .watching
+    #else
+      reloadState = .documentManaged
+    #endif
   }
 
-  func monitorFile() async {
-    guard let fileURL else { return }
-    var knownSignature = FileSignature(fileURL: fileURL)
+  func updateDocumentText(_ newText: String) {
+    guard newText != text else { return }
+    text = newText
+    content = MarkdownContentParser.parse(newText)
+  }
 
-    while !Task.isCancelled {
-      do {
-        try await Task.sleep(for: .milliseconds(400))
-      } catch {
-        return
-      }
+  #if os(macOS)
+    func monitorFile() async {
+      guard let fileURL else { return }
+      var knownSignature = FileSignature(fileURL: fileURL)
 
-      guard let signature = FileSignature(fileURL: fileURL) else {
-        reloadState = .unavailable
-        continue
-      }
-      guard signature != knownSignature else {
-        if reloadState == .unavailable {
-          reloadState = .watching
+      while !Task.isCancelled {
+        do {
+          try await Task.sleep(for: .milliseconds(400))
+        } catch {
+          return
         }
-        continue
-      }
-      knownSignature = signature
 
-      do {
-        let data = try Data(contentsOf: fileURL, options: [.mappedIfSafe])
-        guard let newText = String(data: data, encoding: .utf8) else {
+        guard let signature = FileSignature(fileURL: fileURL) else {
           reloadState = .unavailable
           continue
         }
-        guard newText != text else {
-          reloadState = .watching
+        guard signature != knownSignature else {
+          if reloadState == .unavailable {
+            reloadState = .watching
+          }
           continue
         }
-        text = newText
-        content = MarkdownContentParser.parse(newText)
-        reloadState = .reloaded(Date())
-      } catch {
-        reloadState = .unavailable
+        knownSignature = signature
+
+        do {
+          let data = try Data(contentsOf: fileURL, options: [.mappedIfSafe])
+          guard let newText = String(data: data, encoding: .utf8) else {
+            reloadState = .unavailable
+            continue
+          }
+          guard newText != text else {
+            reloadState = .watching
+            continue
+          }
+          text = newText
+          content = MarkdownContentParser.parse(newText)
+          reloadState = .reloaded(Date())
+        } catch {
+          reloadState = .unavailable
+        }
       }
     }
-  }
+  #endif
 }
 
-private struct FileSignature: Equatable {
-  let device: UInt64
-  let inode: UInt64
-  let size: Int64
-  let modifiedSeconds: Int64
-  let modifiedNanoseconds: Int64
+#if os(macOS)
+  private struct FileSignature: Equatable {
+    let device: UInt64
+    let inode: UInt64
+    let size: Int64
+    let modifiedSeconds: Int64
+    let modifiedNanoseconds: Int64
 
-  init?(fileURL: URL) {
-    var metadata = stat()
-    guard lstat(fileURL.path, &metadata) == 0 else { return nil }
-    device = UInt64(metadata.st_dev)
-    inode = UInt64(metadata.st_ino)
-    size = metadata.st_size
-    modifiedSeconds = Int64(metadata.st_mtimespec.tv_sec)
-    modifiedNanoseconds = Int64(metadata.st_mtimespec.tv_nsec)
+    init?(fileURL: URL) {
+      var metadata = stat()
+      guard lstat(fileURL.path, &metadata) == 0 else { return nil }
+      device = UInt64(metadata.st_dev)
+      inode = UInt64(metadata.st_ino)
+      size = metadata.st_size
+      modifiedSeconds = Int64(metadata.st_mtimespec.tv_sec)
+      modifiedNanoseconds = Int64(metadata.st_mtimespec.tv_nsec)
+    }
   }
-}
+#endif

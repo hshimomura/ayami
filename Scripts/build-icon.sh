@@ -15,6 +15,7 @@ if [[ ! -f "$SOURCE_ICON" ]]; then
 fi
 
 mkdir -p "$ICONSET_DIR" "$ASSET_ICONSET_DIR"
+/usr/bin/ditto "$SOURCE_ICON" "$ASSET_ICONSET_DIR/icon-ios-1024.png"
 
 typeset -a icon_variants
 icon_variants=(
@@ -49,10 +50,8 @@ if /usr/bin/iconutil \
     -o "$GENERATED_ICON"; then
     /usr/bin/ditto "$GENERATED_ICON" "$OUTPUT_ICON"
     print "Built $OUTPUT_ICON"
-elif [[ -f "$OUTPUT_ICON" ]]; then
-    /bin/rm -f "$GENERATED_ICON"
-    print -u2 "iconutil could not create an icns file; retained $OUTPUT_ICON"
 else
-    print -u2 "iconutil could not create $OUTPUT_ICON"
-    exit 1
+    # Some macOS releases reject valid PNG iconsets. Package the same newly
+    # generated PNG representations rather than silently retaining a stale icon.
+    swift "$PROJECT_ROOT/Scripts/package-icns.swift" "$ICONSET_DIR" "$OUTPUT_ICON"
 fi
