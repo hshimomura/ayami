@@ -41,8 +41,8 @@ Heading / Markdown / Mermaid block parser
 ## Requirements
 
 - macOS 26
-- Xcode 26
-- Swift 6.2 or newer
+- Xcode 27.1
+- Swift 6.4 or newer
 - Network access for the first Swift Package Manager dependency resolution
 
 ## Xcode build
@@ -56,7 +56,7 @@ open MDViewer.xcodeproj
 The generated `MDViewer.xcodeproj` contains the macOS app and unit-test targets.
 The App Store scheme uses bundle identifier `io.github.hshimomura.MDViewer`,
 App Sandbox, hardened runtime, privacy manifest, Productivity category, and
-version 1.1 (build 14).
+version 1.2 (build 15).
 
 For a command-line local build:
 

@@ -5,7 +5,7 @@ options:
   createIntermediateGroups: true
   deploymentTarget:
     macOS: "26.0"
-  xcodeVersion: "26.0"
+  xcodeVersion: "27.1"
 
 configs:
   Debug: debug
@@ -54,12 +54,12 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_ENTITLEMENTS: Packaging/MDViewer.entitlements
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "14"
+        CURRENT_PROJECT_VERSION: "15"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info.plist
-        MARKETING_VERSION: "1.1"
+        MARKETING_VERSION: "1.2"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: MDPreview
         PRODUCT_NAME: MD Viewer

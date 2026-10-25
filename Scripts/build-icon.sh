@@ -6,6 +6,7 @@ PROJECT_ROOT="${SCRIPT_DIR:h}"
 SOURCE_ICON="$PROJECT_ROOT/Resources/AppIcon-1024.png"
 ICONSET_DIR="$PROJECT_ROOT/.build/AppIcon.iconset"
 OUTPUT_ICON="$PROJECT_ROOT/Resources/AppIcon.icns"
+GENERATED_ICON="$PROJECT_ROOT/.build/AppIcon.generated.icns"
 ASSET_ICONSET_DIR="$PROJECT_ROOT/Resources/AppIcon.xcassets/AppIcon.appiconset"
 
 if [[ ! -f "$SOURCE_ICON" ]]; then
@@ -42,9 +43,16 @@ for variant in "${icon_variants[@]}"; do
         "$ASSET_ICONSET_DIR/$filename"
 done
 
-/usr/bin/iconutil \
+if /usr/bin/iconutil \
     -c icns \
     "$ICONSET_DIR" \
-    -o "$OUTPUT_ICON"
-
-print "Built $OUTPUT_ICON"
+    -o "$GENERATED_ICON"; then
+    /usr/bin/ditto "$GENERATED_ICON" "$OUTPUT_ICON"
+    print "Built $OUTPUT_ICON"
+elif [[ -f "$OUTPUT_ICON" ]]; then
+    /bin/rm -f "$GENERATED_ICON"
+    print -u2 "iconutil could not create an icns file; retained $OUTPUT_ICON"
+else
+    print -u2 "iconutil could not create $OUTPUT_ICON"
+    exit 1
+fi

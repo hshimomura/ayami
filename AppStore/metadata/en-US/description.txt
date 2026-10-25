@@ -1,4 +1,4 @@
-MD Viewer: Reading Window is a focused, read-only Markdown viewer built for macOS 26.
+MD Viewer: Reading Window is a focused, read-only Markdown viewer built for macOS 26 and later.
 
 Open .md files and read them as clean, structured documents without switching into an editor. Each document opens in its own window by default, with an option to add files as native macOS tabs. A single command arranges open documents side by side for comparison.
 
