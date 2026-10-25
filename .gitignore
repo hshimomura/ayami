@@ -5,6 +5,9 @@ dist/
 AppStore/Screenshots/*.jpg
 AppStore/Screenshots/*.jpeg
 AppStore/Screenshots/*.png
+AppStore/Screenshots/**/*.jpg
+AppStore/Screenshots/**/*.jpeg
+AppStore/Screenshots/**/*.png
 AppStore/private/
 .env
 .env.*

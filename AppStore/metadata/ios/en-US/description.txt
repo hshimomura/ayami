@@ -1,0 +1,22 @@
+Read Markdown quietly.
+
+Ayami is a read-only Markdown viewer for iPhone and iPad. Open .md and .markdown documents from Files and read headings, paragraphs, tables, and code as clean, structured pages.
+
+FOCUS ON READING
+No editor, account, or sign-in. Viewing a document never rewrites the original Markdown file.
+
+FIND YOUR PLACE
+Jump to a section from the heading outline. On iPhone, open the outline when you need it. On iPad, keep it beside the document.
+
+READ AT YOUR OWN SIZE
+Adjust text size from 80% to 160% with the Reading Settings slider. Headings, paragraphs, tables, code, and Mermaid diagrams update immediately. Your choice is saved on the device, and system text-size settings remain supported.
+
+MERMAID, OFFLINE
+Render Mermaid diagrams with the engine included in the app. No additional installation, CDN, account, or document upload to a cloud service is required.
+
+USE YOUR EXISTING DOCUMENTS
+Choose Markdown documents from Files, including on-device storage, iCloud Drive, and compatible file providers. iPad also supports system-managed multiple windows. Reopen a document if needed after another app or file provider changes it.
+
+Requires iOS or iPadOS 18 or later. A Mac edition is also available. Native Mac tabs, side-by-side window arrangement, Live Reload, printing, and PDF export are Mac-only features.
+
+Free and open source under the MIT License. No ads, in-app purchases, or tracking.

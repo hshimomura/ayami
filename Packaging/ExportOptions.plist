@@ -12,5 +12,7 @@
 	<string>ZLX73742D3</string>
 	<key>uploadSymbols</key>
 	<true/>
+	<key>manageAppVersionAndBuildNumber</key>
+	<false/>
 </dict>
 </plist>

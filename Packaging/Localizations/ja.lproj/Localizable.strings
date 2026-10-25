@@ -5,6 +5,9 @@
 "Reading Settings" = "表示設定";
 "Done" = "完了";
 "Contents" = "目次";
+"Toggle Contents" = "目次の表示を切り替える";
 "Read Only" = "読み取り専用";
 "Files" = "ファイル";
 "Applies immediately to all open documents on this device. System text size is also respected. Printing is unchanged." = "この端末で開いているすべての文書にすぐ反映します。システムの文字サイズ設定にも従います。印刷サイズは変更しません。";
+"Applies immediately to all open documents on this device. System text size is also respected." = "この端末で開いているすべての文書にすぐ反映します。システムの文字サイズ設定にも従います。";
+"## Ayami\n\nRead Markdown quietly.\n\n- Headings, paragraphs and code scale together." = "## あやみ\n\nMarkdownを、静かに読む。\n\n- 見出し、本文、コードをまとめて調整できます。";

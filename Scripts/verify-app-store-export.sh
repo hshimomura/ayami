@@ -70,7 +70,7 @@ app_category="$(/usr/libexec/PlistBuddy \
 [[ "$bundle_identifier" == "io.github.hshimomura.MDViewer" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$INFO_PLIST")" == "Ayami" ]]
 [[ "$marketing_version" == "1.3" ]]
-[[ "$build_version" == "17" ]]
+[[ "$build_version" == "18" ]]
 [[ "$minimum_system" == "26.0" ]]
 [[ "$document_role" == "Viewer" ]]
 [[ "$markdown_type" == "net.daringfireball.markdown" ]]
@@ -119,6 +119,6 @@ done
 package_checksum="$(/usr/bin/shasum -a 256 "$PACKAGE_PATH" |
     /usr/bin/awk '{print $1}')"
 
-print "Verified Ayami 1.3 (17) App Store export."
+print "Verified Ayami 1.3 (18) App Store export."
 print "Architectures: $architectures"
 print "Package SHA-256: $package_checksum"

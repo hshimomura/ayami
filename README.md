@@ -61,7 +61,7 @@ open Ayami.xcodeproj
 The generated `Ayami.xcodeproj` contains macOS and iPhone/iPad apps and test targets.
 The App Store scheme uses bundle identifier `io.github.hshimomura.MDViewer`,
 App Sandbox, hardened runtime, privacy manifest, Productivity category, and
-version 1.3 (build 17). Select `Ayami` for Mac or `AyamiIOS` for iPhone/iPad.
+version 1.3 (build 18). Select `Ayami` for Mac or `AyamiIOS` for iPhone/iPad.
 The Bundle ID is unchanged so existing installations remain the same app.
 See [repository naming and migration](docs/repository-rename.md) for the Ayami
 source layout, schemes, resource bundles, and compatibility identifiers.
@@ -158,9 +158,9 @@ trusted release machine.
 
 ## Privacy and support
 
-- Product page: https://hshimomura.github.io/Ayami/
-- Privacy policy: https://hshimomura.github.io/Ayami/privacy
-- Support: https://hshimomura.github.io/Ayami/support
+- Product page: https://hshimomura.github.io/ayami/
+- Privacy policy: https://hshimomura.github.io/ayami/privacy
+- Support: https://hshimomura.github.io/ayami/support
 
 ## iPhone and iPad
 

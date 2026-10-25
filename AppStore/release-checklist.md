@@ -9,6 +9,8 @@ operations.
 - [ ] Confirm the release tag points to the intended source commit.
 - [ ] Run `swift test`.
 - [ ] Run `AyamiIOS` unit and UI tests on iPhone and iPad destinations.
+- [ ] Run the same 1.3 tests on both iPhone Duo displays. Check document
+      continuity, outline controls, settings, and physical rotation in Device Hub.
 - [ ] Test the Files document browser and file-provider updates on real devices.
 - [ ] Verify text-size persistence, reset, Dynamic Type, and diagram reflow.
 - [ ] Review `Package.resolved` and `swift package show-dependencies`.
@@ -22,7 +24,9 @@ operations.
 - [ ] Verify Ayami / あやみ display names and the new bright reading-stand icon.
 - [ ] Replace screenshots from the former MD Viewer release.
 - [ ] Verify the Marketing, Support, and Privacy Policy URLs.
-- [ ] Use only public `Sample.md` content in screenshots.
+- [ ] Use only public `Sample.md` or `AppStore/Samples/` content in screenshots.
+- [ ] Capture the production app, not the separate UI-test host. Check each
+      locale, device size, opaque image format, and finished Mermaid rendering.
 - [ ] Confirm no review status, contact details, submission identifiers, or
       private documents are tracked.
 
@@ -32,6 +36,10 @@ operations.
 - [ ] Archive the `Ayami` scheme for Any Mac.
 - [ ] Export the Mac App Store package.
 - [ ] Run `./Scripts/verify-app-store-export.sh`.
+- [ ] Run `./Scripts/archive-ios-app-store.sh` and
+      `./Scripts/verify-ios-app-store-export.sh`.
+- [ ] Confirm both archives use the same marketing version and build number;
+      keep `manageAppVersionAndBuildNumber` disabled in export/upload options.
 - [ ] Record source and release checksums with the GitHub Release.
 
 App Store Connect remains the source of truth for upload, review, availability,

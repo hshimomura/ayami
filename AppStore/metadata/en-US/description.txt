@@ -1,4 +1,4 @@
-Ayami is a focused, read-only Markdown viewer built for macOS 26 and later.
+Ayami is a quiet, read-only Markdown viewer for Mac, iPhone, and iPad. Open your documents as clean, structured pages. This Mac edition requires macOS 26 or later.
 
 Open .md files and read them as clean, structured documents without switching into an editor. Each document opens in its own window by default, with an option to add files as native macOS tabs. A single command arranges open documents side by side for comparison.
 

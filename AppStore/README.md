@@ -6,23 +6,25 @@ submission state.
 
 ## Public app record
 
-- Planned name: `あやみ — Markdownビューア` / `Ayami: Markdown Reader`
+- Store name: `あやみ — Markdownビューア` / `Ayami: Markdown Reader`
 - Installed name: `あやみ` (Japanese) / `Ayami` (other languages)
 - Bundle ID: `io.github.hshimomura.MDViewer`
 - Platforms in source: macOS, iOS (iPhone and iPad)
 - Primary category: Productivity
 - Price: Free
 - Version: `1.3`
-- Build: `17`
+- Build: `18`
 - Copyright: `2026 Hideaki Shimomura`
-- Support URL: `https://hshimomura.github.io/Ayami/support`
-- Marketing URL: `https://hshimomura.github.io/Ayami/`
-- Privacy Policy URL: `https://hshimomura.github.io/Ayami/privacy`
+- Support URL: `https://hshimomura.github.io/ayami/support`
+- Marketing URL: `https://hshimomura.github.io/ayami/`
+- Privacy Policy URL: `https://hshimomura.github.io/ayami/privacy`
 
 ## Tracked public material
 
 - English (U.S.) product-page text in `metadata/en-US`
 - Japanese product-page text in `metadata/ja`
+- iPhone/iPad-specific descriptions and first-release notes in `metadata/ios`
+- Public screenshot sample documents in `Samples`
 - Screenshot requirements in `Screenshots/README.md`
 - Reproducible source and build checks in `release-checklist.md`
 

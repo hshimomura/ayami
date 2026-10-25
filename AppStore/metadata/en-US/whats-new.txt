@@ -1,4 +1,5 @@
 • Renamed MD Viewer to Ayami.
+• Added an iPhone and iPad edition for opening Markdown documents from Files.
 • Added a text-size slider in Reading Settings, with a saved 80–160% reading scale.
 • Introduced a brighter icon inspired by a Japanese reading stand.
 • Updated the Mermaid diagram engine while preserving offline rendering.

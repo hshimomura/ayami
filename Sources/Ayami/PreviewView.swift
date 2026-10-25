@@ -45,6 +45,23 @@ struct PreviewView: View {
       } else if usesCompactLayout {
         documentPreview
       } else {
+        #if os(iOS)
+        // DocumentGroup owns the navigation container. Nesting a second
+        // NavigationSplitView duplicates document bars after Duo display changes.
+        HStack(spacing: 0) {
+          if isContentsVisible {
+            OutlineSidebar(
+              headings: model.content.headings,
+              currentSectionID: currentSectionID
+            ) { sectionID in
+              scrollRequest = OutlineScrollRequest(sectionID: sectionID)
+            }
+            .frame(width: 230)
+            Divider()
+          }
+          documentPreview
+        }
+        #else
         NavigationSplitView(columnVisibility: $splitViewVisibility) {
           OutlineSidebar(
             headings: model.content.headings,
@@ -60,10 +77,7 @@ struct PreviewView: View {
         } detail: {
           documentPreview
         }
-        #if os(macOS)
-          .navigationSplitViewStyle(.prominentDetail)
-        #else
-          .navigationSplitViewStyle(.balanced)
+        .navigationSplitViewStyle(.prominentDetail)
         #endif
       }
     }
@@ -94,11 +108,19 @@ struct PreviewView: View {
     #endif
     .toolbar {
       #if os(iOS)
-        if usesCompactLayout && !model.content.headings.isEmpty {
+        if !model.content.headings.isEmpty {
           ToolbarItem(placement: .primaryAction) {
-            Button("Contents", systemImage: "list.bullet.indent") {
-              showsOutline = true
+            Button {
+              if usesCompactLayout { showsOutline = true }
+              else { toggleContents() }
+            } label: {
+              if usesCompactLayout {
+                Label("Contents", systemImage: "list.bullet.indent")
+              } else {
+                Label("Toggle Contents", systemImage: "sidebar.left")
+              }
             }
+            .accessibilityIdentifier(usesCompactLayout ? "outlineSheetButton" : "outlineSidebarButton")
           }
         }
       #endif

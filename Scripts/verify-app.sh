@@ -42,7 +42,7 @@ app_category="$(/usr/libexec/PlistBuddy \
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP_PATH/Contents/Info.plist")" == "Ayami" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$APP_PATH/Contents/Resources/ja.lproj/InfoPlist.strings")" == "あやみ" ]]
 [[ "$marketing_version" == "1.3" ]]
-[[ "$build_version" == "17" ]]
+[[ "$build_version" == "18" ]]
 [[ "$app_category" == "public.app-category.productivity" ]]
 [[ -f "$APP_PATH/Contents/Resources/AppIcon.icns" ]]
 [[ -f "$APP_PATH/Contents/Resources/PrivacyInfo.xcprivacy" ]]
@@ -51,4 +51,4 @@ app_category="$(/usr/libexec/PlistBuddy \
 [[ -f \
     "$APP_PATH/Contents/Resources/ThirdPartyLicenses/Mermaid-LICENSE.txt" ]]
 
-print "Verified Ayami 1.3 (17), read-only registration, Productivity category, privacy manifest, app icon, and offline Mermaid runtime."
+print "Verified Ayami 1.3 (18), read-only registration, Productivity category, privacy manifest, app icon, and offline Mermaid runtime."

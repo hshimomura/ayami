@@ -43,15 +43,18 @@ struct ReadingSettingsView: View {
       } header: {
         Text("Reading")
       } footer: {
+        #if os(macOS)
         Text(
           "Applies immediately to all open documents on this device. System text size is also respected. Printing is unchanged."
         )
+        #else
+        Text("Applies immediately to all open documents on this device. System text size is also respected.")
+        #endif
       }
 
       Section("Preview") {
         StructuredText(
-          markdown:
-            "## Ayami\n\nRead Markdown quietly.\n\n- Headings, paragraphs and code scale together."
+          markdown: String(localized: "## Ayami\n\nRead Markdown quietly.\n\n- Headings, paragraphs and code scale together.")
         )
         .textual.structuredTextStyle(.gitHub)
         .textual.fontScale(CGFloat(fontScale))

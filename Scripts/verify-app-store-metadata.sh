@@ -49,4 +49,19 @@ for locale in "$locales[@]"; do
     done
 done
 
+for locale in "$locales[@]"; do
+    for field in promotional-text description whats-new; do
+        file_path="$METADATA_ROOT/ios/$locale/$field.txt"
+        [[ -f "$file_path" ]] || { print -u2 "Missing metadata file: $file_path"; exit 1; }
+        content="$(<"$file_path")"
+        character_count="${#content}"
+        maximum="${limits[$field]}"
+        (( character_count > 0 && character_count <= maximum )) || {
+            print -u2 "Invalid iOS metadata length: $locale/$field ($character_count/$maximum)"
+            exit 1
+        }
+        print "ios/$locale/$field: $character_count/$maximum"
+    done
+done
+
 print "Verified App Store metadata character limits for en-US and ja."

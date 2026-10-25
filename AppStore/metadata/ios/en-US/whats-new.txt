@@ -1,0 +1,5 @@
+Introducing Ayami for iPhone and iPad.
+• Open Markdown documents from Files in a read-only viewer.
+• Read with a heading outline, tables, code, and offline Mermaid diagrams.
+• Save your preferred text size from 80% to 160%.
+• Enjoy layouts adapted to iPhone and iPad.
