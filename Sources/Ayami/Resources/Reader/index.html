@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ayami-reader:; style-src ayami-reader: 'unsafe-inline'; img-src ayami-asset: data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none';">
+  <link rel="stylesheet" href="ayami-reader://bundle/reader.css">
+  <script defer src="ayami-reader://bundle/markdown-it.min.js"></script>
+  <script defer src="ayami-reader://bundle/purify.min.js"></script>
+  <script defer src="ayami-reader://bundle/prism.js"></script>
+  <script defer src="ayami-reader://bundle/mermaid.min.js"></script>
+  <script defer src="ayami-reader://bundle/reader.js"></script>
+</head>
+<body>
+  <article id="document" aria-label="Markdown"></article>
+  <dialog id="diagram-dialog" aria-label="Mermaid">
+    <header><button id="diagram-minus" aria-label="Zoom out">−</button><output id="diagram-scale">100%</output><button id="diagram-plus" aria-label="Zoom in">+</button><button id="diagram-fit"></button><button id="diagram-close"></button></header>
+    <div id="diagram-scroll"><div id="diagram-expanded"></div></div>
+  </dialog>
+</body>
+</html>

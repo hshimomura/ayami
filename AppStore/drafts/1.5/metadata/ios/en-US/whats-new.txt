@@ -1,0 +1,6 @@
+• Search text, code, and tables with match counts and next/previous navigation.
+• Add temporary pink marks, remove individual marks, or clear them all. Marks disappear when the document closes.
+• View local images and follow related documents and heading links within accessible folders.
+• Enlarge Mermaid diagrams and copy code blocks.
+• Open HTML, TXT, JSON, C, and other text files.
+• Explore the bundled technical sample and reading guide.

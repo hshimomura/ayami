@@ -3,19 +3,35 @@ import SwiftUI
 
 @main
 struct AyamiMacApp: App {
+  private let showsWelcomeAtLaunch: Bool
+
   init() {
     NSWindow.allowsAutomaticWindowTabbing = false
+    showsWelcomeAtLaunch = ReadingPreferences.shouldShowWelcomeAtLaunch()
   }
 
   var body: some Scene {
+    Window("Welcome to Ayami", id: "welcome") {
+      ReaderWelcomeView()
+    }
+    .windowResizability(.contentSize)
+    .defaultLaunchBehavior(showsWelcomeAtLaunch ? .presented : .suppressed)
+    .restorationBehavior(.disabled)
+    .commands {
+      ReaderWindowCommands()
+    }
+
     DocumentGroup(viewing: MarkdownDocument.self) { configuration in
       PreviewView(
         document: configuration.document,
         fileURL: configuration.fileURL
       )
     }
+    .defaultLaunchBehavior(showsWelcomeAtLaunch ? .suppressed : .automatic)
     .commands {
       OpenMarkdownFileCommands()
+      DocumentReadingCommands()
+      ReaderHelpCommands()
 
       CommandGroup(replacing: .saveItem) {
         Button("Close Tab or Window") {
@@ -33,7 +49,7 @@ struct AyamiMacApp: App {
       }
 
       CommandGroup(after: .windowArrangement) {
-        Button("Arrange Markdown Documents Side by Side") {
+        Button("Arrange Documents Side by Side") {
           MarkdownWindowManager.arrangeDocumentsSideBySide()
         }
       }
@@ -42,6 +58,37 @@ struct AyamiMacApp: App {
     Settings {
       ReadingSettingsView()
         .frame(width: 460, height: 440)
+    }
+  }
+}
+
+private struct ReaderWindowCommands: Commands {
+  @Environment(\.openWindow) private var openWindow
+
+  var body: some Commands {
+    CommandGroup(before: .windowList) {
+      Button("Show Welcome Window") {
+        openWindow(id: "welcome")
+      }
+      .accessibilityIdentifier("showWelcomeWindow")
+    }
+  }
+}
+
+private struct ReaderHelpCommands: Commands {
+  @Environment(\.openWindow) private var openWindow
+  @Environment(\.openDocument) private var openDocument
+
+  var body: some Commands {
+    CommandGroup(replacing: .help) {
+      Button("Welcome to Ayami") { openWindow(id: "welcome") }
+      Button("Open Technical Sample") {
+        guard let url = TechnicalSample.url else { return }
+        Task { @MainActor in
+          do { try await openDocument(at: url) }
+          catch { NSAlert(error: error).runModal() }
+        }
+      }
     }
   }
 }
@@ -63,7 +110,7 @@ private struct OpenMarkdownFileCommands: Commands {
     }
   }
 
-  private func openMarkdownFile(as destination: OpenDestination) {
+  private func openMarkdownFile(as destination: DocumentLinkDestination) {
     let startingWindow =
       destination == .tab
       ? MarkdownWindowManager.activeDocumentWindow
@@ -75,10 +122,10 @@ private struct OpenMarkdownFileCommands: Commands {
       : "Open File"
     panel.message =
       destination == .tab
-      ? "Select a Markdown file to add to the current window."
-      : "Select a Markdown file to open in a new window."
+      ? "Select a text document to add to the current window."
+      : "Select a text document to open in a new window."
     panel.prompt = "Open"
-    panel.allowedContentTypes = [.markdownDocument]
+    panel.allowedContentTypes = MarkdownDocument.readableContentTypes
     panel.allowsMultipleSelection = false
     panel.canChooseDirectories = false
 
@@ -104,11 +151,6 @@ private struct OpenMarkdownFileCommands: Commands {
       MarkdownWindowManager.mergeAsTabs([startingWindow, openedWindow])
     }
   }
-}
-
-private enum OpenDestination {
-  case window
-  case tab
 }
 
 @MainActor
@@ -230,10 +272,27 @@ enum MarkdownWindowManager {
   }
 
   static func documentWindow(for fileURL: URL) -> NSWindow? {
-    let standardizedURL = fileURL.standardizedFileURL
+    let standardizedURL = fileURL.standardizedFileURL.resolvingSymlinksInPath()
     return NSApp.windows.first { window in
       isDocumentWindow(window)
-        && window.representedURL?.standardizedFileURL == standardizedURL
+        && window.representedURL?.standardizedFileURL.resolvingSymlinksInPath() == standardizedURL
+    }
+  }
+
+  static func placeLinkedDocument(at url: URL, from origin: NSWindow?, destination: DocumentLinkDestination) async {
+    // DocumentGroup may return before SwiftUI attaches the document window.
+    for _ in 0..<40 {
+      if let opened = documentWindow(for: url) {
+        if destination == .tab, let origin, origin !== opened {
+          mergeAsTabs([origin, opened])
+        } else if destination == .window {
+          if let group = opened.tabGroup, group.windows.count > 1 { group.removeWindow(opened) }
+          opened.makeKeyAndOrderFront(nil)
+        }
+        return
+      }
+      try? await Task.sleep(for: .milliseconds(25))
+      if Task.isCancelled { return }
     }
   }
 
@@ -245,6 +304,7 @@ enum MarkdownWindowManager {
     guard let anchor = uniqueWindows.first else { return }
 
     for window in uniqueWindows.dropFirst() where window !== anchor {
+      guard anchor.tabGroup?.windows.contains(where: { $0 === window }) != true else { continue }
       anchor.addTabbedWindow(window, ordered: .above)
     }
 

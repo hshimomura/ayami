@@ -1,31 +1,38 @@
-Ayami is a quiet, read-only Markdown viewer for Mac, iPhone, and iPad. Open your documents as clean, structured pages. This Mac edition requires an Apple silicon Mac running macOS 26 or later. Intel Macs are not supported.
+A quiet place for README files and design docs.
 
-Open .md files and read them as clean, structured documents without switching into an editor. Each document opens in its own window by default, with an option to add files as native macOS tabs. A single command arranges open documents side by side for comparison.
+Ayami is a read-only Markdown viewer that turns source into a clear reading view. Search for a passage, mark it in pink, and inspect diagrams and code at your own pace. Use it to review project documentation, technical notes, and AI-generated Markdown.
 
-LIVE RELOAD
-Keep using your preferred editor. Ayami detects ordinary saves and atomic file replacements, then refreshes the reading window automatically.
+FIND YOUR PLACE
+Press Command-F to search text, code, and tables. See the match count and move between results, or jump to a chapter from the outline.
 
-ACTIVE CHAPTER OUTLINE
-The optional Contents sidebar lists headings and highlights the section currently being read. Select a heading to move directly to it.
+MARK A PASSAGE AS YOU READ
+Select text to add a pink mark. Remove one mark or clear them all. Marks disappear when the document closes and are never saved to the source or a PDF.
 
-MERMAID, OFFLINE
-Mermaid fenced code blocks render locally with the runtime included in the app. There is no setup, package installation, CDN, account, or cloud service.
+READ DIAGRAMS WITH THE DOCUMENT
+View Mermaid architecture and sequence diagrams alongside the text. Enlarge complex diagrams to inspect details, and copy code without Markdown fences. The rendering engine is included in the app, so no additional installation or internet connection is needed.
 
-NATIVE MAC EXPERIENCE
-Use Command-O to open a file in a new window, Command-Option-O to open one in a new tab, and Command-W to close the active tab or window. Window size is restored across launches, and appearance follows the system.
+FOLLOW YOUR PROJECT
+View local images and follow related documents and heading links within the folders you allow. Document links open in a new tab by default, with a setting for separate windows.
 
-PRINT AND PDF
-Open an A4 or Letter PDF preview from Document Actions or Command-P, then save or print Japanese text, tables, and Mermaid diagrams. Invalid diagrams or rendering failures show a warning and readable source instead. Output uses its own layout; it does not reproduce images or the screen layout exactly.
+KEEP YOUR PREFERRED EDITOR
+Edit in the app you already use. On Mac, Ayami detects external saves and refreshes the reading view while preserving your reading position. Open documents in native tabs or separate windows, and arrange them side by side for comparison.
 
-FINDER QUICK LOOK
-Select a Markdown file in Finder and press Space to preview its contents and Mermaid diagrams in a continuous scrolling view. Page breaks apply to printing and PDF export. If another Markdown Quick Look extension is installed, check the enabled extensions in System Settings.
+PREVIEW FROM FINDER
+Select a Markdown file and press Space to preview its text and Mermaid diagrams with Quick Look. Read continuously without paper page breaks. Open Quick Look settings from the in-app guide.
 
-READ AT YOUR OWN SIZE
-Adjust text size from 80% to 160% with a slider in Reading Settings. Your preference is remembered and applies immediately to all open documents, including Mermaid diagrams.
+READ OTHER TEXT FILES, TOO
+Open HTML, TXT, JSON, C, and other text files alongside Markdown. HTML text and tables are rendered without running document scripts. Images are supported from permitted local files.
 
-ON-DEVICE DOCUMENT HIGHLIGHTS (PROTOTYPE)
-When Apple Intelligence is available, generate highlights of the open document in Japanese or English using Apple's on-device model only. Documents are not uploaded or written back to the original file. Apple Intelligence must be enabled, its model ready, and the language supported. Availability and generation can fail depending on the environment. AI output may be incorrect; check the original document. Reading, printing, and PDF export remain available without AI.
+MAKE READING COMFORTABLE
+Adjust text size from 80% to 160%, with your preference saved on the device. Light and dark appearance follows your Mac's system settings.
 
-Document viewing and output are read-only. No editor, ads, tracking, or account registration.
+PRINT AND SAVE PDFS
+Save or print text, tables, and Mermaid diagrams on A4 or Letter pages. Output uses its own layout and does not reproduce images or the reading view exactly. Non-Markdown files are printed as literal source text.
 
-Free and open source under the MIT License.
+LEAVE THE ORIGINAL INTACT
+Viewing never rewrites the Markdown file or uploads your documents. No account registration, ads, or tracking. Ayami is open source under the MIT License.
+
+REQUIREMENTS
+An Apple silicon Mac with macOS 26 or later. An iPhone and iPad edition is also available.
+
+Document Highlights with Apple Intelligence is an optional prototype. It requires a compatible device and language, Apple Intelligence enabled, and a prepared model. Availability and generation can fail. Check results against the original. Reading, printing, and PDF export work without AI.

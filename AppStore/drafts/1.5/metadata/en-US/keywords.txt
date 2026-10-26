@@ -1,0 +1,1 @@
+readme,documentation,mermaid,diagrams,highlight,search,code,pdf,html,json,text,developer,preview

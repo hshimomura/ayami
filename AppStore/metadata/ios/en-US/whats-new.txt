@@ -1,7 +1,6 @@
-Introducing Ayami for iPhone and iPad.
-• Open Markdown documents from Files in a read-only viewer.
-• Read with a heading outline, tables, code, and offline Mermaid diagrams.
-• Save your preferred text size from 80% to 160%.
-• Enjoy layouts adapted to iPhone and iPad.
-• Preview A4/Letter pages, save PDFs, and print Mermaid diagrams.
-• Try on-device Document Highlights with Apple Intelligence. Requires a compatible environment on iOS/iPadOS 26 or later; availability or generation may fail.
+• Search text, code, and tables with match counts and next/previous navigation.
+• Add temporary pink marks, remove individual marks, or clear them all. Marks disappear when the document closes.
+• View local images and follow related documents and heading links within accessible folders.
+• Enlarge Mermaid diagrams and copy code blocks.
+• Open HTML, TXT, JSON, C, and other text files.
+• Explore the bundled technical sample and reading guide.

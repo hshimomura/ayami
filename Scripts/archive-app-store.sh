@@ -3,8 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-ARCHIVE_PATH="$PROJECT_ROOT/dist/1.4/Ayami-AppStore.xcarchive"
-EXPORT_PATH="$PROJECT_ROOT/dist/1.4/AppStoreExport"
+ARCHIVE_PATH="$PROJECT_ROOT/dist/1.5/Ayami-AppStore.xcarchive"
+EXPORT_PATH="$PROJECT_ROOT/dist/1.5/AppStoreExport"
 EXPORT_OPTIONS="$PROJECT_ROOT/Packaging/ExportOptions.plist"
 
 cd "$PROJECT_ROOT"

@@ -61,10 +61,7 @@ final class PreviewDocumentModel {
 
         do {
           let data = try Data(contentsOf: fileURL, options: [.mappedIfSafe])
-          guard let newText = String(data: data, encoding: .utf8) else {
-            reloadState = .unavailable
-            continue
-          }
+          let newText = try TextFileContent.decode(data)
           guard newText != text else {
             reloadState = .watching
             continue

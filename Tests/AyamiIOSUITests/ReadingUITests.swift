@@ -6,6 +6,80 @@ final class ReadingUITests: XCTestCase {
   }
 
   @MainActor
+  func testDocumentFindNavigatesFormattedText() {
+    let app = XCUIApplication()
+    app.launchArguments = ["--ui-testing-sample", "--ui-testing-reset", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+    app.launch()
+    let find = app.buttons["findDocument"]
+    XCTAssertTrue(find.waitForExistence(timeout: 15))
+    find.tap()
+    let field = app.textFields["documentFindField"]
+    XCTAssertTrue(field.waitForExistence(timeout: 10))
+    field.tap()
+    field.typeText("Markdown")
+    let count = app.staticTexts["documentFindCount"]
+    XCTAssertTrue(count.waitForExistence(timeout: 10))
+    XCTAssertEqual(count.label, "1 / 2")
+    app.buttons["findNext"].tap()
+    XCTAssertEqual(count.label, "2 / 2")
+    app.buttons["findPrevious"].tap()
+    XCTAssertEqual(count.label, "1 / 2")
+    app.buttons["closeFind"].tap()
+    XCTAssertTrue(field.waitForNonExistence(timeout: 10))
+  }
+
+  @MainActor
+  func testGuideOpensTheBundledTechnicalSample() {
+    let app = XCUIApplication()
+    app.launchArguments = ["--ui-testing-sample", "--ui-testing-reset", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+    app.launch()
+    XCTAssertTrue(app.buttons["documentActions"].waitForExistence(timeout: 15))
+    app.buttons["documentActions"].tap()
+    app.buttons["Reading and Quick Look Guide"].tap()
+    let sample = app.buttons["openTechnicalSample"]
+    XCTAssertTrue(sample.waitForExistence(timeout: 10))
+    sample.tap()
+    XCTAssertTrue(app.staticTexts["Notification Service — Design Review"].waitForExistence(timeout: 15), app.debugDescription)
+    let contents = app.buttons.matching(identifier: "outlineSheetButton").allElementsBoundByIndex.last(where: { $0.isHittable })
+    if let contents { contents.tap() }
+    app.buttons["3. Related documents and images"].tap()
+    let related = app.links["Jump to incident response"]
+    XCTAssertTrue(related.waitForExistence(timeout: 10))
+    related.tap()
+    XCTAssertTrue(app.staticTexts["Notification Service — Operations"].waitForExistence(timeout: 15), app.debugDescription)
+  }
+
+  @MainActor
+  func testRelatedJSONFileOpensAsLiteralText() {
+    let app = XCUIApplication()
+    app.launchArguments = ["--ui-testing-sample", "--ui-testing-reset", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+    app.launch()
+    XCTAssertTrue(app.buttons["documentActions"].waitForExistence(timeout: 15))
+    app.buttons["documentActions"].tap()
+    app.buttons["Reading and Quick Look Guide"].tap()
+    let sample = app.buttons["openTechnicalSample"]
+    XCTAssertTrue(sample.waitForExistence(timeout: 10))
+    sample.tap()
+    XCTAssertTrue(app.staticTexts["Notification Service — Design Review"].waitForExistence(timeout: 15))
+    let contents = app.buttons.matching(identifier: "outlineSheetButton").allElementsBoundByIndex.last(where: { $0.isHittable })
+    if let contents { contents.tap() }
+    app.buttons["5. HTML and source files"].tap()
+    let related = app.links["Configuration (JSON)"]
+    XCTAssertTrue(related.waitForExistence(timeout: 10))
+    related.tap()
+    let source = app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "public-notification-sample")).firstMatch
+    XCTAssertTrue(source.waitForExistence(timeout: 15), app.debugDescription)
+    // Syntax highlighting can expose individual tokens as separate AX text nodes.
+    let literalHTML = app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "<strong>source text</strong>")).firstMatch
+    XCTAssertTrue(literalHTML.waitForExistence(timeout: 10), app.debugDescription)
+    XCTAssertTrue(app.buttons["Copy Code"].exists)
+    let screenshot = XCTAttachment(screenshot: app.screenshot())
+    screenshot.name = "Ayami linked JSON as literal source"
+    screenshot.lifetime = .keepAlways
+    add(screenshot)
+  }
+
+  @MainActor
   func testReadingSettingsPersistAndReset() throws {
     let app = XCUIApplication()
     app.launchArguments = [

@@ -4,6 +4,8 @@ import Textual
 struct ReadingSettingsView: View {
   @AppStorage(ReadingPreferences.fontScaleKey)
   private var storedFontScale = ReadingPreferences.defaultFontScale
+  @AppStorage(ReadingPreferences.linkDestinationKey)
+  private var storedLinkDestination = ReadingPreferences.defaultLinkDestination.rawValue
 
   private var fontScale: Double {
     ReadingPreferences.normalizedFontScale(storedFontScale)
@@ -51,6 +53,23 @@ struct ReadingSettingsView: View {
         Text("Applies immediately to all open documents on this device. System text size is also respected.")
         #endif
       }
+
+      #if os(macOS)
+        Section {
+          Picker("Open Document Links In", selection: Binding(
+            get: { DocumentLinkDestination.resolved(storedLinkDestination) },
+            set: { storedLinkDestination = $0.rawValue }
+          )) {
+            Text("New Tab").tag(DocumentLinkDestination.tab)
+            Text("New Window").tag(DocumentLinkDestination.window)
+          }
+          .accessibilityIdentifier("documentLinkDestination")
+        } header: {
+          Text("Document Links")
+        } footer: {
+          Text("Choose where linked local documents open. Web links open in your browser.")
+        }
+      #endif
 
       Section("Preview") {
         StructuredText(

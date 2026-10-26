@@ -1,0 +1,32 @@
+A quiet place for README files and design docs.
+
+Ayami is a read-only Markdown viewer for iPhone and iPad. Open a document from Files and search for a passage, mark it in pink, and inspect diagrams and code. Use it to review project documentation, technical notes, and AI-generated Markdown.
+
+FIND YOUR PLACE
+Search text, code, and tables, see match counts, and move between results. You can also jump to a chapter from the heading outline. Depending on the window width, the outline appears in a sheet or beside the document.
+
+MARK A PASSAGE AS YOU READ
+Select text to add a pink mark. Remove one mark or clear them all. Marks disappear when the document closes and are never saved to the source or a PDF.
+
+READ DIAGRAMS WITH THE DOCUMENT
+View Mermaid architecture and sequence diagrams alongside the text. Enlarge complex diagrams to inspect details, and copy code without Markdown fences. The rendering engine is included in the app, so no additional installation or internet connection is needed.
+
+FOLLOW RELATED MATERIAL
+View local images and follow related documents and heading links within accessible folders. Open HTML, TXT, JSON, C, and other text files alongside Markdown. Document scripts are not run. Try the bundled technical sample to explore search and diagrams.
+
+MAKE READING COMFORTABLE
+Adjust text size from 80% to 160%, with your preference saved on the device. System text size and light or dark appearance are also supported.
+
+OPEN YOUR EXISTING FILES
+Read documents from on-device storage, iCloud Drive, and compatible file providers. Use multiple windows on iPad. Reopen a document when needed after an external app updates it.
+
+PRINT AND SAVE PDFS
+Save text, tables, and Mermaid diagrams as an A4 or Letter PDF in Files, or print with a compatible printer. Output uses its own layout and does not reproduce images or the reading view exactly. Non-Markdown files are printed as literal source text.
+
+LEAVE THE ORIGINAL INTACT
+Viewing never rewrites the Markdown file or uploads your documents. No account registration, ads, or tracking. Ayami is open source under the MIT License.
+
+REQUIREMENTS
+iOS or iPadOS 18 or later. A Mac edition is also available. Finder Quick Look and Live Reload are Mac features.
+
+On iOS or iPadOS 26 or later, Document Highlights with Apple Intelligence is an optional prototype. It requires a compatible device and language, Apple Intelligence enabled, and a prepared model. Availability and generation can fail. Check results against the original. Reading, printing, and PDF export work without AI.

@@ -1,0 +1,8 @@
+# This is plain text, not a Markdown heading.
+
+通知サービスの運用メモ / Operations note
+
+    Retries: 3
+    Timeout: 5 seconds
+
+HTML remains literal in this text file: <strong>review</strong>

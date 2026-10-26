@@ -5,6 +5,25 @@ Open UTF-8 `.md` and `.markdown` files with a heading outline, adjustable text
 size, and offline Mermaid diagrams. No editor, account, ads, tracking, or
 document-upload service.
 
+## v1.5 開発版
+
+`codex/v1.5`で1.5（build 21）を開発中です。文書内検索、一時的なピンクの蛍光ペン、
+相対画像・関連Markdown、コードコピー、読書位置を保つMac Live Reload、Mermaid拡大表示、
+公開技術文書サンプルとQuick Look案内を追加しています。
+Macの文書リンクは初期設定で新しいタブへ開き、「閲覧設定」で新しいウィンドウにも変更できます。
+Markdown内のHTMLと`.html`を表示し、`.txt`・`.json`・`.c`などは原文のテキストとして開けます。
+UTF-8、BOM付きUTF-16/32、Shift JIS、最大20MiBに対応します。
+マークは文書を閉じると消え、Markdown・PDFへ保存しません。
+起動画面は初回だけ表示し、「次回起動時もこの画面を表示する」にチェックした場合に再表示します。
+技術文書サンプルと起動画面は「ヘルプ」からいつでも開けます。
+すべてのウインドウを閉じた後も「ウインドウ → 起動画面を表示」から戻れます。
+
+- [1.5の実装と検証範囲](docs/validation-1.5.md)
+- Mac検証アプリ: `dist/validation-1.5/Ayami.app`
+- ストア画像の準備: `AppStore/Screenshots/1.5/`（ローカル生成物、Git管理外）
+
+以下の1.4は公開済みソースの説明です。1.5のストア提供を意味しません。
+
 ## Version 1.4
 
 **1.4 (build 20)** adds A4/Letter printing and PDF export on all platforms,
@@ -45,8 +64,10 @@ Check AI output against the original document.
 
 Print/PDF output uses its own layout and supports a subset of Markdown, not
 pixel-identical HTML/CSS or images. Invalid Mermaid and rendering failures show
-a warning and source fallback. Relative local images, a Find navigator,
-editing, an in-app theme picker, and a standalone updater are not implemented.
+a warning and source fallback. In 1.4, relative local images and a Find navigator are not implemented.
+The 1.5 development reader adds both; printing/PDF and Quick Look retain their
+separate 1.4 image limitations. Editing, an in-app theme picker, and a standalone
+updater are not implemented.
 For operation and troubleshooting, see [Support](docs/support.md).
 
 ## Requirements
@@ -76,10 +97,10 @@ identity is required. Use your own team in Xcode when building independently.
 
 ```sh
 ./Scripts/build-validation-app.sh
-open dist/validation-1.4/Ayami.app Sample.md
+open dist/validation-1.5/Ayami.app Sample.md
 ```
 
-This builds 1.4 without overwriting the old `dist/Ayami.app`. Launch the `.app`
+On this branch, this builds the 1.5 development app without replacing `/Applications/Ayami.app`. Launch the `.app`
 through Finder or `open`, not its internal executable. The old SwiftPM bundle
 packager (`build-app.sh`), verifier and launcher are 1.3 helpers; they are not
 the 1.4 build path. SwiftPM does not package the Quick Look extension.
@@ -109,8 +130,9 @@ local environment.
 
 ## Architecture and licenses
 
-SwiftUI `DocumentGroup(viewing:)` owns the document lifecycle. Textual renders
-the reading view, with a restricted local WebKit view for Mermaid. A separate
+SwiftUI `DocumentGroup(viewing:)` owns the document lifecycle. The 1.5 reading view uses a nonpersistent WebKit page with bundled markdown-it,
+Prism and Mermaid. Textual remains for the settings sample and compatibility
+parser coverage. A separate
 CoreText/CoreGraphics pipeline generates PDFs shared by all platforms and the
 Mac Quick Look extension. Highlights use Apple's on-device Foundation Models
 only, without a cloud fallback or changes to the original file.

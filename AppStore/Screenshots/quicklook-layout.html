@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ayami — Quick Look</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1280px; height: 800px; overflow: hidden; }
+  body { background: #eef1f5; color: #172333; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  main { position: relative; width: 1280px; height: 800px; }
+  .copy { position: absolute; left: 44px; top: 174px; width: 300px; }
+  .brand { margin: 0 0 38px; font-size: 19px; font-weight: 600; letter-spacing: .02em; }
+  h1 { font-size: 46px; line-height: 1.35; letter-spacing: -.035em; margin: 0 0 28px; font-weight: 750; white-space: pre-line; }
+  .detail { margin: 0; font-size: 20px; line-height: 1.8; color: #4a586b; }
+  .feature { display: inline-block; margin-top: 36px; font-size: 15px; color: #273b52; padding: 9px 13px; border: 1px solid #c5cdd8; border-radius: 24px; }
+  img { position: absolute; left: 377px; top: 65px; width: 850px; height: auto; border-radius: 15px; box-shadow: 0 18px 44px #17233328; }
+  footer { position: absolute; left: 44px; bottom: 34px; color: #657184; font-size: 14px; }
+</style>
+<main>
+  <div class="copy">
+    <p class="brand"></p>
+    <h1></h1>
+    <p class="detail"></p>
+    <span class="feature">Finder Quick Look</span>
+  </div>
+  <img alt="Actual Finder Quick Look preview rendered by Ayami">
+  <footer>Markdown + Mermaid</footer>
+</main>
+<script>
+  const locale = new URLSearchParams(location.search).get('locale') === 'en-US' ? 'en-US' : 'ja';
+  document.documentElement.lang = locale;
+  const copy = locale === 'ja'
+    ? ['あやみ : Markdownビューア', 'Finderから、\nすぐ読める。', 'スペースキーひとつで、\n文書と図を確認。']
+    : ['Ayami: Markdown Reader', 'A quick look.\nA clear view.', 'Press Space in Finder.\nRead text and diagrams.'];
+  document.querySelector('.brand').textContent = copy[0];
+  document.querySelector('h1').textContent = copy[1];
+  document.querySelector('.detail').innerText = copy[2];
+  document.querySelector('img').src = `1.5/macOS/${locale}/06-quicklook-source.jpg`;
+</script>
+</html>

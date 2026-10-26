@@ -20,6 +20,14 @@
                 <string>net.daringfireball.markdown</string>
             </array>
         </dict>
+
+        <dict>
+            <key>CFBundleTypeName</key><string>Text and Source Document</string>
+            <key>CFBundleTypeRole</key><string>Viewer</string>
+            <key>LSHandlerRank</key><string>None</string>
+            <key>LSItemContentTypes</key>
+            <array><string>public.text</string><string>public.json</string><string>public.source-code</string><string>public.data</string></array>
+        </dict>
     </array>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>

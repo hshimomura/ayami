@@ -1,0 +1,80 @@
+{
+  "version": "1.5",
+  "build": "21",
+  "device": "iPhone Duo",
+  "runtime": "iOS 27.1",
+  "format": "opaque JPEG",
+  "source": "Sources/Ayami/Resources/Reader/Sample/README.md, README-en.md",
+  "images": [
+    {
+      "file": "en-US/01-inner-reading.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 572498,
+      "sha256": "9ee5cb8eccb67ebebd51e77645f9d095389850996fe154c0494645bdaaadbe27"
+    },
+    {
+      "file": "en-US/02-inner-mark.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 575312,
+      "sha256": "dbc959e89107667983fa2f55bd9f6d074ea63017a0ce13a437cf76f0efa2ffb0"
+    },
+    {
+      "file": "en-US/03-inner-find.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 592424,
+      "sha256": "6bdef4ef473db1c40950dbe9f90145091b968aec36a7ac693f3abf6675df8b1b"
+    },
+    {
+      "file": "en-US/04-inner-settings.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 301026,
+      "sha256": "97326aaf11b55afe8f0b1e84f7d03b3eb137fc2960cec7a3912a76dd8c45f783"
+    },
+    {
+      "file": "en-US/05-outer-reading.jpg",
+      "width": 1398,
+      "height": 2034,
+      "bytes": 317040,
+      "sha256": "0fd38ba672df787773fb3cf7ef724b39f4ee9d98a93c22c05620c9ec9cbd60d7"
+    },
+    {
+      "file": "ja/01-inner-reading.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 507803,
+      "sha256": "3367afb1c6b8267a7dbc308e6ec96121446359f66446c0472eeb0d8915239674"
+    },
+    {
+      "file": "ja/02-inner-mark.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 500386,
+      "sha256": "42db2dce8579e593e9359b462bb052a56cc0a4c1719350f634fc847543450eb3"
+    },
+    {
+      "file": "ja/03-inner-find.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 522142,
+      "sha256": "0748546af6c7b2b75e8dd1555cb95cbde4a3fac54d0abfdfc8a537101db15b20"
+    },
+    {
+      "file": "ja/04-inner-settings.jpg",
+      "width": 2007,
+      "height": 2853,
+      "bytes": 291722,
+      "sha256": "b32d53ec292987567fb82fd81ad9102dca13bd803338d60324e6d14e96a93f50"
+    },
+    {
+      "file": "ja/05-outer-reading.jpg",
+      "width": 1398,
+      "height": 2034,
+      "bytes": 258607,
+      "sha256": "42f967e049fd90c22ee1e8f476ea3417ead48801a9109f65ee4b7d98313f10de"
+    }
+  ]
+}

@@ -40,6 +40,47 @@ final class MacOutputUITests: XCTestCase {
   }
 
   @MainActor
+  func testWelcomeCanBeReopenedAfterAllWindowsClose() throws {
+    let app = try openPublicFixture()
+    defer { app.terminate() }
+    // Force the returning-user launch path, with the welcome window suppressed.
+    // These defaults belong only to the isolated UI-test host.
+    app.terminate()
+    app.launchArguments += ["-hasSeenWelcome", "YES", "-showWelcomeAtLaunch", "NO"]
+    app.open(sourceURL)
+    XCTAssertTrue(app.windows.firstMatch.waitForExistence(timeout: 15), app.debugDescription)
+    for window in app.windows.allElementsBoundByIndex {
+      window.buttons[XCUIIdentifierCloseWindow].click()
+    }
+    XCTAssertTrue(app.windows.firstMatch.waitForNonExistence(timeout: 5), app.debugDescription)
+    XCTAssertEqual(app.state, .runningForeground)
+
+    for _ in 0..<2 {
+      app.menuBars.menuBarItems["Window"].click()
+      let reopen = app.menuItems["Show Welcome Window"]
+      XCTAssertTrue(reopen.waitForExistence(timeout: 5), app.debugDescription)
+      XCTAssertTrue(reopen.isEnabled)
+      reopen.click()
+      let welcome = app.windows["Welcome to Ayami"]
+      XCTAssertTrue(welcome.waitForExistence(timeout: 5), app.debugDescription)
+      XCTAssertTrue(welcome.buttons["openTechnicalSample"].exists)
+      keep(welcome.screenshot(), name: "Welcome reopened from Window menu")
+      welcome.buttons[XCUIIdentifierCloseWindow].click()
+      XCTAssertTrue(welcome.waitForNonExistence(timeout: 5))
+    }
+
+    // File > Open must also remain available with no document or welcome window.
+    app.typeKey("o", modifierFlags: .command)
+    let panel = app.dialogs.firstMatch
+    XCTAssertTrue(panel.waitForExistence(timeout: 5), app.debugDescription)
+    goTo(sourceURL.path, in: app)
+    panel.buttons["Open"].click()
+    XCTAssertTrue(app.descendants(matching: .any).matching(identifier: "documentActions")
+      .firstMatch.waitForExistence(timeout: 15), app.debugDescription)
+    XCTAssertEqual(try Data(contentsOf: sourceURL), original)
+  }
+
+  @MainActor
   func testPDFSaveThroughSystemPanelPreservesSource() throws {
     let app = try openPublicFixture()
     defer { app.terminate() }

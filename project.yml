@@ -40,6 +40,9 @@ targets:
       - path: Sources/Ayami/Resources/Mermaid
         buildPhase: resources
         type: folder
+      - path: Sources/Ayami/Resources/Reader
+        buildPhase: resources
+        type: folder
       - path: Resources/AppIcon.xcassets
         buildPhase: resources
       - path: Packaging/Localizations
@@ -61,12 +64,12 @@ targets:
         CODE_SIGN_ENTITLEMENTS: Packaging/Ayami.entitlements
         CODE_SIGN_STYLE: Automatic
         ARCHS: arm64
-        CURRENT_PROJECT_VERSION: "20"
+        CURRENT_PROJECT_VERSION: "21"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info.plist
-        MARKETING_VERSION: "1.4"
+        MARKETING_VERSION: "1.5"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: Ayami
         PRODUCT_NAME: Ayami
@@ -103,6 +106,9 @@ targets:
       - path: Sources/Ayami/Resources/Mermaid
         buildPhase: resources
         type: folder
+      - path: Sources/Ayami/Resources/Reader
+        buildPhase: resources
+        type: folder
       - path: Resources/AppIcon.xcassets
         buildPhase: resources
       - path: Packaging/Localizations
@@ -120,11 +126,11 @@ targets:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "20"
+        CURRENT_PROJECT_VERSION: "21"
         DEVELOPMENT_TEAM: ZLX73742D3
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info-iOS.plist
-        MARKETING_VERSION: "1.4"
+        MARKETING_VERSION: "1.5"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer
         PRODUCT_MODULE_NAME: Ayami
         PRODUCT_NAME: Ayami
@@ -169,6 +175,9 @@ targets:
       - path: Sources/Ayami/Resources/Mermaid
         buildPhase: resources
         type: folder
+      - path: Sources/Ayami/Resources/Reader
+        buildPhase: resources
+        type: folder
       - path: Resources/AppIcon.xcassets
         buildPhase: resources
     dependencies:
@@ -183,8 +192,8 @@ targets:
         DEVELOPMENT_TEAM: ZLX73742D3
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer.UITestHost
         PRODUCT_MODULE_NAME: AyamiUITestHost
-        CURRENT_PROJECT_VERSION: "20"
-        MARKETING_VERSION: "1.4"
+        CURRENT_PROJECT_VERSION: "21"
+        MARKETING_VERSION: "1.5"
         TARGETED_DEVICE_FAMILY: "1,2"
 
   AyamiQuickLook:
@@ -207,12 +216,12 @@ targets:
         APPLICATION_EXTENSION_API_ONLY: YES
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: Packaging/AyamiQuickLook.entitlements
-        CURRENT_PROJECT_VERSION: "20"
+        CURRENT_PROJECT_VERSION: "21"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Packaging/Info-QuickLook.plist
-        MARKETING_VERSION: "1.4"
+        MARKETING_VERSION: "1.5"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.MDViewer.QuickLook
         PRODUCT_MODULE_NAME: AyamiQuickLook
         PRODUCT_NAME: AyamiQuickLook
@@ -231,6 +240,9 @@ targets:
         excludes:
           - Resources
       - path: Sources/Ayami/Resources/Mermaid
+        buildPhase: resources
+        type: folder
+      - path: Sources/Ayami/Resources/Reader
         buildPhase: resources
         type: folder
       - path: Resources/AppIcon.xcassets
@@ -254,12 +266,12 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         CODE_SIGN_ENTITLEMENTS: Packaging/Ayami.entitlements
         CODE_SIGN_STYLE: Automatic
-        CURRENT_PROJECT_VERSION: "20"
+        CURRENT_PROJECT_VERSION: "21"
         DEVELOPMENT_TEAM: ZLX73742D3
         ENABLE_HARDENED_RUNTIME: YES
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Tests/AyamiMacUITests/Host-Info.plist
-        MARKETING_VERSION: "1.4"
+        MARKETING_VERSION: "1.5"
         PRODUCT_BUNDLE_IDENTIFIER: io.github.hshimomura.AyamiMacUITestHost
         PRODUCT_MODULE_NAME: AyamiMacUITestHost
         PRODUCT_NAME: AyamiMacUITestHost

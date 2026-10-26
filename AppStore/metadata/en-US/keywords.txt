@@ -1,1 +1,1 @@
-markdown,viewer,preview,reader,mermaid,documentation,developer,read-only
+readme,documentation,mermaid,diagrams,highlight,search,code,pdf,html,json,text,developer,preview

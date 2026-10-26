@@ -17,7 +17,15 @@
     <key>CFBundleTypeRole</key><string>Viewer</string>
     <key>LSHandlerRank</key><string>None</string>
     <key>LSItemContentTypes</key><array><string>net.daringfireball.markdown</string></array>
-  </dict></array>
+  </dict>
+        <dict>
+            <key>CFBundleTypeName</key><string>Text and Source Document</string>
+            <key>CFBundleTypeRole</key><string>Viewer</string>
+            <key>LSHandlerRank</key><string>None</string>
+            <key>LSItemContentTypes</key>
+            <array><string>public.text</string><string>public.json</string><string>public.source-code</string><string>public.data</string></array>
+        </dict>
+    </array>
   <key>UTImportedTypeDeclarations</key><array><dict>
     <key>UTTypeIdentifier</key><string>net.daringfireball.markdown</string>
     <key>UTTypeConformsTo</key><array><string>public.utf8-plain-text</string></array>
