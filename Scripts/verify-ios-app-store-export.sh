@@ -2,7 +2,7 @@
 set -euo pipefail
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-IPA_PATH="$PROJECT_ROOT/dist/1.4/iOSAppStoreExport/Ayami.ipa"
+IPA_PATH="$PROJECT_ROOT/dist/1.5/iOSAppStoreExport/Ayami.ipa"
 VERIFY_ROOT="$(mktemp -d /private/tmp/ayami-ios-verify.XXXXXX)"
 trap '[[ "$VERIFY_ROOT" == /private/tmp/ayami-ios-verify.* ]] && rm -r -- "$VERIFY_ROOT"' EXIT
 [[ -f "$IPA_PATH" ]] || { print -u2 'Missing App Store IPA'; exit 1; }
@@ -11,8 +11,8 @@ APP_PATH="$VERIFY_ROOT/Payload/Ayami.app"
 INFO_PATH="$APP_PATH/Info.plist"
 codesign --verify --deep --strict "$APP_PATH"
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$INFO_PATH")" == 'io.github.hshimomura.MDViewer' ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$INFO_PATH")" == '1.4' ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$INFO_PATH")" == '20' ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$INFO_PATH")" == '1.5' ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$INFO_PATH")" == '21' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :MinimumOSVersion' "$INFO_PATH")" == '18.0' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleSupportedPlatforms:0' "$INFO_PATH")" == 'iPhoneOS' ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :UIDeviceFamily:0' "$INFO_PATH")" == '1' ]]
@@ -30,11 +30,13 @@ fi
 for resource in PrivacyInfo.xcprivacy THIRD_PARTY_NOTICES.md Mermaid/renderer.html Mermaid/version.json \
   Legal/Textual-LICENSE.txt Legal/SwiftUIMath-LICENSE.txt Legal/ConcurrencyExtras-LICENSE.txt \
   Legal/Prism-LICENSE.txt Legal/Mermaid-LICENSE.txt \
+  Reader/reader.js Reader/markdown-it.min.js Reader/purify.min.js Reader/Sample/README.md \
+  Legal/DOMPurify-LICENSE.txt Legal/markdown-it-LICENSE.txt Legal/markdown-it-dependencies-LICENSE.txt \
   swiftui-math_SwiftUIMath.bundle/mathFonts.bundle/OFL.txt \
   swiftui-math_SwiftUIMath.bundle/mathFonts.bundle/GUST-FONT-LICENSE.txt; do
   [[ -f "$APP_PATH/$resource" ]] || { print -u2 "Missing distributed resource: $resource"; exit 1; }
 done
 [[ "$(plutil -extract version raw -o - "$APP_PATH/Mermaid/version.json")" == '12.2.0' ]]
 [[ "$(shasum -a 256 "$APP_PATH/Mermaid/mermaid.min.js" | cut -d ' ' -f 1)" == 'a8a6a6f805b074a8261a2825c86f99c8054acb3b35f50bb7e24a4f9f2c3c3b9f' ]]
-print 'Verified Ayami iOS 1.4 (20): App Store profile, arm64, iPhone/iPad, iOS 18+, privacy manifest and offline runtime.'
+print 'Verified Ayami iOS 1.5 (21): App Store profile, arm64, iPhone/iPad, iOS 18+, privacy manifest and offline runtime.'
 shasum -a 256 "$IPA_PATH"

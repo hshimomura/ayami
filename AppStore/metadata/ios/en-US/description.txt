@@ -1,28 +1,32 @@
-Read Markdown quietly.
+A quiet place for README files and design docs.
 
-Ayami is a read-only Markdown viewer for iPhone and iPad. Open .md and .markdown documents from Files and read headings, paragraphs, tables, and code as clean, structured pages.
-
-FOCUS ON READING
-No editor, account, or sign-in. Viewing a document never rewrites the original Markdown file.
+Ayami is a read-only Markdown viewer for iPhone and iPad. Open a document from Files and search for a passage, mark it in pink, and inspect diagrams and code. Use it to review project documentation, technical notes, and AI-generated Markdown.
 
 FIND YOUR PLACE
-Jump to a section from the heading outline. On iPhone, open the outline when you need it. On iPad, keep it beside the document.
+Search text, code, and tables, see match counts, and move between results. You can also jump to a chapter from the heading outline. Depending on the window width, the outline appears in a sheet or beside the document.
 
-READ AT YOUR OWN SIZE
-Adjust text size from 80% to 160% with the Reading Settings slider. Headings, paragraphs, tables, code, and Mermaid diagrams update immediately. Your choice is saved on the device, and system text-size settings remain supported.
+MARK A PASSAGE AS YOU READ
+Select text to add a pink mark. Remove one mark or clear them all. Marks disappear when the document closes and are never saved to the source or a PDF.
 
-MERMAID, OFFLINE
-Render Mermaid diagrams with the engine included in the app. No additional installation, CDN, account, or document upload to a cloud service is required.
+READ DIAGRAMS WITH THE DOCUMENT
+View Mermaid architecture and sequence diagrams alongside the text. Enlarge complex diagrams to inspect details, and copy code without Markdown fences. The rendering engine is included in the app, so no additional installation or internet connection is needed.
 
-USE YOUR EXISTING DOCUMENTS
-Choose Markdown documents from Files, including on-device storage, iCloud Drive, and compatible file providers. iPad also supports system-managed multiple windows. Reopen a document if needed after another app or file provider changes it.
+FOLLOW RELATED MATERIAL
+View local images and follow related documents and heading links within accessible folders. Open HTML, TXT, JSON, C, and other text files alongside Markdown. Document scripts are not run. Try the bundled technical sample to explore search and diagrams.
 
-PRINT AND PDF
-Open Print and PDF from Document Actions to preview A4 or Letter pages. Save text, tables, and Mermaid diagrams as a PDF in Files, or open the system print options. Printing on paper requires a compatible printer. Invalid diagrams or rendering failures show a warning and source. Output uses its own layout; it does not reproduce images or the screen layout exactly.
+MAKE READING COMFORTABLE
+Adjust text size from 80% to 160%, with your preference saved on the device. System text size and light or dark appearance are also supported.
 
-ON-DEVICE DOCUMENT HIGHLIGHTS (PROTOTYPE)
-On iOS or iPadOS 26 or later, the highlights feature uses Apple's on-device model when Apple Intelligence is available. Generate Japanese or English highlights of the open document without uploading it or writing back to the source. Requires a supported device, Apple Intelligence enabled, its model ready, and a supported language. Availability and generation can fail depending on the environment. AI output may be incorrect; check the original document. Reading, printing, and PDF export remain available without AI.
+OPEN YOUR EXISTING FILES
+Read documents from on-device storage, iCloud Drive, and compatible file providers. Use multiple windows on iPad. Reopen a document when needed after an external app updates it.
 
-Requires iOS or iPadOS 18 or later. A Mac edition is also available. Native Mac tabs, side-by-side window arrangement, Live Reload, and Finder Quick Look are Mac-only features.
+PRINT AND SAVE PDFS
+Save text, tables, and Mermaid diagrams as an A4 or Letter PDF in Files, or print with a compatible printer. Output uses its own layout and does not reproduce images or the reading view exactly. Non-Markdown files are printed as literal source text.
 
-Free and open source under the MIT License. No ads, in-app purchases, or tracking.
+LEAVE THE ORIGINAL INTACT
+Viewing never rewrites the Markdown file or uploads your documents. No account registration, ads, or tracking. Ayami is open source under the MIT License.
+
+REQUIREMENTS
+iOS or iPadOS 18 or later. A Mac edition is also available. Finder Quick Look and Live Reload are Mac features.
+
+On iOS or iPadOS 26 or later, Document Highlights with Apple Intelligence is an optional prototype. It requires a compatible device and language, Apple Intelligence enabled, and a prepared model. Availability and generation can fail. Check results against the original. Reading, printing, and PDF export work without AI.

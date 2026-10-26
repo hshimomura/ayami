@@ -1,0 +1,38 @@
+A quiet place for README files and design docs.
+
+Ayami is a read-only Markdown viewer that turns source into a clear reading view. Search for a passage, mark it in pink, and inspect diagrams and code at your own pace. Use it to review project documentation, technical notes, and AI-generated Markdown.
+
+FIND YOUR PLACE
+Press Command-F to search text, code, and tables. See the match count and move between results, or jump to a chapter from the outline.
+
+MARK A PASSAGE AS YOU READ
+Select text to add a pink mark. Remove one mark or clear them all. Marks disappear when the document closes and are never saved to the source or a PDF.
+
+READ DIAGRAMS WITH THE DOCUMENT
+View Mermaid architecture and sequence diagrams alongside the text. Enlarge complex diagrams to inspect details, and copy code without Markdown fences. The rendering engine is included in the app, so no additional installation or internet connection is needed.
+
+FOLLOW YOUR PROJECT
+View local images and follow related documents and heading links within the folders you allow. Document links open in a new tab by default, with a setting for separate windows.
+
+KEEP YOUR PREFERRED EDITOR
+Edit in the app you already use. On Mac, Ayami detects external saves and refreshes the reading view while preserving your reading position. Open documents in native tabs or separate windows, and arrange them side by side for comparison.
+
+PREVIEW FROM FINDER
+Select a Markdown file and press Space to preview its text and Mermaid diagrams with Quick Look. Read continuously without paper page breaks. Open Quick Look settings from the in-app guide.
+
+READ OTHER TEXT FILES, TOO
+Open HTML, TXT, JSON, C, and other text files alongside Markdown. HTML text and tables are rendered without running document scripts. Images are supported from permitted local files.
+
+MAKE READING COMFORTABLE
+Adjust text size from 80% to 160%, with your preference saved on the device. Light and dark appearance follows your Mac's system settings.
+
+PRINT AND SAVE PDFS
+Save or print text, tables, and Mermaid diagrams on A4 or Letter pages. Output uses its own layout and does not reproduce images or the reading view exactly. Non-Markdown files are printed as literal source text.
+
+LEAVE THE ORIGINAL INTACT
+Viewing never rewrites the Markdown file or uploads your documents. No account registration, ads, or tracking. Ayami is open source under the MIT License.
+
+REQUIREMENTS
+An Apple silicon Mac with macOS 26 or later. An iPhone and iPad edition is also available.
+
+Document Highlights with Apple Intelligence is an optional prototype. It requires a compatible device and language, Apple Intelligence enabled, and a prepared model. Availability and generation can fail. Check results against the original. Reading, printing, and PDF export work without AI.

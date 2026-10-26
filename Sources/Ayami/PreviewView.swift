@@ -1,21 +1,34 @@
 import SwiftUI
-import Textual
+import UniformTypeIdentifiers
 
 struct PreviewView: View {
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
+  #if os(macOS)
+    @Environment(\.openDocument) private var openDocument
+  #else
+    @State private var linkedDocument: LinkedReadingDocument?
+  #endif
+  @Environment(\.openURL) private var openURL
   #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
   #endif
   @AppStorage(ReadingPreferences.fontScaleKey)
   private var storedFontScale = ReadingPreferences.defaultFontScale
+  @AppStorage(ReadingPreferences.linkDestinationKey)
+  private var storedLinkDestination = ReadingPreferences.defaultLinkDestination.rawValue
+  @ScaledMetric(relativeTo: .body) private var dynamicFontSize: CGFloat = 16
 
   private let documentText: String
   private let documentURL: URL?
 
   @State private var model: PreviewDocumentModel
-  @State private var sectionTops: [String: CGFloat] = [:]
-  @State private var currentSectionID: String?
-  @State private var scrollRequest: OutlineScrollRequest?
+  @State private var reader = ReaderSession()
+  @State private var projectAccess = ProjectFolderAccess.shared
+  @State private var showsFind = false
+  @State private var findQuery = ""
+  @FocusState private var findFocused: Bool
+  @State private var showsFolderPicker = false
+  @State private var showsGuide = false
   @State private var splitViewVisibility: NavigationSplitViewVisibility = .all
   @State private var showsReadingSettings = false
   @State private var showsOutline = false
@@ -37,7 +50,7 @@ struct PreviewView: View {
     Group {
       if model.text.isEmpty {
         ContentUnavailableView(
-          "Empty Markdown File",
+          "Empty Document",
           systemImage: "doc.text.magnifyingglass",
           description: Text("This document contains no text.")
         )
@@ -50,10 +63,10 @@ struct PreviewView: View {
         HStack(spacing: 0) {
           if isContentsVisible {
             OutlineSidebar(
-              headings: model.content.headings,
-              currentSectionID: currentSectionID
+              headings: reader.headings,
+              currentSectionID: reader.currentSectionID
             ) { sectionID in
-              scrollRequest = OutlineScrollRequest(sectionID: sectionID)
+              reader.jump(sectionID)
             }
             .frame(width: 230)
             Divider()
@@ -63,10 +76,10 @@ struct PreviewView: View {
         #else
         NavigationSplitView(columnVisibility: $splitViewVisibility) {
           OutlineSidebar(
-            headings: model.content.headings,
-            currentSectionID: currentSectionID
+            headings: reader.headings,
+            currentSectionID: reader.currentSectionID
           ) { sectionID in
-            scrollRequest = OutlineScrollRequest(sectionID: sectionID)
+            reader.jump(sectionID)
           }
           .navigationSplitViewColumnWidth(
             min: 190,
@@ -96,13 +109,40 @@ struct PreviewView: View {
         PreviewCommandActions(
           isContentsVisible: isContentsVisible,
           toggleContents: toggleContents,
-          printDocument: { showsOutput = true }
+          printDocument: { showsOutput = true },
+          find: showFind,
+          findNext: { reader.command("nextMatch", [1]) },
+          findPrevious: { reader.command("nextMatch", [-1]) },
+          markSelection: { reader.command("markSelection") },
+          canMark: reader.hasSelection
         )
       )
     #endif
     .toolbar {
       ToolbarItem(placement: .primaryAction) {
+        Button("Find in Document", systemImage: "magnifyingglass", action: showFind)
+          .accessibilityIdentifier("findDocument")
+      }
+      ToolbarItem(placement: .primaryAction) {
+        Button("Mark Selection", systemImage: "highlighter") { reader.command("markSelection") }
+          .tint(.pink)
+          .disabled(!reader.hasSelection)
+          .help("Select text to mark it. Marks disappear when this document is closed.")
+          .accessibilityIdentifier("markSelection")
+      }
+
+      ToolbarItem(placement: .primaryAction) {
         Menu {
+          Button("Remove Selected Mark", systemImage: "highlighter") { reader.command("removeMark") }
+            .disabled(!reader.hasActiveMark)
+          Button("Clear All Marks", systemImage: "eraser") { reader.command("clearMarks") }
+            .disabled(reader.markCount == 0)
+            .accessibilityIdentifier("clearMarks")
+          Divider()
+          Button("Allow Project Folder…", systemImage: "folder.badge.plus") { showsFolderPicker = true }
+            .accessibilityIdentifier("allowProjectFolder")
+          Button("Reading and Quick Look Guide", systemImage: "questionmark.circle") { showsGuide = true }
+          Divider()
           Button("Print and PDF", systemImage: "printer") { showsOutput = true }
             .accessibilityIdentifier("documentOutput")
           Button("Document Highlights (Prototype)", systemImage: "sparkles") { showsSummary = true }
@@ -113,7 +153,7 @@ struct PreviewView: View {
         .accessibilityIdentifier("documentActions")
       }
       #if os(iOS)
-        if !model.content.headings.isEmpty {
+        if !reader.headings.isEmpty {
           ToolbarItem(placement: .primaryAction) {
             Button {
               if usesCompactLayout { showsOutline = true }
@@ -136,11 +176,24 @@ struct PreviewView: View {
         .accessibilityIdentifier("readingSettings")
       }
     }
+    .sheet(isPresented: $showsGuide) { ReaderGuideView() }
+    #if os(iOS)
+      .sheet(item: $linkedDocument) { LinkedReadingDocumentView(document: $0) }
+    #endif
+    .fileImporter(isPresented: $showsFolderPicker, allowedContentTypes: [.folder]) { result in
+      if case let .success(url) = result {
+        projectAccess.grant(url)
+        reader.hasUnavailableImages = false
+      }
+    }
+    .alert("Unable to Open", isPresented: Binding(get: { reader.error != nil }, set: { if !$0 { reader.error = nil } })) {
+      Button("Done") { reader.error = nil }
+    } message: { Text(reader.error ?? "") }
     .sheet(isPresented: $showsReadingSettings) {
       ReadingSettingsSheet()
     }
     .sheet(isPresented: $showsOutput) {
-      DocumentOutputView(markdown: model.text, fileURL: model.fileURL)
+      DocumentOutputView(markdown: DocumentFormat.outputSource(model.text, url: model.fileURL), fileURL: model.fileURL)
         .presentationDetents([.large])
     }
     .sheet(isPresented: $showsSummary) {
@@ -149,9 +202,9 @@ struct PreviewView: View {
     }
     .sheet(isPresented: $showsOutline) {
       NavigationStack {
-        OutlineSidebar(headings: model.content.headings, currentSectionID: currentSectionID) {
+        OutlineSidebar(headings: reader.headings, currentSectionID: reader.currentSectionID) {
           sectionID in
-          scrollRequest = OutlineScrollRequest(sectionID: sectionID)
+          reader.jump(sectionID)
           showsOutline = false
         }
         .navigationTitle("Contents")
@@ -165,6 +218,9 @@ struct PreviewView: View {
     .task(id: documentURL) {
       if model.fileURL != documentURL {
         model = PreviewDocumentModel(text: documentText, fileURL: documentURL)
+        reader = ReaderSession()
+        findQuery = ""
+        showsFind = false
       }
       #if os(macOS)
         await model.monitorFile()
@@ -173,14 +229,21 @@ struct PreviewView: View {
     .onChange(of: documentText) { _, newText in
       model.updateDocumentText(newText)
     }
-    .onChange(of: model.content) {
-      sectionTops.removeAll(keepingCapacity: true)
-      currentSectionID = model.content.headings.first?.id
+    .onReceive(NotificationCenter.default.publisher(for: ReaderNavigation.notification)) { notification in
+      guard let url = notification.object as? URL, url == model.fileURL?.standardizedFileURL,
+        reader.isReady, let fragment = ReaderNavigation.takeFragment(for: url) else { return }
+      reader.jump(fragment)
+    }
+    .onChange(of: findQuery) { _, query in reader.find(query) }
+    .onChange(of: reader.markCount) { oldValue, newValue in
+      if oldValue == 0 && newValue > 0 {
+        reader.notice = String(localized: "Marks disappear when this document is closed. Markdown and PDF are unchanged.")
+      }
     }
   }
 
   private var fontScale: CGFloat {
-    CGFloat(ReadingPreferences.normalizedFontScale(storedFontScale))
+    CGFloat(ReadingPreferences.normalizedFontScale(storedFontScale)) * dynamicFontSize / 16
   }
 
   private var usesCompactLayout: Bool {
@@ -192,41 +255,103 @@ struct PreviewView: View {
   }
 
   private var documentPreview: some View {
-    ScrollViewReader { scrollProxy in
-      ScrollView {
-        VStack(alignment: .leading, spacing: 0) {
-          ForEach(model.content.sections) { section in
-            MarkdownSectionView(section: section, fontScale: fontScale)
-              .id(section.id)
-              .background {
-                GeometryReader { geometry in
-                  Color.clear.preference(
-                    key: SectionTopPreferenceKey.self,
-                    value: [
-                      section.id:
-                        geometry.frame(in: .named("document-scroll")).minY
-                    ]
-                  )
-                }
-              }
-          }
+    VStack(spacing: 0) {
+      if showsFind { findBar }
+      if reader.hasUnavailableImages {
+        HStack {
+          Label("Some images could not be loaded. Allow the project folder to read local images. Remote images stay blocked.", systemImage: "photo.badge.exclamationmark")
+            .font(.caption)
+          Spacer()
+          Button("Allow Folder…") { showsFolderPicker = true }
+          Button("Dismiss", systemImage: "xmark") { reader.hasUnavailableImages = false }
+            .labelStyle(.iconOnly)
         }
-        .frame(maxWidth: 880, alignment: .leading)
-        .frame(maxWidth: .infinity, alignment: .center)
-        .padding(.horizontal, usesCompactLayout ? 18 : 36)
-        .padding(.vertical, 30)
+        .padding(10)
+        .background(.background.secondary)
       }
-      .coordinateSpace(name: "document-scroll")
-      .onPreferenceChange(SectionTopPreferenceKey.self) { values in
-        sectionTops = values
-        updateCurrentSection()
+      if let notice = reader.notice {
+        HStack {
+          Text(notice).font(.caption)
+          Spacer()
+          Button("Dismiss", systemImage: "xmark") { reader.notice = nil }.labelStyle(.iconOnly)
+        }.padding(10).background(.background.secondary)
       }
-      .onChange(of: scrollRequest) { _, request in
-        guard let request else { return }
-        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.18)) {
-          scrollProxy.scrollTo(request.sectionID, anchor: .top)
+      ReaderWebView(markdown: model.text, fileURL: model.fileURL, fontScale: fontScale,
+        session: reader, folders: projectAccess.folders, onLink: followLink)
+        .id(ObjectIdentifier(reader))
+    }
+  }
+
+  private var findBar: some View {
+    HStack(spacing: 8) {
+      TextField("Find in Document", text: $findQuery)
+        .textFieldStyle(.roundedBorder)
+        .focused($findFocused)
+        .onSubmit { reader.command("nextMatch", [1]) }
+        .accessibilityIdentifier("documentFindField")
+      Text(findStatus)
+        .font(.caption.monospacedDigit())
+        .foregroundStyle(.secondary)
+        .accessibilityIdentifier("documentFindCount")
+      Button("Previous Match", systemImage: "chevron.up") { reader.command("nextMatch", [-1]) }
+        .labelStyle(.iconOnly).disabled(reader.matchCount == 0)
+        .accessibilityIdentifier("findPrevious")
+      Button("Next Match", systemImage: "chevron.down") { reader.command("nextMatch", [1]) }
+        .labelStyle(.iconOnly).disabled(reader.matchCount == 0)
+        .accessibilityIdentifier("findNext")
+      Button("Done") { showsFind = false; findQuery = ""; reader.find("") }
+        .accessibilityIdentifier("closeFind")
+    }
+    .padding(10)
+    .background(.bar)
+    #if os(macOS)
+      .onExitCommand { showsFind = false; findQuery = ""; reader.find("") }
+    #endif
+  }
+
+  private var findStatus: String {
+    guard !findQuery.isEmpty else { return "" }
+    if reader.matchCount == 0 { return String(localized: "No matches") }
+    return "\(reader.matchIndex + 1) / \(reader.matchCount)" + (reader.matchLimitReached ? "+" : "")
+  }
+
+  private func showFind() {
+    showsFind = true
+    findFocused = true
+  }
+
+  private func followLink(_ request: ReaderLinkRequest) {
+    let reference = request.reference
+    guard let url = URL(string: reference, relativeTo: model.fileURL)?.absoluteURL else { return }
+    if ["https", "http", "mailto"].contains(url.scheme?.lowercased() ?? "") {
+      openURL(url)
+      return
+    }
+    do {
+      let policy = DocumentResourcePolicy(documentURL: model.fileURL, grantedFolders: projectAccess.folders)
+      let target = try policy.resolve(reference)
+      if target == model.fileURL?.standardizedFileURL.resolvingSymlinksInPath() {
+        reader.jump(url.fragment ?? "")
+      } else {
+        #if os(macOS)
+        let destination = request.destination ?? DocumentLinkDestination.resolved(storedLinkDestination)
+        let origin = model.fileURL.flatMap { MarkdownWindowManager.documentWindow(for: $0) }
+          ?? MarkdownWindowManager.activeDocumentWindow
+        Task { @MainActor in
+          do {
+            try await openDocument(at: target)
+            ReaderNavigation.prepare(url: target, fragment: url.fragment)
+            await MarkdownWindowManager.placeLinkedDocument(at: target, from: origin, destination: destination)
+          } catch { reader.error = error.localizedDescription }
         }
+        #else
+          let text = try TextFileContent.read(target)
+          ReaderNavigation.prepare(url: target, fragment: url.fragment)
+          linkedDocument = LinkedReadingDocument(url: target, text: text)
+        #endif
       }
+    } catch {
+      reader.error = String(localized: "The linked file is unavailable. Allow its project folder from Document Actions, then try again.")
     }
   }
 
@@ -249,6 +374,12 @@ struct PreviewView: View {
 
       if !usesCompactLayout { reloadStatus }
 
+      if reader.markCount > 0 {
+        Label("\(reader.markCount)", systemImage: "highlighter")
+          .foregroundStyle(.pink)
+          .help("Marks disappear when this document is closed.")
+          .accessibilityIdentifier("temporaryMarkCount")
+      }
       Text("Read Only")
     }
     .font(.caption)
@@ -276,67 +407,17 @@ struct PreviewView: View {
   }
 
   private var currentHeading: MarkdownHeading? {
-    model.content.headings.first { $0.id == currentSectionID }
+    reader.headings.first { $0.id == reader.currentSectionID }
   }
 
   private var isContentsVisible: Bool {
     splitViewVisibility != .detailOnly
   }
 
-  private func updateCurrentSection() {
-    let orderedSections = model.content.sections
-    let readingLine: CGFloat = 72
-
-    let passed = orderedSections.compactMap { section -> (String, CGFloat)? in
-      guard let top = sectionTops[section.id], top <= readingLine else {
-        return nil
-      }
-      return (section.id, top)
-    }
-    let candidate =
-      passed.max { $0.1 < $1.1 }?.0
-      ?? orderedSections.first {
-        guard let top = sectionTops[$0.id] else { return false }
-        return top > readingLine
-      }?.id
-
-    guard candidate != currentSectionID else { return }
-    currentSectionID = candidate
-  }
-
   private func toggleContents() {
     withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.18)) {
       splitViewVisibility = isContentsVisible ? .detailOnly : .all
     }
-  }
-}
-
-private struct OutlineScrollRequest: Equatable {
-  let sectionID: String
-  let nonce = UUID()
-}
-
-private struct MarkdownSectionView: View {
-  let section: MarkdownSection
-  let fontScale: CGFloat
-
-  var body: some View {
-    VStack(alignment: .leading, spacing: 18) {
-      ForEach(Array(section.blocks.enumerated()), id: \.offset) { _, block in
-        switch block {
-        case .markdown(let source):
-          StructuredText(source, parser: HTMLBreakMarkdownParser())
-            .textual.structuredTextStyle(.gitHub)
-            .textual.fontScale(fontScale)
-            .textual.textSelection(.enabled)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        case .mermaid(let source):
-          MermaidDiagramView(source: source, fontScale: fontScale)
-        }
-      }
-    }
-    .frame(maxWidth: .infinity, alignment: .leading)
-    .padding(.bottom, 26)
   }
 }
 
@@ -359,7 +440,7 @@ private struct OutlineSidebar: View {
         ContentUnavailableView(
           "No Headings",
           systemImage: "text.alignleft",
-          description: Text("Add Markdown headings to show an outline.")
+          description: Text("This document has no headings.")
         )
       } else {
         ScrollView {
@@ -398,16 +479,5 @@ private struct OutlineSidebar: View {
       }
     }
     .background(.background.secondary)
-  }
-}
-
-private struct SectionTopPreferenceKey: PreferenceKey {
-  static let defaultValue: [String: CGFloat] = [:]
-
-  static func reduce(
-    value: inout [String: CGFloat],
-    nextValue: () -> [String: CGFloat]
-  ) {
-    value.merge(nextValue(), uniquingKeysWith: { _, newValue in newValue })
   }
 }

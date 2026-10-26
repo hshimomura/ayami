@@ -5,7 +5,7 @@ export LC_ALL=en_US.UTF-8
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-METADATA_ROOT="$PROJECT_ROOT/AppStore/metadata"
+METADATA_ROOT="${1:-$PROJECT_ROOT/AppStore/metadata}"
 
 typeset -A limits
 limits=(

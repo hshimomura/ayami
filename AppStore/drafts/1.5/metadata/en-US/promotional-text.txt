@@ -1,0 +1,1 @@
+Find a passage, mark it in pink, and inspect diagrams and code. Follow local project links, zoom Mermaid diagrams, and keep your original files unchanged.

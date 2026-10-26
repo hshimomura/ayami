@@ -1,6 +1,6 @@
-# 文書案内 — Ayami 1.4
+# 文書案内 — Ayami 1.5 開発版
 
-現行ソースは1.4（20）。利用方法は既存の英語公開ページ、開発・検証・判断記録は日本語Markdownを基本とする。
+この開発ブランチは1.5（21）。公開済みソースの1.4（20）と区別する。利用方法は既存の英語公開ページ、開発・検証・判断記録は日本語Markdownを基本とする。
 機能説明、実装、検証結果を分け、重複する表や手順では正本へリンクする。
 
 ## 現行文書
@@ -13,9 +13,9 @@
 | データの扱い・端末内AI | [Privacy Policy](privacy.md) |
 | アーキテクチャと設計判断 | [設計](../DESIGN.md) |
 | 実装・設定・プラットフォーム境界 | [実装仕様](ayami-implementation.md) |
-| 成功・失敗・未確認の範囲 | [1.4検証記録](validation-1.4.md) |
+| 成功・失敗・未確認の範囲 | [1.5検証記録](validation-1.5.md)、[1.4検証履歴](validation-1.4.md) |
 | バージョン変更・公開資産 | [1.4リリースノート](releases/1.4.md) |
-| 固定依存とライセンス | [1.3依存監査（1.4も同じ固定版）](dependency-audit-1.3.md)、[第三者通知](../THIRD_PARTY_NOTICES.md) |
+| 固定依存とライセンス | [1.3依存監査](dependency-audit-1.3.md)、[1.5の追加依存](validation-1.5.md)、[第三者通知](../THIRD_PARTY_NOTICES.md) |
 | ストア原稿・公開情報の管理 | [AppStore](../AppStore/README.md) |
 | 配布画像の管理 | [スクリーンショット仕様](../AppStore/Screenshots/README.md) |
 | 配布・GitHub Releaseの再現と検証 | [公開チェックリスト](../AppStore/release-checklist.md) |

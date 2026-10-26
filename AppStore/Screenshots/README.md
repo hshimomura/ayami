@@ -11,7 +11,7 @@
 | macOS | 目次・本文・Mermaid | 2560 × 1600 |
 | iPhone | 閲覧、文字サイズ設定 | 1320 × 2868 |
 | iPad | 閲覧、文字サイズ設定 | 2064 × 2752 |
-| iPhoneDuo | 内側の閲覧・設定、外側の閲覧（追加検証用） | 内側 2007 × 2853、外側 1398 × 2034。横向きも可 |
+| iPhoneDuo | 内側の閲覧・マーク・検索・設定、外側の閲覧 | 内側 2007 × 2853、外側 1398 × 2034。横向きも可 |
 
 `01-reading.jpg` を先頭にし、iPhone/iPad の `02-settings.jpg` を続けます。
 Mac の設定シート単体は指定の縦横比にならないため、登録画像には使いません。
@@ -29,3 +29,46 @@ Mac の設定シート単体は指定の縦横比にならないため、登録�
 上表は1.3で使用した寸法の記録です。Appleの受け入れ寸法は変更されるため、登録時に
 [スクリーンショット仕様](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/)
 と App Store Connect の表示を再確認してください。
+
+## 1.5 開発版の素材
+
+`1.5/macOS/ja/`と`1.5/macOS/en-US/`に、製品ターゲットと同梱の公開サンプルで
+蛍光ペン、検索、図の拡大、相対画像・リンク、コードコピーの画面を用意する。
+これらの新機能画面は撮り直しと選定を始めた段階であり、掲載枠へは追加しない。
+撮影後は寸法・ロケール・元文書・ビルドを[1.5検証記録](../../docs/validation-1.5.md)へ記録する。
+`getAXStateAndScreenshot()`の元画像は2560×1600、通常の`getScreenshot()`の返値は
+1280×800の場合があるため、ファイルの実寸を確認する。拡大補間は行わない。
+
+### iPhone Duo
+
+`1.5/iPhoneDuo/ja/`と`1.5/iPhoneDuo/en-US/`に各5枚、計10枚を保存する。
+内容・撮影条件は[素材一覧](1.5/iPhoneDuo/README.md)、寸法・ファイルサイズ・SHA-256は
+同ディレクトリーの`manifest.json`に記録する。元画像はGit管理外。
+
+App Asset Libraryの参照データAPIで`APP_SCREENSHOT`／`IPHONE_DUO_PROFILE`に
+内側・外側の縦横両方向が含まれることを確認した。今回の素材はすべて縦向きの実画面で、
+寸法変更や拡大補間は行わない。1.5のローカライズごとの掲載枠へ追加し、画像の処理と順序を確認する。
+動画のApp Previewとは別に扱う。
+
+## Quick Look の掲載素材
+
+日英の`06-quicklook.jpg`は1280×800の不透明JPEG。Finder Quick Lookの実画面を使い、
+`quicklook-layout.html?locale=ja`または`?locale=en-US`で短い見出しを添えた。
+`06-quicklook-source.jpg`に原画を残し、画面内の内容や縦横比は変更していない。
+原画は1940×1526で、掲載画像では850px幅へ縮小する。拡大補間は行わない。
+
+- 元文書：`AppStore/Samples/QuickLook/ja/通知サービス.md`、`en-US/Notification-Service.md`
+- 撮影対象：インストール済み製品アプリに同梱のQuick Look拡張（1.5開発版）。表示に関わるQuick Lookソースは1.4と同じ。
+- 画像内の「Open with MarkEdit」は撮影環境の既定エディターを示すFinder標準UI。
+- 寸法：App Asset Libraryの`APP_SCREENSHOT`／`MAC_PROFILE`が受け入れる1280×800を使用。
+- APIによる保存先：App Asset Libraryの未提出素材。1.4の掲載画像は変更せず、1.5で追加する。
+
+再生成はこのディレクトリーのみをlocalhostで配信し、上記HTMLを1280×800の全ページ画像として撮影する。
+画面の描画完了、ロケール、文字切れ、個人情報の有無を確認してからアップロードする。
+画像ID・アップロード応答・審査状態の記録は`AppStore/private/`へ保存する。
+
+## Header and Search Results
+
+1.5のiOS/iPadOS向け日英共通画像は[Creative](1.5/Creative/README.md)を参照。
+Universal Creative AssetをHeaderとSearch Resultsの両方へ配置する。
+スクリーンショットとは独立した掲載枠で、Macは対象外。

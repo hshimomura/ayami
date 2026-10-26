@@ -1,1 +1,1 @@
-markdown,ビューアー,プレビュー,閲覧,mermaid,文書,開発,読み取り専用
+README,設計書,技術文書,プレビュー,閲覧,Mermaid,図表,蛍光ペン,検索,コード,PDF,HTML,テキスト,JSON

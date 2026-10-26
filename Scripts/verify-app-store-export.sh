@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="${0:A:h}"
 PROJECT_ROOT="${SCRIPT_DIR:h}"
-PACKAGE_PATH="$PROJECT_ROOT/dist/1.4/AppStoreExport/Ayami.pkg"
+PACKAGE_PATH="$PROJECT_ROOT/dist/1.5/AppStoreExport/Ayami.pkg"
 TEMP_PARENT="$(/usr/bin/mktemp -d /private/tmp/ayami-app-store.XXXXXX)"
 EXPANDED_PATH="$TEMP_PARENT/expanded"
 
@@ -68,8 +68,8 @@ app_category="$(/usr/libexec/PlistBuddy \
 
 [[ "$bundle_identifier" == "io.github.hshimomura.MDViewer" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleDisplayName' "$INFO_PLIST")" == "Ayami" ]]
-[[ "$marketing_version" == "1.4" ]]
-[[ "$build_version" == "20" ]]
+[[ "$marketing_version" == "1.5" ]]
+[[ "$build_version" == "21" ]]
 [[ "$minimum_system" == "26.0" ]]
 [[ "$document_role" == "Viewer" ]]
 [[ "$markdown_type" == "net.daringfireball.markdown" ]]
@@ -104,6 +104,13 @@ required_resources=(
     "$RESOURCES/Legal/Mermaid-LICENSE.txt"
     "$RESOURCES/Mermaid/mermaid.min.js"
     "$RESOURCES/Mermaid/renderer.html"
+    "$RESOURCES/Reader/reader.js"
+    "$RESOURCES/Reader/markdown-it.min.js"
+    "$RESOURCES/Reader/purify.min.js"
+    "$RESOURCES/Reader/Sample/README.md"
+    "$RESOURCES/Legal/DOMPurify-LICENSE.txt"
+    "$RESOURCES/Legal/markdown-it-LICENSE.txt"
+    "$RESOURCES/Legal/markdown-it-dependencies-LICENSE.txt"
     "$RESOURCES/swiftui-math_SwiftUIMath.bundle/Contents/Resources/mathFonts.bundle/OFL.txt"
     "$RESOURCES/swiftui-math_SwiftUIMath.bundle/Contents/Resources/mathFonts.bundle/GUST-FONT-LICENSE.txt"
 )
@@ -121,8 +128,8 @@ QUICKLOOK_INFO="$QUICKLOOK_APP/Contents/Info.plist"
 /usr/bin/codesign --verify --strict "$QUICKLOOK_APP"
 [[ "$(/usr/bin/lipo -archs "$QUICKLOOK_APP/Contents/MacOS/AyamiQuickLook")" == "arm64" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$QUICKLOOK_INFO")" == "io.github.hshimomura.MDViewer.QuickLook" ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$QUICKLOOK_INFO")" == "1.4" ]]
-[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$QUICKLOOK_INFO")" == "20" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$QUICKLOOK_INFO")" == "1.5" ]]
+[[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$QUICKLOOK_INFO")" == "21" ]]
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :NSExtension:NSExtensionAttributes:QLSupportedContentTypes:0' "$QUICKLOOK_INFO")" == "net.daringfireball.markdown" ]]
 /usr/bin/codesign -d --entitlements :- "$QUICKLOOK_APP" > "$TEMP_PARENT/quicklook-entitlements.plist" 2>/dev/null
 [[ "$(/usr/libexec/PlistBuddy -c 'Print :com.apple.security.app-sandbox' "$TEMP_PARENT/quicklook-entitlements.plist")" == "true" ]]
@@ -133,6 +140,6 @@ QUICKLOOK_INFO="$QUICKLOOK_APP/Contents/Info.plist"
 package_checksum="$(/usr/bin/shasum -a 256 "$PACKAGE_PATH" |
     /usr/bin/awk '{print $1}')"
 
-print "Verified Ayami 1.4 (20) App Store export, including the production Quick Look extension."
+print "Verified Ayami 1.5 (21) App Store export, including the production Quick Look extension."
 print "Architectures: $architectures"
 print "Package SHA-256: $package_checksum"

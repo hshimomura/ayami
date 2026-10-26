@@ -1,6 +1,6 @@
 # Public release checklist
 
-This checklist covers the version 1.4 (20) App Store replacement build, metadata, and build verification.
+This checklist covers the version 1.5 (21) App Store build, metadata, and build verification.
 App Store Connect review operations follow the repository's
 [app-store-connect skill](../.agents/skills/app-store-connect/SKILL.md), which
 uses the API by default. Account-specific records remain in ignored
@@ -24,6 +24,12 @@ uses the API by default. Account-specific records remain in ignored
 
 ## Public App Store material
 
+- [ ] Verify processed 1.5 (21) builds for both platforms, then withdraw the
+      corresponding pending 1.4 submissions and select the 1.5 builds.
+- [ ] Apply the 1.5 metadata and place the prepared Mac/Quick Look and Duo
+      screenshots on the editable 1.5 localizations. Verify processing and order.
+- [ ] Verify localized Header/Search Results creative assets: 5244×2950 opaque
+      RGB PNG, both placements pointing to the matching locale asset.
 - [ ] Run `./Scripts/verify-app-store-metadata.sh`.
 - [ ] Review English and Japanese product-page text.
 - [ ] Verify Ayami / あやみ display names and the new bright reading-stand icon.
@@ -51,7 +57,7 @@ App Store archives (Apple signing credentials required):
 Only after verifying the intended archives, upload with
 `./Scripts/upload-app-store.sh` and `./Scripts/upload-ios-app-store.sh`.
 These upload builds; they do not submit the app for review.
-Version 1.4 archives and exports are written under `dist/1.4/`; old 1.3 artifacts remain untouched.
+Version 1.5 archives and exports are written under `dist/1.5/`; old 1.3 artifacts remain untouched.
 The Mac export verifier requires arm64 only and checks the embedded production Quick Look extension.
 The local Mac path is `./Scripts/build-validation-app.sh`; the SwiftPM-only
 `build-app.sh`, `verify-app.sh` and `launch-local-app.sh` are historical 1.3 helpers.

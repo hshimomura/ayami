@@ -1,11 +1,9 @@
-• Renamed MD Viewer to Ayami.
-• Added an iPhone and iPad edition for opening Markdown documents from Files.
-• Added a text-size slider in Reading Settings, with a saved 80–160% reading scale.
-• Introduced a brighter icon inspired by a Japanese reading stand.
-• Updated the Mermaid diagram engine while preserving offline rendering.
-• Rebuilt with the latest macOS SDK and verified compatibility with macOS 27.
-• Added A4/Letter print previews and PDF export, with Mermaid rendered as diagrams instead of source code.
-• Added Finder Quick Look previews for Markdown content and Mermaid diagrams.
-• Quick Look now presents documents continuously; page breaks are reserved for printing.
-• Now requires Apple silicon. Intel Macs are no longer supported.
-• Added Document Highlights (Prototype) using Apple's on-device Apple Intelligence model. Requires a compatible environment; availability or generation may fail. Check AI output against the original document.
+• Search text, code, and tables with Command-F, with match counts and next/previous navigation.
+• Add temporary pink marks, remove individual marks, or clear them all. Marks disappear when the document closes.
+• View relative local images and follow related documents and heading links.
+• Choose tabs or windows for document links, with a working link context menu.
+• Enlarge Mermaid diagrams and copy code blocks.
+• Preserve your reading position more reliably after external saves.
+• Open HTML, TXT, JSON, C, and other text files.
+• Explore a technical sample and reading guide, with a shortcut to Quick Look settings.
+• Reopen the welcome window from the Window menu even after all document windows have been closed.

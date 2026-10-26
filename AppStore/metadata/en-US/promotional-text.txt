@@ -1,1 +1,1 @@
-Read Markdown. Now with Finder Quick Look, A4/Letter PDF export and printing with Mermaid diagrams, plus an outline, adjustable text size, native tabs and live reload.
+Find a passage, mark it in pink, and inspect diagrams and code. Follow local project links, zoom Mermaid diagrams, and keep your original files unchanged.

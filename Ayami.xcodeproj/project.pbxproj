@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		00EE0890316DA0BEC13BB554 /* DocumentOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664A1681ECBA6F48D1D1ED1 /* DocumentOutputView.swift */; };
 		017A494BC09B0D54CA8D5E69 /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
+		030DFA49666FEDCBB5E51551 /* Reader in Resources */ = {isa = PBXBuildFile; fileRef = C1B7DF64274D622EBF473575 /* Reader */; };
+		06D79768769312D3BE8B28FB /* TextDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE3850EC4D97CC6EE3AAA9 /* TextDocumentTests.swift */; };
 		08FBDA3D2E1ED5D3A561FCD7 /* DocumentOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664A1681ECBA6F48D1D1ED1 /* DocumentOutputView.swift */; };
 		091BF298BCDBC58B4A120621 /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 35108F4DADC7D3E2D24F030E /* Mermaid */; };
 		0AAB5E53808B056CE2BB343E /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
@@ -21,6 +23,7 @@
 		11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
 		134F39C472F1E3FED3C0CDF7 /* QuickLookHTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */; };
 		146C187C61335B01D01E712F /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = C1F62F47ED6C0726D04F0085 /* Textual */; };
+		14935818EB731F01F0351479 /* ReaderGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BFF7B181D609EBD073039D /* ReaderGuideView.swift */; };
 		155C2B21685115C570227EDF /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
 		17C04AB92DC6E8F74F56EF31 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		18582A2F1F0D74C8F594477F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88018AFF26AE3102F663FF84 /* Localizable.strings */; };
@@ -37,12 +40,20 @@
 		2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
 		2EF2D1FB26EA1E57039EDE4F /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
 		31E11510C4DA94ED52537F58 /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
+		329D4A1D407AAD0FF62DF69F /* ReaderResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B3A5466F1BE902290C082 /* ReaderResources.swift */; };
 		343199C0AA312E6B16C1E17D /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
+		352DD1604E0B014D367A9FC1 /* ReaderResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B3A5466F1BE902290C082 /* ReaderResources.swift */; };
+		356FBC2EDB5B35307CF54F5F /* Reader in Resources */ = {isa = PBXBuildFile; fileRef = C1B7DF64274D622EBF473575 /* Reader */; };
 		35E1CFCA35A084DF3AFCFABE /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888699F0267A602B24253FF4 /* PreviewProvider.swift */; };
+		369081DBD66FD7D02952E42A /* ReaderWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */; };
+		3740545DA1AA8AF808319D61 /* ReaderGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BFF7B181D609EBD073039D /* ReaderGuideView.swift */; };
 		37A018E7075AD46950F0127B /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
 		3B545E2BA7CC1C7FF4E79D6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 244D5E5CB35321B3C3115885 /* InfoPlist.strings */; };
+		3BBE3FE1280FAACF2854782B /* ReaderLinkMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653669DD58C6DCEB8EF1FB2B /* ReaderLinkMenuTests.swift */; };
 		3CE0BEC5B40CCC24D0E9DD59 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		3E883A7098087DF1F351A8F6 /* DocumentOutputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6440A0EF585C820D9E9E0130 /* DocumentOutputTests.swift */; };
+		4057C8F6B024804181FEE256 /* ReaderLinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */; };
+		40C194059C3B10BEFBB24E30 /* ReaderResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B3A5466F1BE902290C082 /* ReaderResources.swift */; };
 		44B6F28A995B4AA522A514A5 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
 		46DC0579DD0DE5DEB3C848B3 /* MermaidRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */; };
 		48B3410CC2256775F902B27F /* MarkdownToolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */; };
@@ -51,6 +62,7 @@
 		5018BCAA7E32C3B928B1FDC5 /* AyamiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09537D16BD28C94319484772 /* AyamiApp.swift */; };
 		54685B568CD4ED9F66E3A95D /* QuickLookHTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */; };
 		54AD0D36CD467B3295F167C7 /* DocumentSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */; };
+		56B761074EA630E87E43D132 /* ReaderGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BFF7B181D609EBD073039D /* ReaderGuideView.swift */; };
 		59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545588CD788BCCBB81869777 /* ReadingPreferences.swift */; };
 		5B458D404E486F508E3ADD55 /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		5B4E8B56E2EC4AD619A20056 /* DocumentSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */; };
@@ -86,30 +98,42 @@
 		8B05D9914CEF8FE269349DA9 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
 		8C984A79EEC0C6841701E883 /* MermaidRendererResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA634A7439BFB22D2C0F78 /* MermaidRendererResources.swift */; };
 		8CB8185E40FF112C71F8216F /* MacOutputUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2569D41FB56A2523ACC516 /* MacOutputUITests.swift */; };
+		92194FC441EB26920212A1BF /* ReaderWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */; };
 		93D0A9975D9C40BBBE335CF1 /* OutputTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E960B762C15DA3A33B82DF0 /* OutputTextStyle.swift */; };
 		9475FF0E6A0CEF231121D47C /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = D17EDA2F86C2089D7B6BEE7A /* Textual */; };
 		991F19164F6AE27D093F344E /* AyamiQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 165799041068FBA9652512FC /* AyamiQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9C7857DC76F845590395B3F9 /* MarkdownDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */; };
+		9D517FC1093DBAB26FD53B98 /* ReaderLinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */; };
 		9E398D906CAC75F4763854D5 /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
+		A43E876E6089AB90163BE94E /* ReaderLinkMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653669DD58C6DCEB8EF1FB2B /* ReaderLinkMenuTests.swift */; };
 		A451869DEAF73C393FF8E74D /* OutputTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E960B762C15DA3A33B82DF0 /* OutputTextStyle.swift */; };
 		A46B5BCEABCEF5D79FD4661B /* MermaidRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */; };
+		A4A70B5F2EC4A1EDB5B05566 /* ReaderRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D355B447B4F63C2FBEBCD /* ReaderRuntimeTests.swift */; };
 		A80BC03585A5707A8F584B9A /* PreviewCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */; };
 		A8C1A6E45C592D95BD1B439C /* PreviewCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE8347BE30E6930B6CF772 /* PreviewCommands.swift */; };
 		A9F2C33357032C8CB42B5974 /* MermaidDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5735A84622AE97C25E6BFE0 /* MermaidDiagramView.swift */; };
 		ABA52784BB072C961E7FA6BE /* DocumentSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D02009573FCBB0A1CF6D40 /* DocumentSummary.swift */; };
 		ABBF6F3596A6E667A3346083 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
+		AC8707ECA8BE5DCE028679CB /* ReaderGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BFF7B181D609EBD073039D /* ReaderGuideView.swift */; };
+		AD306CA6212F2E1ACBEA483E /* ReaderWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */; };
+		AFA9308B81894E8695EDD7BC /* Reader in Resources */ = {isa = PBXBuildFile; fileRef = C1B7DF64274D622EBF473575 /* Reader */; };
 		B222621558BDC2BBB67A8DF4 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
+		B2BD8BE0C8836DD644D441CB /* ReaderWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */; };
+		B3F1A04C4147C86D9ACFA7A4 /* ReaderRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118D355B447B4F63C2FBEBCD /* ReaderRuntimeTests.swift */; };
 		B44E1A09DFAE6F99A5EAB9F9 /* DocumentPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */; };
 		B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */; };
 		B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */; };
 		B614C9DAA4B206C3A559C3F5 /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		B62463DBC965978F88D5AEE7 /* ReaderResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B3A5466F1BE902290C082 /* ReaderResources.swift */; };
 		B7310A6794D1A3836A8AA0DB /* QuickLookHTMLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */; };
 		B7E0BF79770C012B2375AFCF /* MermaidPDFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D6894927F5AA08CCB5F53 /* MermaidPDFRenderer.swift */; };
 		BA9A14D3D4BBFE5E07F6D2D2 /* AyamiQuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 165799041068FBA9652512FC /* AyamiQuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BBD9FDDCEEB7978232443FAE /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
+		BDA58B424E941337D93B8E2A /* ReaderLinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */; };
 		BECF1C04F2371B488E4B9C23 /* AyamiMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */; };
 		C4CB2BCD3106FB404EFF21D0 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879658CC5DFC11B18B1A6325 /* PreviewView.swift */; };
 		C80CCD6418E5D09CEE0A9882 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59417ACF7BED98D617294673 /* AppIcon.xcassets */; };
+		CDBB239BEE05C94469E798E4 /* TextDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE3850EC4D97CC6EE3AAA9 /* TextDocumentTests.swift */; };
 		CDC4ACD046247AB6243BBEEA /* DocumentOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0664A1681ECBA6F48D1D1ED1 /* DocumentOutputView.swift */; };
 		D0D89529F1FFE843C797725E /* THIRD_PARTY_NOTICES.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */; };
 		D1576F15FCA6BC490E93AC6F /* Legal in Resources */ = {isa = PBXBuildFile; fileRef = 71DDC489F9681F8D9F82CF6C /* Legal */; };
@@ -119,6 +143,7 @@
 		D8C066ABC0AFBD5F64D131C5 /* DocumentPDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */; };
 		DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */; };
 		DC31A0C9FFCAB7C05026109F /* HTMLBreakMarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */; };
+		DDA7BA63173FBB4E4D536674 /* ReaderLinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */; };
 		DF19C8CE855D2672292D4E34 /* OutputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */; };
 		E1DAAAF494439E402999DD7E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */; };
 		E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */; };
@@ -138,6 +163,7 @@
 		F9F605A5767AF5EDD0E85D4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 244D5E5CB35321B3C3115885 /* InfoPlist.strings */; };
 		FA2A9A1C08F510234D2E4E4A /* DocumentSummaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BD434C189FF7FE094DC178 /* DocumentSummaryTests.swift */; };
 		FADC4AD76F3F7082B7788EE5 /* AyamiMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */; };
+		FB52079E897E4A5D5C8CD918 /* Reader in Resources */ = {isa = PBXBuildFile; fileRef = C1B7DF64274D622EBF473575 /* Reader */; };
 		FFAD24C1FEC928E201E3B631 /* DocumentSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */; };
 /* End PBXBuildFile section */
 
@@ -215,11 +241,14 @@
 		052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSizeRestorer.swift; sourceTree = "<group>"; };
 		0664A1681ECBA6F48D1D1ED1 /* DocumentOutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentOutputView.swift; sourceTree = "<group>"; };
 		09537D16BD28C94319484772 /* AyamiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyamiApp.swift; sourceTree = "<group>"; };
+		118D355B447B4F63C2FBEBCD /* ReaderRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderRuntimeTests.swift; sourceTree = "<group>"; };
 		162E9388907BC3FD53CD7ED2 /* AyamiMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyamiMacApp.swift; sourceTree = "<group>"; };
 		165799041068FBA9652512FC /* AyamiQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AyamiQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A83ED8E9B71488728482194 /* THIRD_PARTY_NOTICES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = THIRD_PARTY_NOTICES.md; sourceTree = "<group>"; };
 		1C524FCA55A9D22A9292B3A2 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1C7B3A5466F1BE902290C082 /* ReaderResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderResources.swift; sourceTree = "<group>"; };
 		226F544168109E4AF7F04407 /* HTMLBreakMarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLBreakMarkdownParser.swift; sourceTree = "<group>"; };
+		3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderLinkMenu.swift; sourceTree = "<group>"; };
 		3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPreferencesTests.swift; sourceTree = "<group>"; };
 		35108F4DADC7D3E2D24F030E /* Mermaid */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mermaid; path = Sources/Ayami/Resources/Mermaid; sourceTree = SOURCE_ROOT; };
 		39D02009573FCBB0A1CF6D40 /* DocumentSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSummary.swift; sourceTree = "<group>"; };
@@ -228,10 +257,12 @@
 		53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSettingsView.swift; sourceTree = "<group>"; };
 		545588CD788BCCBB81869777 /* ReadingPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPreferences.swift; sourceTree = "<group>"; };
 		59417ACF7BED98D617294673 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		59BFF7B181D609EBD073039D /* ReaderGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderGuideView.swift; sourceTree = "<group>"; };
 		5B988BBC1AD45097EAC764B8 /* OutputDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDocument.swift; sourceTree = "<group>"; };
 		5C9D0251E9C2EB6DBE4A448F /* AyamiIOSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AyamiIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRendererTests.swift; sourceTree = "<group>"; };
 		6440A0EF585C820D9E9E0130 /* DocumentOutputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentOutputTests.swift; sourceTree = "<group>"; };
+		653669DD58C6DCEB8EF1FB2B /* ReaderLinkMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderLinkMenuTests.swift; sourceTree = "<group>"; };
 		65DCF96C2A2E37B946C62540 /* UITestHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestHostApp.swift; sourceTree = "<group>"; };
 		6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseVersionTests.swift; sourceTree = "<group>"; };
 		6DEEF9668488DF208AA6D551 /* AyamiMacUITestHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AyamiMacUITestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +273,7 @@
 		879658CC5DFC11B18B1A6325 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		88018AFF26AE3102F663FF84 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		888699F0267A602B24253FF4 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		8DAE3850EC4D97CC6EE3AAA9 /* TextDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocumentTests.swift; sourceTree = "<group>"; };
 		8E960B762C15DA3A33B82DF0 /* OutputTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextStyle.swift; sourceTree = "<group>"; };
 		920C2E65270CF7150868D2EA /* AyamiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AyamiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0360A2C7CAD3D911D19CCD /* IOSDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDocumentTests.swift; sourceTree = "<group>"; };
@@ -255,8 +287,10 @@
 		B431B081AD1D4296054836C7 /* MarkdownDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocument.swift; sourceTree = "<group>"; };
 		B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownToolkitTests.swift; sourceTree = "<group>"; };
 		BA8F7284354A5E1427AA54BC /* DocumentPDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPDFGenerator.swift; sourceTree = "<group>"; };
+		C1B7DF64274D622EBF473575 /* Reader */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Reader; path = Sources/Ayami/Resources/Reader; sourceTree = SOURCE_ROOT; };
 		C7854A35057B2C037A4AAD2D /* AyamiMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AyamiMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80FD0F2E1D8BD9288097784 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderWebView.swift; sourceTree = "<group>"; };
 		CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookHTMLTests.swift; sourceTree = "<group>"; };
 		DD9C50C9AEB5F76D7ED292B9 /* MarkdownDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownDocumentTests.swift; sourceTree = "<group>"; };
 		DE7FD0F7666EC5DD0C8552FB /* DocumentSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSummaryView.swift; sourceTree = "<group>"; };
@@ -305,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				35108F4DADC7D3E2D24F030E /* Mermaid */,
+				C1B7DF64274D622EBF473575 /* Reader */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -397,6 +432,10 @@
 				ABDEDC3E7E35C24D1A4A8E46 /* PreviewDocumentModel.swift */,
 				879658CC5DFC11B18B1A6325 /* PreviewView.swift */,
 				B2D2BD2D3C67B86E595F0967 /* QuickLookHTMLRenderer.swift */,
+				59BFF7B181D609EBD073039D /* ReaderGuideView.swift */,
+				3107517480E87822702C7AB9 /* ReaderLinkMenu.swift */,
+				1C7B3A5466F1BE902290C082 /* ReaderResources.swift */,
+				CBAEEA20FA57076C9092DEF9 /* ReaderWebView.swift */,
 				545588CD788BCCBB81869777 /* ReadingPreferences.swift */,
 				53F641AAA9B5CACDDFF35D00 /* ReadingSettingsView.swift */,
 				052FDB3A82773CDFC490DD4F /* WindowSizeRestorer.swift */,
@@ -455,8 +494,11 @@
 				B8F73E7DE4A1537B7D2F75FE /* MarkdownToolkitTests.swift */,
 				61074BB79C1BB7886342FB39 /* MermaidRendererTests.swift */,
 				CD3B6C33C538F9AD59121FE1 /* QuickLookHTMLTests.swift */,
+				653669DD58C6DCEB8EF1FB2B /* ReaderLinkMenuTests.swift */,
+				118D355B447B4F63C2FBEBCD /* ReaderRuntimeTests.swift */,
 				3504074BB1C05DB18ABDDD21 /* ReadingPreferencesTests.swift */,
 				6A3AC8813CBAAC97110F09D3 /* ReleaseVersionTests.swift */,
+				8DAE3850EC4D97CC6EE3AAA9 /* TextDocumentTests.swift */,
 			);
 			path = AyamiTests;
 			sourceTree = "<group>";
@@ -747,6 +789,7 @@
 				18582A2F1F0D74C8F594477F /* Localizable.strings in Resources */,
 				091BF298BCDBC58B4A120621 /* Mermaid in Resources */,
 				E1DAAAF494439E402999DD7E /* PrivacyInfo.xcprivacy in Resources */,
+				356FBC2EDB5B35307CF54F5F /* Reader in Resources */,
 				31E11510C4DA94ED52537F58 /* THIRD_PARTY_NOTICES.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +804,7 @@
 				6FFBFB8EC13B1ABB684DE03C /* Localizable.strings in Resources */,
 				82899589406E7A1E349035DB /* Mermaid in Resources */,
 				19B558F32B52C301E109BA14 /* PrivacyInfo.xcprivacy in Resources */,
+				AFA9308B81894E8695EDD7BC /* Reader in Resources */,
 				D0D89529F1FFE843C797725E /* THIRD_PARTY_NOTICES.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +815,7 @@
 			files = (
 				8A9101A3D153394BA2A7FCE5 /* AppIcon.xcassets in Resources */,
 				EF45DD0707A4C5A557FAC5D0 /* Mermaid in Resources */,
+				030DFA49666FEDCBB5E51551 /* Reader in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +829,7 @@
 				4CA7754D1A39DEB64505D20D /* Localizable.strings in Resources */,
 				E573F5ED2C88927CFC5AB8AB /* Mermaid in Resources */,
 				7C2C15DA9CA6EE071D104A0C /* PrivacyInfo.xcprivacy in Resources */,
+				FB52079E897E4A5D5C8CD918 /* Reader in Resources */,
 				9E398D906CAC75F4763854D5 /* THIRD_PARTY_NOTICES.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,6 +875,10 @@
 				747FF54C415844E61B970124 /* PreviewDocumentModel.swift in Sources */,
 				C4CB2BCD3106FB404EFF21D0 /* PreviewView.swift in Sources */,
 				E2532634415300088A06C89F /* QuickLookHTMLRenderer.swift in Sources */,
+				3740545DA1AA8AF808319D61 /* ReaderGuideView.swift in Sources */,
+				4057C8F6B024804181FEE256 /* ReaderLinkMenu.swift in Sources */,
+				329D4A1D407AAD0FF62DF69F /* ReaderResources.swift in Sources */,
+				92194FC441EB26920212A1BF /* ReaderWebView.swift in Sources */,
 				7AD20910B6B3AF9C3B0008B7 /* ReadingPreferences.swift in Sources */,
 				ABBF6F3596A6E667A3346083 /* ReadingSettingsView.swift in Sources */,
 				1A4A9A6ED06B0E4B0EF05327 /* WindowSizeRestorer.swift in Sources */,
@@ -856,6 +906,10 @@
 				2CDE9B298034DCE4E82A05D4 /* PreviewDocumentModel.swift in Sources */,
 				0AAB5E53808B056CE2BB343E /* PreviewView.swift in Sources */,
 				343199C0AA312E6B16C1E17D /* QuickLookHTMLRenderer.swift in Sources */,
+				56B761074EA630E87E43D132 /* ReaderGuideView.swift in Sources */,
+				DDA7BA63173FBB4E4D536674 /* ReaderLinkMenu.swift in Sources */,
+				B62463DBC965978F88D5AEE7 /* ReaderResources.swift in Sources */,
+				AD306CA6212F2E1ACBEA483E /* ReaderWebView.swift in Sources */,
 				EA6E98A95FC80095F837D3B0 /* ReadingPreferences.swift in Sources */,
 				11FDA0E7B0F7C22B3B503CD7 /* ReadingSettingsView.swift in Sources */,
 			);
@@ -871,8 +925,11 @@
 				79CFE7277B77CBEFF78D02E5 /* MarkdownToolkitTests.swift in Sources */,
 				A46B5BCEABCEF5D79FD4661B /* MermaidRendererTests.swift in Sources */,
 				134F39C472F1E3FED3C0CDF7 /* QuickLookHTMLTests.swift in Sources */,
+				A43E876E6089AB90163BE94E /* ReaderLinkMenuTests.swift in Sources */,
+				A4A70B5F2EC4A1EDB5B05566 /* ReaderRuntimeTests.swift in Sources */,
 				0C325B93D0851F3E4254B7B5 /* ReadingPreferencesTests.swift in Sources */,
 				B45FB250FC95B855F5FD78C2 /* ReleaseVersionTests.swift in Sources */,
+				CDBB239BEE05C94469E798E4 /* TextDocumentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +954,10 @@
 				5D9D0AC0E5F7FA34B197218D /* PreviewDocumentModel.swift in Sources */,
 				8B05D9914CEF8FE269349DA9 /* PreviewView.swift in Sources */,
 				D44478713BAE57ECD866051B /* QuickLookHTMLRenderer.swift in Sources */,
+				14935818EB731F01F0351479 /* ReaderGuideView.swift in Sources */,
+				BDA58B424E941337D93B8E2A /* ReaderLinkMenu.swift in Sources */,
+				40C194059C3B10BEFBB24E30 /* ReaderResources.swift in Sources */,
+				B2BD8BE0C8836DD644D441CB /* ReaderWebView.swift in Sources */,
 				59D3616876A9E42046BE526F /* ReadingPreferences.swift in Sources */,
 				E245389475EE870C178387C3 /* ReadingSettingsView.swift in Sources */,
 				DC06B499A4E7032A95B4C527 /* WindowSizeRestorer.swift in Sources */,
@@ -935,6 +996,10 @@
 				B4DF977051E4B9830145746F /* PreviewDocumentModel.swift in Sources */,
 				E717918F29670EDA74FB4182 /* PreviewView.swift in Sources */,
 				B7310A6794D1A3836A8AA0DB /* QuickLookHTMLRenderer.swift in Sources */,
+				AC8707ECA8BE5DCE028679CB /* ReaderGuideView.swift in Sources */,
+				9D517FC1093DBAB26FD53B98 /* ReaderLinkMenu.swift in Sources */,
+				352DD1604E0B014D367A9FC1 /* ReaderResources.swift in Sources */,
+				369081DBD66FD7D02952E42A /* ReaderWebView.swift in Sources */,
 				017A494BC09B0D54CA8D5E69 /* ReadingPreferences.swift in Sources */,
 				6841451BA8DBC7FC24117853 /* ReadingSettingsView.swift in Sources */,
 				8723F0BA8BFBF1C2B9CAE091 /* UITestHostApp.swift in Sources */,
@@ -951,8 +1016,11 @@
 				48B3410CC2256775F902B27F /* MarkdownToolkitTests.swift in Sources */,
 				46DC0579DD0DE5DEB3C848B3 /* MermaidRendererTests.swift in Sources */,
 				54685B568CD4ED9F66E3A95D /* QuickLookHTMLTests.swift in Sources */,
+				3BBE3FE1280FAACF2854782B /* ReaderLinkMenuTests.swift in Sources */,
+				B3F1A04C4147C86D9ACFA7A4 /* ReaderRuntimeTests.swift in Sources */,
 				63ABDBB0D7DE31BC71DAE5D9 /* ReadingPreferencesTests.swift in Sources */,
 				729F1A5C10098D24056C08CD /* ReleaseVersionTests.swift in Sources */,
+				06D79768769312D3BE8B28FB /* TextDocumentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,7 +1088,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_DEBUG_DYLIB = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1031,7 +1099,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.AyamiMacUITestHost.QuickLook;
 				PRODUCT_MODULE_NAME = AyamiQuickLook;
 				PRODUCT_NAME = AyamiQuickLook;
@@ -1048,7 +1116,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1058,7 +1126,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.QuickLook;
 				PRODUCT_MODULE_NAME = AyamiQuickLook;
 				PRODUCT_NAME = AyamiQuickLook;
@@ -1073,7 +1141,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1082,7 +1150,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1100,7 +1168,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1110,7 +1178,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.UITestHost;
 				PRODUCT_MODULE_NAME = AyamiUITestHost;
 				SDKROOT = iphoneos;
@@ -1220,7 +1288,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1230,7 +1298,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.UITestHost;
 				PRODUCT_MODULE_NAME = AyamiUITestHost;
 				SDKROOT = iphoneos;
@@ -1244,7 +1312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1253,7 +1321,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1271,7 +1339,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tests/AyamiIOSUITestHost/Info.plist;
@@ -1281,7 +1349,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.UITestHost;
 				PRODUCT_MODULE_NAME = AyamiUITestHost;
 				SDKROOT = iphoneos;
@@ -1317,7 +1385,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1326,7 +1394,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.AyamiMacUITestHost;
 				PRODUCT_MODULE_NAME = AyamiMacUITestHost;
 				PRODUCT_NAME = AyamiMacUITestHost;
@@ -1443,7 +1511,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1452,7 +1520,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1469,7 +1537,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1478,7 +1546,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.AyamiMacUITestHost;
 				PRODUCT_MODULE_NAME = AyamiMacUITestHost;
 				PRODUCT_NAME = AyamiMacUITestHost;
@@ -1495,7 +1563,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1504,7 +1572,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1584,7 +1652,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1593,7 +1661,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1608,7 +1676,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Packaging/Info-iOS.plist";
@@ -1617,7 +1685,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer;
 				PRODUCT_MODULE_NAME = Ayami;
 				PRODUCT_NAME = Ayami;
@@ -1677,7 +1745,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/AyamiQuickLook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1687,7 +1755,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.MDViewer.QuickLook;
 				PRODUCT_MODULE_NAME = AyamiQuickLook;
 				PRODUCT_NAME = AyamiQuickLook;
@@ -1787,7 +1855,7 @@
 				CODE_SIGN_ENTITLEMENTS = Packaging/Ayami.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = ZLX73742D3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1796,7 +1864,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.hshimomura.AyamiMacUITestHost;
 				PRODUCT_MODULE_NAME = AyamiMacUITestHost;
 				PRODUCT_NAME = AyamiMacUITestHost;

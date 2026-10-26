@@ -1,4 +1,4 @@
-# Ayami 1.4 設計
+# Ayami 1.5 開発版 設計
 
 ## 方針
 
@@ -6,6 +6,10 @@ Apple silicon搭載Mac（macOS 26+）、iPhone・iPad（iOS/iPadOS 18+）の
 読み取り専用Markdownビューアーとする。編集、Electron、データベース、アカウント、
 独自の同期・文書アップロードサービスは追加しない。
 
+1.5では文書内検索、一時マーク、相対ファイル、コードコピー、図の拡大、導入ガイドを追加する。
+文書リンクはMacでタブを既定とし、ウィンドウへ切り替え可能にする。HTMLは許可した要素を表示し、
+その他のテキスト・JSON・ソースコードは原文を保持して開く。
+実装と今回の検証範囲は[1.5検証記録](docs/validation-1.5.md)を参照する。
 1.4では全プラットフォームの印刷・PDF、MacのFinder Quick Look、端末内AIの試作を追加した。
 利用者向け機能は[README](README.md)、ファイル・設定・制限の詳細は
 [実装仕様](docs/ayami-implementation.md)、成功・失敗の証跡は[検証記録](docs/validation-1.4.md)へ分ける。
@@ -20,9 +24,10 @@ Finder / File menu / Files
     MarkdownDocument -> PreviewDocumentModel
             |            Macのみ外部変更を約400ms間隔で監視
             |
-            +-> 読書: MarkdownContentParser
-            |          +-> Textual（FoundationのMarkdown解析）
-            |          +-> WKWebView + 同梱Mermaid
+            +-> 読書: ReaderSession / ReaderWebView（非永続、文書ごと）
+            |          +-> 同梱markdown-it / Prism / Mermaid
+            |          +-> 選択・検索・一時マーク・段落の位置保持
+            |          +-> DocumentResourcePolicy（相対画像と許可フォルダー）
             |
             +-> 出力: OutputDocument
             |          +-> CoreText / CoreGraphics（本文・表・改ページ）
@@ -69,7 +74,9 @@ AIはOS 26+で利用状態を確認する。iOSの最低対応を18に保つた�
 
 ## 文書保護とプライバシー
 
-文字倍率は端末内のUserDefaultsに保存し、Markdownや独立した出力レイアウトを書き換えない。
+文字倍率とMacのリンク表示先は端末内のUserDefaultsに保存し、元文書や独立した出力レイアウトを書き換えない。
+HTMLはDOMPurifyと要素・属性・CSSの許可リストで処理し、文書のスクリプトは実行しない。
+文書内のIDと操作用属性を読書UIから分離し、ローカルファイルの境界検証を通して参照する。
 PDFは新しい出力先へ保存する。Macのユーザー選択read/write権限はその保存先に使い、
 Quick Lookはユーザー選択ファイルのread-only権限とする。
 
@@ -81,6 +88,8 @@ MermaidのHTML/JavaScriptは同梱する。CSP、外部ナビゲーション拒�
 ## 検証・今後の範囲
 
 1.4の成功結果と未検証項目は[検証記録](docs/validation-1.4.md)に集約する。
-相対パス画像、Find、大規模文書・アクセシビリティの追加検証は未実施。
+1.5の相対画像、Find、1MiBの長文、レイアウト変更時のマーク保持を検証する。
+VoiceOverの全操作、旧バージョンのOS、実機は追加検証が必要。
+画像の追加対応はアプリの閲覧画面を対象とし、Quick LookとPDFへは広げていない。
 Intel対応は廃止し、実装済みの印刷・PDF・Quick Lookを将来計画として重複掲載しない。
 Developer IDによる直接配布・notarizationはApp Store配布とは別工程とする。

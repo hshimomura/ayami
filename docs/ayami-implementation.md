@@ -1,8 +1,9 @@
-# あやみ 1.4（20）実装仕様
+# あやみ 1.5 開発版（21）実装仕様
 
 Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコードで構成する。
 利用者向け機能は[README](../README.md)、データフローは[設計](../DESIGN.md)、
-動作確認の証跡は[1.4検証記録](validation-1.4.md)を正本とする。
+1.5の変更と検証は[1.5検証記録](validation-1.5.md)、従来機能の履歴は
+[1.4検証記録](validation-1.4.md)を参照する。
 
 ## ターゲットと責務
 
@@ -12,8 +13,8 @@ Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコード
 | iPhone・iPad | `AyamiIOS`、iOS/iPadOS 18+、`Sources/AyamiIOS/AyamiApp.swift` |
 | 共有ソース | `Sources/Ayami/`。Mac専用の入口・ウィンドウ制御はiOSから除外 |
 | 文書管理・監視 | `MarkdownDocument`、`DocumentGroup(viewing:)`、`PreviewDocumentModel` |
-| 読書・目次・設定 | `PreviewView`、Textual、`OutlineSidebar`、`ReadingPreferences`、`ReadingSettingsView` |
-| 読書画面の図 | `MermaidDiagramView`、`MermaidRendererResources`、同梱ランタイム |
+| 読書・目次・設定 | `PreviewView`、`ReaderSession`、`ReaderWebView`、`OutlineSidebar`、`ReadingPreferences`、`ReadingSettingsView` |
+| 読書画面の図 | `Resources/Reader/reader.js`、`MermaidRendererResources`、同梱ランタイム |
 | PDF入力・スタイル | `OutputDocument`、`OutputTextStyle` |
 | PDF生成・図合成 | `DocumentPDFGenerator`、`MermaidPDFRenderer` |
 | 出力画面・OS操作 | `DocumentOutputView`、PDFKit、`PDFExportDocument`、OS別印刷ボタン |
@@ -21,7 +22,7 @@ Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコード
 | 端末内AI | `DocumentSummary`、`DocumentSummaryView` |
 
 `project.yml`が構成の正本。Mac本体・拡張・Macテストは`ARCHS: arm64`。
-アプリと拡張のバージョンは1.4、ビルドは20。アプリのBundle IDは
+アプリと拡張のバージョンは1.5、ビルドは21。アプリのBundle IDは
 `io.github.hshimomura.MDViewer`、製品拡張は末尾`.QuickLook`で互換性を維持する。
 改名時の判断は[構成変更記録](repository-rename.md)に残す。
 
@@ -29,16 +30,59 @@ Mac・iPhone・iPadの読み取り専用ビューアーを共通SwiftUIコード
 
 - `readerFontScale`を端末単位の`@AppStorage`で保存。初期値1.0、範囲0.80〜1.60、5%刻み。
 - 範囲外を制限し、NaN・無限大は初期値へ戻す。「標準に戻す」は100%。
-- Textualの`fontScale`とMermaidの`themeVariables.fontSize`へ適用。目次・ステータスはシステム設定に従う。
+- 本文のCSSルート文字サイズへ適用。Dynamic Typeの倍率も反映。目次・ステータスはシステム設定に従う。
 - MarkdownやPDFの独立したレイアウトは変更しない。Dynamic Typeも維持する。
 
-Macは個別ウィンドウを既定とし、任意にネイティブタブへ追加する。
+Macの「ファイルを開く」は個別ウィンドウ、「新しいタブでファイルを開く」はネイティブタブへ追加する。
+文書中のローカルリンクはタブが初期値。「閲覧設定」の「文書リンク」で新しいウィンドウにも変更できる。
+`readerLinkDestination`に`tab`または`window`を保存し、同一ファイル内のアンカーは現在の文書で移動する。
+Webリンクは既定のブラウザーへ渡す。
+Macのリンク右クリックはアプリの専用メニューを使い、通常表示・新しいタブ・新しいウィンドウ・
+保存・URLコピーを扱う。WebKitの表示用URLではなく、元文書を基準にした実URLを解決する。
+保存は保存先パネルで選択し、ローカルファイルには通常のフォルダー境界検証を適用する。
+元ファイル自身への保存は拒否する。HTTP(S)の保存は利用者の操作時だけ、非永続URLSessionで取得する。
+Webリンクの表示先はブラウザーへ任せ、Macのタブ・ウィンドウ指定はローカル文書に限定する。
+起動画面は初回に一度案内する。「次回起動時もこの画面を表示する」は初期値オフ。
+`hasSeenWelcome`と`showWelcomeAtLaunch`を端末内に保存し、次回以降はチェックした場合だけ表示する。
+非表示にした後も「ヘルプ」から起動画面と技術文書サンプルを開ける。
+「ウインドウ → 起動画面を表示」は起動画面のSceneに登録し、文書を開いていない状態でも使えるようにする。
+すべてのウインドウを閉じてもアプリは終了しない。このメニューから起動画面を再表示し、文書を開き直せる。
 左右配置は文書ウィンドウだけを対象とし、Macのみ外部ファイルを約400ms間隔で監視する。
 
 iOSはFilesから開き、compact幅は目次シート、regular幅は230ptの目次と本文をHStackで並べる。
 DocumentGroupにNavigationSplitViewを重ねず、Duoの文書バー重複を防ぐ。
 端末名や`.phone`で配置を固定せず、iPadの複数ウィンドウはOSへ任せる。
 独自のファイルポーリングは行わず、外部変更が反映されない場合は文書を開き直す。
+
+## 1.5の閲覧セッション
+
+- 文書ごとに非永続`WKWebView`を保持。compact/regularのレイアウト変更でも同じページを再利用する。
+- メッセージハンドラーは弱参照の中継を使い、ページとCoordinator・セッションの循環参照を避ける。
+- 検索とピンクのマークはCSS Custom Highlightで描画。元文書の文字列やDOMの本文を注釈用に書き換えない。
+- 登録済みの`Highlight`を保持し、`clear()`／`add()`で描画範囲を更新する。
+  同じキーへの`CSS.highlights.set()`による置き換えは、WebKitで再描画されない場合があるため避ける。
+- マークはページのメモリーだけに置く。保存、UserDefaults、ログ、PDFへの転記を行わない。
+- 再読み込み時は引用文字列と前後の文脈でマークを照合。特定できないマークは解除して案内する。
+- 読書位置は表示中の段落の内容と画面内の位置で復元。挿入された文章の行数に依存しない。
+- 相対画像は専用URL schemeで渡す。文書のフォルダー、利用者が選んだプロジェクト、同梱サンプルだけを許可する。
+- 実パスの解決でシンボリックリンクの範囲外参照を拒否。画像は1件20MiBまで。外部画像は読み込まない。
+- プロジェクトの許可はアプリのセッション内だけ有効。ブックマークとして保存しない。
+- 関連文書はMacではDocumentGroupで開く。iOSでは専用の読み取り専用画面で開く。
+- Markdown内のHTMLと`.html`／`.htm`をDOMPurifyで処理。表・強調・折りたたみと許可したインラインCSSを表示する。
+- 文書のスクリプト、iframe、フォーム、イベント属性を除去。文書のIDは接頭辞で読書UIと分離する。
+- スクリプトは同梱資産のみ。外部通信はCSPで拒否し、画像は許可したローカル画像とrasterのdata URIに限定する。
+
+## テキストファイル
+
+`MarkdownDocument`はMarkdownのほか、テキスト・JSON・ソースコード・一般データのViewerとして登録する。
+追加形式は`LSHandlerRank=None`で既定アプリを奪わず、読み込み時にテキストかどうか判定する。
+`TextFileContent`は最大20MiB、UTF-8（BOM含む）、BOM付きUTF-16/32、Shift JISに対応する。
+NULなどの制御文字を含むバイナリーと上限を超える入力は説明付きで拒否する。
+
+`.md`／`.markdown`はMarkdown、`.html`／`.htm`はHTML、それ以外の拡張子は原文を保つテキストとして表示する。
+JSON・Cなどは対応するPrism文法がある場合に色分けし、検索・マーク・コピーも利用できる。
+印刷・PDFは別パイプラインのため、Markdown以外は原文をコードとして出力する。
+HTMLの見た目の再現は行わない。出力側の1MiB上限は維持する。
 
 ## 印刷・PDF
 
@@ -60,6 +104,12 @@ PDFKitでプレビューする。保存成功のコールバック後だけ完�
 旧`DocumentPrintCoordinator`とTextKit印刷フォーマッターは削除し、二重実装を残さない。
 
 ## Finder Quick Look
+
+閲覧ガイドの「Quick Lookの設定を開く」は、システム設定のログイン項目と機能拡張へ
+`extensionPointIdentifier=com.apple.quicklook.preview`を指定して移動する。
+Quick Lookの一覧を直接開くURLはOS側の仕様に依存するため、ガイドの手動経路も残す。
+URLの起動要求が失敗した場合は公開APIの`SMAppService.openSystemSettingsLoginItems()`へ戻す。
+有効化スイッチをアプリから変更することはない。
 
 Macアプリが`AyamiQuickLook.appex`を同梱する。`net.daringfireball.markdown`を対象に、
 データ方式の`QLPreviewProvider`がUTF-8を読み、`QuickLookHTMLRenderer`で連続HTMLを生成する。
@@ -89,7 +139,9 @@ iPad/Duoの未確認が残る。試作を配布対象へ含める判断と検証
 
 ## 資産・プライバシー・ビルド
 
-固定依存は1.3から変更していない。[依存監査](dependency-audit-1.3.md)を参照する。
+Swift依存とMermaidの固定版は1.3と同じ。1.5ではmarkdown-it 15.0.3と、Textual同梱版と同じ
+Prism 1.29.0のブラウザーバンドルを追加。取得元・SHA-256・ライセンスは[1.5検証記録](validation-1.5.md)と
+[第三者通知](../THIRD_PARTY_NOTICES.md)を参照する。
 読書用と出力用Mermaidは同じ資産を使い、CSP・外部遷移拒否・リンク除去・タイムアウトを適用する。
 Privacy ManifestはUserDefaults理由`CA92.1`、更新時刻理由`3B52.1`、収集・追跡なしを記録する。
 

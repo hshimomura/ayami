@@ -1,0 +1,20 @@
+[
+  {
+    "file": "en-US/universal-header-search.png",
+    "width": 5244,
+    "height": 2950,
+    "bitDepth": 8,
+    "colorType": "RGB (no alpha)",
+    "bytes": 7108068,
+    "sha256": "b01c12ff2f0ccd93132ee1c71a20220ecf22ba25c136b5c30387306912576964"
+  },
+  {
+    "file": "ja/universal-header-search.png",
+    "width": 5244,
+    "height": 2950,
+    "bitDepth": 8,
+    "colorType": "RGB (no alpha)",
+    "bytes": 7094024,
+    "sha256": "cfc4a9ab2d75054459e9149d28960f14dd96f37ccf1fcbbaab7fe3856aaa8056"
+  }
+]

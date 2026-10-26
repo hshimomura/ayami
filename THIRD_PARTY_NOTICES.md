@@ -15,6 +15,8 @@ texts are retained in the built application. The location depends on the build:
 | SwiftUIMath | 0.1.0 | MIT | https://github.com/gonzalezreal/swiftui-math |
 | ConcurrencyExtras | 1.4.3 | MIT | https://github.com/pointfreeco/swift-concurrency-extras |
 | Prism.js | 1.29.0 (bundled by Textual) | MIT | https://github.com/PrismJS/prism |
+| markdown-it | 15.0.3 | MIT | https://github.com/markdown-it/markdown-it |
+| DOMPurify | 3.4.17 | Apache-2.0 (selected from dual license) | https://github.com/cure53/DOMPurify |
 | Mermaid | 12.2.0 | MIT | https://github.com/mermaid-js/mermaid |
 
 SwiftUIMath includes math fonts under the SIL Open Font License 1.1 and the
@@ -32,3 +34,10 @@ Before each public release, review both committed `Package.resolved` files and
 the dependency graph with `swift package show-dependencies`. Update locks only
 when intentionally changing dependencies, then confirm this notice and the
 bundled license texts match the distributed versions.
+
+The 1.5 reading view bundles markdown-it 15.0.3 and the same Prism.js 1.29.0
+runtime shipped by Textual 0.5.0. DOMPurify 3.4.17 sanitizes Markdown-embedded
+HTML and HTML documents; Ayami then applies an inline-style allowlist.
+Parser and diagram scripts are loaded locally; document scripts and remote
+image requests are blocked. See `markdown-it-LICENSE.txt`, `Prism-LICENSE.txt`,
+and `DOMPurify-LICENSE.txt` in the license directory.

@@ -1,0 +1,7 @@
+{
+  "service": "public-notification-sample",
+  "retries": 3,
+  "timeoutSeconds": 5,
+  "message": "日本語も読み取れます",
+  "literalHTML": "<strong>source text</strong>"
+}

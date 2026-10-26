@@ -1,0 +1,48 @@
+:root { color-scheme: light dark; font: 16px/1.75 -apple-system, BlinkMacSystemFont, sans-serif; color: CanvasText; background: Canvas; --line: color-mix(in srgb, CanvasText 18%, transparent); --soft: color-mix(in srgb, CanvasText 5%, Canvas); }
+* { box-sizing: border-box; }
+body { margin: 0; overflow-wrap: anywhere; }
+article { max-width: 952px; margin: 0 auto; padding: 28px 36px 80px; }
+h1,h2,h3,h4,h5,h6 { line-height: 1.35; margin: 1.4em 0 .6em; scroll-margin-top: 20px; }
+h1 { font-size: 2em; } h2 { font-size: 1.55em; border-bottom: 1px solid var(--line); padding-bottom: .25em; } h3 { font-size: 1.25em; }
+article > :first-child { margin-top: 0; }
+p,ul,ol,blockquote,pre,table,figure { margin: .9em 0; }
+li > p { margin: .25em 0; } li > ul,li > ol { margin: .2em 0; }
+a { color: light-dark(#0969b9, #7ec6ff); text-decoration: none; } a:hover { text-decoration: underline; }
+blockquote { margin-left: 0; padding: .1em 1em; border-left: 3px solid var(--line); color: color-mix(in srgb, CanvasText 75%, Canvas); }
+pre,code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; }
+pre { overflow-x: auto; white-space: pre; padding: 16px; margin: 0; line-height: 1.6; }
+pre code { font-size: 1em; }
+:not(pre) > code { padding: .1em .3em; border-radius: 4px; background: var(--soft); }
+.code-block,figure { border: 1px solid var(--line); border-radius: 9px; background: var(--soft); overflow: hidden; }
+.code-tools,figure > header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 5px 12px; border-bottom: 1px solid var(--line); font-size: 12px; user-select: none; }
+button { font: inherit; color: inherit; border: 1px solid var(--line); border-radius: 6px; background: Canvas; padding: 4px 10px; cursor: pointer; }
+button:hover { background: color-mix(in srgb, CanvasText 10%, Canvas); }
+button:focus-visible { outline: 3px solid Highlight; outline-offset: 2px; }
+.table-scroll { overflow-x: auto; margin: 1em 0; }
+table { border-collapse: collapse; min-width: 100%; margin: 0; }
+th,td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+th,tr:nth-child(even) { background: var(--soft); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 1.8em 0; }
+img { max-width: 100%; height: auto; vertical-align: middle; }
+img.image-unavailable { display: inline-block; min-height: 36px; min-width: 160px; padding: 6px; border: 1px dashed var(--line); }
+.diagram { padding: 16px; overflow-x: auto; min-height: 100px; }
+.diagram svg { display: block; max-width: 100%; height: auto; margin: auto; }
+.diagram pre { white-space: pre-wrap; }
+::highlight(ayami-pink) { background-color: light-dark(#ffafd2, #8c315c); color: CanvasText; }
+::highlight(ayami-selected-mark) { background-color: light-dark(#ff80b8, #a33d6c); text-decoration: underline; }
+::highlight(ayami-find) { background-color: light-dark(#ffe69a, #725c12); color: CanvasText; }
+::highlight(ayami-current-find) { background-color: light-dark(#ffb954, #995300); color: CanvasText; text-decoration: underline; }
+dialog { width: calc(100vw - 40px); max-width: none; height: calc(100vh - 40px); max-height: none; padding: 0; color: CanvasText; background: Canvas; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 60px #0005; }
+dialog::backdrop { background: #0007; }
+dialog > header { display: flex; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid var(--line); }
+#diagram-close { margin-left: auto; }
+#diagram-scroll { height: calc(100% - 61px); overflow: auto; padding: 20px; }
+#diagram-expanded { margin: 0 auto; }
+#diagram-expanded svg { display: block; width: 100%; height: auto; max-width: none !important; }
+.token.comment,.token.prolog,.token.doctype { color: light-dark(#687581, #9da8b1); }
+.token.string,.token.attr-value { color: light-dark(#0c6553, #94d8b3); }
+.token.keyword,.token.boolean,.token.tag { color: light-dark(#a52377, #ff9ed1); }
+.token.number,.token.constant { color: light-dark(#96500b, #e7bc85); }
+.token.function,.token.class-name,.token.attr-name { color: light-dark(#4d47a0, #b9afff); }
+@media (max-width: 600px) { article { padding: 22px 18px 60px; } dialog { width: calc(100vw - 16px); height: calc(100vh - 16px); } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

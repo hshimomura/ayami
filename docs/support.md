@@ -15,6 +15,19 @@ permalink: /support
 The current source release is 1.4 (build 20). Check the
 [App Store](https://apps.apple.com/app/id6794576868) for the distributed version.
 
+## Version 1.5 development reader
+
+The development branch adds HTML viewing and literal text for `.txt`, `.json`,
+`.c`, and other text extensions. It supports UTF-8, BOM-marked UTF-16/32, and
+Shift JIS, up to 20 MiB. HTML scripts are not executed; formatting, tables,
+details, and selected inline styles are supported. Print/PDF for non-Markdown
+files uses literal source with the existing output limit.
+
+On Mac, local document links open in a new tab by default. In **Reading Settings >
+Document Links > Open Document Links In**, choose **New Tab** or **New Window**.
+Web links use your browser. File menu commands retain their explicit window/tab
+behavior. See the [development validation record](validation-1.5.md).
+
 ## Mac actions
 
 - Open a file in a separate window with **File > Open File…** (`Command-O`).
@@ -82,7 +95,7 @@ generation and physical iOS devices have not been verified. See the
   Moving another app to a different folder does not necessarily unregister its
   extension. In validation, the Ayami preview worked after QLMarkdown was removed;
   this does not establish a general defect or guaranteed selection priority.
-- Relative local images and a Find navigator are not implemented.
+- Version 1.4 does not support relative local images or a Find navigator. The 1.5 development reader adds these features; see the [development validation record](validation-1.5.md).
 
 Ayami intentionally does not edit Markdown. Quick Look is included in the
 Xcode-built Mac app, not in the old SwiftPM-only bundle packager.
